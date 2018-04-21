@@ -40,7 +40,7 @@
      <string>Would you like to...?</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="pushButton_login">
     <property name="geometry">
      <rect>
       <x>100</x>
@@ -53,7 +53,7 @@
      <string>Log in to account</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="pushButton_makeAccount">
     <property name="geometry">
      <rect>
       <x>100</x>

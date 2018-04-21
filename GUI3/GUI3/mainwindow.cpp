@@ -15,10 +15,13 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-/*
-void MainWindow::on_pushButton_signUp_clicked()
+void MainWindow::on_pushButton_makeAccount_clicked()
 {
-    loginDialog = new LogInDialog(this);
-    loginDialog->show();
+    makeAccountDialog = new MakeAccountDialog(this);
+    makeAccountDialog->show();
 }
-*/
+void MainWindow::on_pushButton_login_clicked()
+{
+    logInDialog = new LogInDialog(this);
+    logInDialog->show();
+}
