@@ -27,14 +27,17 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     logindialog.cpp \
-    appdialog.cpp
+    appdialog.cpp \
+    makeaccountdialog.cpp
 
 HEADERS += \
         mainwindow.h \
     logindialog.h \
-    appdialog.h
+    appdialog.h \
+    makeaccountdialog.h
 
 FORMS += \
         mainwindow.ui \
     appdialog.ui \
-    logindialog.ui
+    logindialog.ui \
+    makeaccountdialog.ui
