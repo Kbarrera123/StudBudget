@@ -1,4 +1,5 @@
 #include "logindialog.h"
+#include "authenticator.h"
 #include "ui_logindialog.h"
 #include <QMessageBox>
 
@@ -16,10 +17,19 @@ LogInDialog::~LogInDialog()
 
 void LogInDialog::on_pushButton_Login_clicked()
 {
+    bool finished = false;
+    Authenticator* authenticator = new Authenticator();
+    authenticator->fillMapOfUsers();
+
     QString username = ui->lineEdit_username->text();
     QString password = ui->lineEdit_password->text();
 
-       if(username ==  "test" && password == "test") {
+    std::string usernameStr = username.toUtf8().constData();
+    std::string passwordStr = password.toUtf8().constData();
+
+    authenticator->logIn(usernameStr, passwordStr, finished);
+
+       if(finished) {
            //hide();
            appDialog = new AppDialog(this);
            appDialog->show();
