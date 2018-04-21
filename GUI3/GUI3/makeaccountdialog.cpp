@@ -22,13 +22,20 @@ void MakeAccountDialog::on_pushButton_accountMade_clicked()
 
     Authenticator* authenticator = new Authenticator();
 
+    bool exists = false;
+
     std::string usernameStr = username.toUtf8().constData();
     std::string passwordStr = password.toUtf8().constData();
 
-    authenticator->signUp(usernameStr, passwordStr);
+    authenticator->signUp(usernameStr, passwordStr, exists);
     delete authenticator;
+
+    if (exists) {
+        QMessageBox::warning(this, "Signup", "Username or password already in use! Try something else.");
+    }
 
     logInDialog = new LogInDialog(this);
     logInDialog->show();
     hide();
+
 }

@@ -15,6 +15,7 @@
 using namespace std;
 #include "authenticator.h"
 #include "user.h"
+#include <QMessageBox>
 
 Authenticator::Authenticator(){
     this->currentUser = NULL;
@@ -58,6 +59,10 @@ void Authenticator::fillMapOfUsers(){
         }
     }
     readData.close();
+}
+
+void Authenticator::clearUsers(){
+    this->users.clear();
 }
 
 void Authenticator::printUserObjects(){
@@ -105,11 +110,10 @@ void Authenticator::logIn(string username, string password, bool & finished){
     readData.close();
 }
 
-void Authenticator::signUp(string username, string password){
+void Authenticator::signUp(string username, string password, bool &exists){
     ifstream readData;
     string tempUser, tempUsername, tempPassword;
     int passwordStart, tempPasswordLength, tempUsernameLength, usernameStart = 10;
-    bool exists = false;
 
     readData.open("authData.txt");
 
@@ -158,7 +162,7 @@ void Authenticator::printUsers(){
     }
     readData.close();
 }
-
+/*
 void Authenticator::authenticate(){
     string username = "", password = "", choice2 = "";
     int choice = 0, count = 0;
@@ -218,3 +222,4 @@ void Authenticator::authenticate(){
 }
 
 
+*/

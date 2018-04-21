@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "authenticator.h"
 #include <QMessageBox>
 
 
@@ -25,4 +26,13 @@ void MainWindow::on_pushButton_login_clicked()
 {
     logInDialog = new LogInDialog(this);
     logInDialog->show();
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    Authenticator* authenticator = new Authenticator();
+    authenticator->fillMapOfUsers();
+    authenticator->clearUsers();
+    remove("authData.txt");
+    delete authenticator;
 }

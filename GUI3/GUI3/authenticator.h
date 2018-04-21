@@ -22,10 +22,11 @@ private:
 public:
     Authenticator();
     void logIn(string username, string password, bool & finished);
-    void signUp(string username, string password);
+    void signUp(string username, string password, bool & exists);
     void printUsers(); // temporary
     void printUserObjects(); // for testing
     void fillMapOfUsers();
+    void clearUsers();
     bool isUser(string username);
     User * getUser();
     void authenticate();
