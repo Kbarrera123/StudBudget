@@ -40,3 +40,8 @@ desktop.ini
 
 # Editors temporary files
 *~
+*.plist
+GUI3/build-GUI3-Desktop_Qt_5_10_1_clang_64bit-Debug/GUI3.app/Contents/MacOS/GUI3
+GUI3/build-GUI3-Desktop_Qt_5_10_1_clang_64bit-Debug/GUI3.app/Contents/PkgInfo
+*.lproj
+GUI3/build-GUI3-Desktop_Qt_5_10_1_clang_64bit-Debug/Makefile
