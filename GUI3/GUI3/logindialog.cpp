@@ -1,5 +1,6 @@
 #include "logindialog.h"
 #include "ui_logindialog.h"
+#include <QMessageBox>
 
 LogInDialog::LogInDialog(QWidget *parent) :
     QDialog(parent),
@@ -30,3 +31,19 @@ void MainWindow::on_pushButton_Login_clicked()
        }
 }
 */
+
+void LogInDialog::on_pushButton_Login_clicked()
+{
+    QString username = ui->lineEdit_username->text();
+    QString password = ui->lineEdit_password->text();
+
+       if(username ==  "test" && password == "test") {
+           QMessageBox::information(this, "Login", "Username and password is correct");
+           //hide();
+           appDialog = new AppDialog(this);
+           appDialog->show();
+       }
+       else {
+           QMessageBox::warning(this,"Login", "Username and password is not correct");
+       }
+}

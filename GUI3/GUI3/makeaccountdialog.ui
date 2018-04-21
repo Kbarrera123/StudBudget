@@ -69,7 +69,7 @@
      </item>
     </layout>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="pushButton_accountMade">
     <property name="geometry">
      <rect>
       <x>120</x>

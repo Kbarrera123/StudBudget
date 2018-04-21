@@ -2,6 +2,7 @@
 #define MAKEACCOUNTDIALOG_H
 
 #include <QDialog>
+#include "logindialog.h"
 
 namespace Ui {
 class MakeAccountDialog;
@@ -15,8 +16,12 @@ public:
     explicit MakeAccountDialog(QWidget *parent = 0);
     ~MakeAccountDialog();
 
+private slots:
+    void on_pushButton_accountMade_clicked();
+
 private:
     Ui::MakeAccountDialog *ui;
+    LogInDialog *logInDialog;
 };
 
 #endif // MAKEACCOUNTDIALOG_H

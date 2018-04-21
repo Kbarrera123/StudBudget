@@ -1,5 +1,6 @@
 #include "makeaccountdialog.h"
 #include "ui_makeaccountdialog.h"
+#include <QMessageBox>
 
 MakeAccountDialog::MakeAccountDialog(QWidget *parent) :
     QDialog(parent),
@@ -11,4 +12,10 @@ MakeAccountDialog::MakeAccountDialog(QWidget *parent) :
 MakeAccountDialog::~MakeAccountDialog()
 {
     delete ui;
+}
+
+void MakeAccountDialog::on_pushButton_accountMade_clicked()
+{
+    logInDialog = new LogInDialog(this);
+    logInDialog->show();
 }
