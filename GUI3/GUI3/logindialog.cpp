@@ -38,7 +38,6 @@ void LogInDialog::on_pushButton_Login_clicked()
     QString password = ui->lineEdit_password->text();
 
        if(username ==  "test" && password == "test") {
-           QMessageBox::information(this, "Login", "Username and password is correct");
            //hide();
            appDialog = new AppDialog(this);
            appDialog->show();
