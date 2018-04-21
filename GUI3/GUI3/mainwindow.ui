@@ -97,7 +97,7 @@
      <string>Don't have an account? </string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="pushButton_signUp">
     <property name="geometry">
      <rect>
       <x>180</x>

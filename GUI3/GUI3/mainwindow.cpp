@@ -31,7 +31,7 @@ void MainWindow::on_pushButton_Login_clicked()
        }
 }
 
-void MainWindow::on_pushButton_2_clicked()
+void MainWindow::on_pushButton_signUp_clicked()
 {
     loginDialog = new LogInDialog(this);
     loginDialog->show();
