@@ -20,6 +20,7 @@ void MainWindow::on_pushButton_makeAccount_clicked()
     makeAccountDialog = new MakeAccountDialog(this);
     makeAccountDialog->show();
 }
+
 void MainWindow::on_pushButton_login_clicked()
 {
     logInDialog = new LogInDialog(this);
