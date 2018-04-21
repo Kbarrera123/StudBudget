@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include <QMessageBox>
 
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -28,4 +29,10 @@ void MainWindow::on_pushButton_Login_clicked()
        else {
            QMessageBox::warning(this,"Login", "Username and password is not correct");
        }
+}
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    loginDialog = new LogInDialog(this);
+    loginDialog->show();
 }

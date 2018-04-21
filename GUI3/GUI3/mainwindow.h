@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "appdialog.h"
+#include "logindialog.h"
 
 namespace Ui {
 class MainWindow;
@@ -19,9 +20,12 @@ public:
 private slots:
     void on_pushButton_Login_clicked();
 
+    void on_pushButton_2_clicked();
+
 private:
     Ui::MainWindow *ui;
     AppDialog *appDialog;
+    LogInDialog *loginDialog;
 };
 
 #endif // MAINWINDOW_H
