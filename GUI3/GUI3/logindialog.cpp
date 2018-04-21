@@ -26,6 +26,6 @@ void LogInDialog::on_pushButton_Login_clicked()
            hide();
        }
        else {
-           QMessageBox::warning(this,"Login", "Username and password is not correct");
+           QMessageBox::warning(this,"Login", "Username or password is not correct");
        }
 }
