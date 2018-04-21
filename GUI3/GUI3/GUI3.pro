@@ -36,5 +36,5 @@ HEADERS += \
 
 FORMS += \
         mainwindow.ui \
-    logindialog.ui \
-    appdialog.ui
+    appdialog.ui \
+    logindialog.ui

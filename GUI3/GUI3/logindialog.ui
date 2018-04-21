@@ -6,58 +6,32 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>588</width>
-    <height>397</height>
+    <width>415</width>
+    <height>301</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QPushButton" name="pushButton_2">
-   <property name="geometry">
-    <rect>
-     <x>270</x>
-     <y>330</y>
-     <width>81</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Sign Up</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_3">
-   <property name="geometry">
-    <rect>
-     <x>240</x>
-     <y>310</y>
-     <width>141</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Don't have an account? </string>
-   </property>
-  </widget>
   <widget class="QGroupBox" name="groupBox">
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>30</y>
+     <y>20</y>
      <width>271</width>
-     <height>171</height>
+     <height>151</height>
     </rect>
    </property>
    <property name="title">
-    <string>Sign In</string>
+    <string>Sign Up</string>
    </property>
    <widget class="QWidget" name="horizontalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>20</x>
       <y>30</y>
-      <width>241</width>
-      <height>41</height>
+      <width>231</width>
+      <height>31</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout">
@@ -69,17 +43,17 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit"/>
+      <widget class="QLineEdit" name="lineEdit_username"/>
      </item>
     </layout>
    </widget>
    <widget class="QWidget" name="horizontalLayoutWidget_2">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>80</y>
-      <width>241</width>
-      <height>41</height>
+      <x>20</x>
+      <y>70</y>
+      <width>231</width>
+      <height>31</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -91,21 +65,21 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_2"/>
+      <widget class="QLineEdit" name="lineEdit_password"/>
      </item>
     </layout>
    </widget>
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>130</y>
+      <x>120</x>
+      <y>110</y>
       <width>113</width>
       <height>32</height>
      </rect>
     </property>
     <property name="text">
-     <string>Login</string>
+     <string>Make Account</string>
     </property>
    </widget>
   </widget>
