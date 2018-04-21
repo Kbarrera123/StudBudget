@@ -15,6 +15,9 @@ public:
     explicit AppDialog(QWidget *parent = 0);
     ~AppDialog();
 
+private slots:
+    void on_pushButton_signOut_clicked();
+
 private:
     Ui::AppDialog *ui;
 };

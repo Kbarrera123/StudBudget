@@ -23,6 +23,7 @@ void LogInDialog::on_pushButton_Login_clicked()
            //hide();
            appDialog = new AppDialog(this);
            appDialog->show();
+           hide();
        }
        else {
            QMessageBox::warning(this,"Login", "Username and password is not correct");

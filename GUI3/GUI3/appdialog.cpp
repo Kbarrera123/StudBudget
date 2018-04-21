@@ -38,3 +38,8 @@ AppDialog::~AppDialog()
 {
     delete ui;
 }
+
+void AppDialog::on_pushButton_signOut_clicked()
+{
+    hide();
+}

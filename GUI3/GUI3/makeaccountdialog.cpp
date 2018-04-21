@@ -18,4 +18,5 @@ void MakeAccountDialog::on_pushButton_accountMade_clicked()
 {
     logInDialog = new LogInDialog(this);
     logInDialog->show();
+    hide();
 }
