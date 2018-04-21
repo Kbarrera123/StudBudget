@@ -250,20 +250,9 @@ DIST          = /usr/local/Cellar/qt/5.10.1/mkspecs/features/spec_pre.prf \
 		GUI.pro mainwindow.h \
 		secdialog.h \
 		signupdialog.h \
-		account.h \
-		authenticator.h \
-		calculations.h \
-		expenses.h \
-		user.h main.cpp \
 		mainwindow.cpp \
 		secdialog.cpp \
 		signupdialog.cpp \
-		account \
-		copy.cpp \
-		account.cpp \
-		authenticator.cpp \
-		calculations.cpp \
-		expenses.cpp
 QMAKE_TARGET  = GUI
 DESTDIR       = 
 TARGET        = GUI.app/Contents/MacOS/GUI
