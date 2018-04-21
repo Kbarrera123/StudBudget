@@ -1,0 +1,10 @@
+main.cpp
+mainwindow.cpp
+mainwindow.h
+mainwindow.ui
+secdialog.cpp
+secdialog.h
+secdialog.ui
+signupdialog.cpp
+signupdialog.h
+signupdialog.ui

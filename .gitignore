@@ -3,3 +3,40 @@ GUI.pro.user.a8f2f16
 *.a18459e
 GUI.pro.user
 .qmake.stash
+GUI.app/
+GUI2.creator.user
+GUI3/GUI3/GUI3.pro.user
+GUI3/build-GUI3-Desktop_Qt_5_11_0_clang_64bit-Debug/
+moc_predefs.h
+
+
+# In repository we don't need to have:
+# Compiled object files
+*.o
+
+# Generated MOC, resource and UI files
+moc_*.cpp
+qrc_*.cpp
+ui_*.h
+
+# Debug and Release directories (created under Windows, not Linux)
+Debug/
+Release/
+
+# .log files (usually created by QtTest - thanks to VestniK)
+*.log
+
+# Built windows .exe and linux binaries
+# NOTE: PROJECT is a your project's name, analog of PROJECT.exe in Linux
+*.exe
+*.dll
+PROJECT
+
+# Windows-specific files
+Thumbs.db
+desktop.ini
+# Mac-specific things (thanks to Michael Aaron Safyan)
+.DS_Store
+
+# Editors temporary files
+*~
