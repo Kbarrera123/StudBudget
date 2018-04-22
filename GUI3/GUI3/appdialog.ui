@@ -259,7 +259,7 @@
        </item>
       </layout>
      </widget>
-     <widget class="QLineEdit" name="lineEdit">
+     <widget class="QLineEdit" name="lineEdit_FoodCostChanged">
       <property name="geometry">
        <rect>
         <x>190</x>
@@ -295,7 +295,7 @@
        <string>Deposit or Withdraw?</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_2">
+     <widget class="QLineEdit" name="lineEdit_rentCostChanged">
       <property name="geometry">
        <rect>
         <x>190</x>
@@ -305,7 +305,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_6">
+     <widget class="QLineEdit" name="lineEdit_entertainmentCostChanged">
       <property name="geometry">
        <rect>
         <x>190</x>
@@ -315,7 +315,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_9">
+     <widget class="QLineEdit" name="lineEdit_tuitionCostChanged">
       <property name="geometry">
        <rect>
         <x>190</x>
@@ -325,7 +325,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_11">
+     <widget class="QLineEdit" name="lineEdit_savingsCostChanged">
       <property name="geometry">
        <rect>
         <x>190</x>
@@ -335,7 +335,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_12">
+     <widget class="QLineEdit" name="lineEdit_miscCostChanged">
       <property name="geometry">
        <rect>
         <x>190</x>
@@ -724,7 +724,7 @@
        </item>
       </layout>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_3">
+     <widget class="QLineEdit" name="lineEdit_foodBudgetChanged">
       <property name="geometry">
        <rect>
         <x>190</x>
@@ -760,7 +760,7 @@
        <string>Add or Subtract?</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_4">
+     <widget class="QLineEdit" name="lineEdit_rentBudgetChanged">
       <property name="geometry">
        <rect>
         <x>190</x>
@@ -770,7 +770,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_7">
+     <widget class="QLineEdit" name="lineEdit_EntertainmentBudgetChanged">
       <property name="geometry">
        <rect>
         <x>190</x>
@@ -780,7 +780,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_10">
+     <widget class="QLineEdit" name="lineEdit_tuitionBudgetChanged">
       <property name="geometry">
        <rect>
         <x>190</x>
@@ -790,7 +790,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_13">
+     <widget class="QLineEdit" name="lineEdit_savingsBudgetChanged">
       <property name="geometry">
        <rect>
         <x>190</x>
@@ -800,7 +800,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_14">
+     <widget class="QLineEdit" name="lineEdit_MiscBudgetChanged">
       <property name="geometry">
        <rect>
         <x>190</x>
