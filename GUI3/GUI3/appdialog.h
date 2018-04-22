@@ -69,6 +69,10 @@ private slots:
 
     void on_pushButton_withdrawSavingsB_clicked();
 
+    void on_pushButton_depositMiscB_clicked();
+
+    void on_pushButton_withdrawMiscB_clicked();
+
 private:
     User* _user;
     int month;
