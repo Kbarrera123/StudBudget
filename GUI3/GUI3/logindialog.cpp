@@ -28,10 +28,11 @@ void LogInDialog::on_pushButton_Login_clicked()
     std::string passwordStr = password.toUtf8().constData();
 
     authenticator->logIn(usernameStr, passwordStr, finished);
+    User* user = authenticator->getUser();
 
        if(finished) {
            //hide();
-           appDialog = new AppDialog(this);
+           appDialog = new AppDialog(user, this);
            appDialog->show();
            hide();
        }

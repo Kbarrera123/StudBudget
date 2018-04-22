@@ -1,8 +1,9 @@
 #include "appdialog.h"
 #include "ui_appdialog.h"
 
-AppDialog::AppDialog(QWidget *parent) :
+AppDialog::AppDialog(User* &user, QWidget *parent) :
     QDialog(parent),
+    _user(user),
     ui(new Ui::AppDialog)
 {
     ui->setupUi(this);
@@ -32,6 +33,12 @@ AppDialog::AppDialog(QWidget *parent) :
     ui->comboBox->addItem("October");
     ui->comboBox->addItem("November");
     ui->comboBox->addItem("December");
+
+    string username = this->_user->getUsername();
+
+    QString userQStr = QString::fromUtf8(username.c_str());
+
+    ui->label_getUsername->setText(userQStr);
 }
 
 AppDialog::~AppDialog()

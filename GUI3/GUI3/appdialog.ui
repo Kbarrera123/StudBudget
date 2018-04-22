@@ -982,6 +982,19 @@
     <string>Sign out</string>
    </property>
   </widget>
+  <widget class="QLabel" name="label_getUsername">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>30</y>
+     <width>60</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

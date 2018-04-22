@@ -2,6 +2,7 @@
 #define APPDIALOG_H
 
 #include <QDialog>
+#include "user.h"
 
 namespace Ui {
 class AppDialog;
@@ -12,7 +13,7 @@ class AppDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit AppDialog(QWidget *parent = 0);
+    explicit AppDialog(User* &user, QWidget *parent = 0);
     ~AppDialog();
 
 private slots:
@@ -20,6 +21,7 @@ private slots:
 
 private:
     Ui::AppDialog *ui;
+    User* _user;
 };
 
 #endif // APPDIALOG_H
