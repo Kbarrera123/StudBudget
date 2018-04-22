@@ -40,7 +40,10 @@ AppDialog::AppDialog(User* &user, QWidget *parent) :
     user->getAccount()->setUsername(username);
 
     ui->label_getUsername->setText(userQStr);
+    this->updateBalance();
+    this->updateBudget();
     user->getAccount()->writeData();
+
 }
 
 AppDialog::~AppDialog()
@@ -137,3 +140,19 @@ void AppDialog::on_pushButton_depositFoodC_clicked()
     this->updateBalance();
 
 }
+
+void AppDialog::on_pushButton_withdrawFoodC_clicked()
+{
+    this->_user->getAccount()->setMonth(this->month);
+
+    QString withdrawAmt = ui->lineEdit_foodCostChanged->text();
+    double withdrawAmtDouble = withdrawAmt.toDouble();
+    this->_user->getAccount()->setExpenseType("FOOD");
+    this->_user->getAccount()->withdraw(withdrawAmtDouble);
+
+    this->updateBalance();
+}
+
+
+
+
