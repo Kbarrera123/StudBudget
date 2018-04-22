@@ -43,6 +43,30 @@ AppDialog::AppDialog(User* &user, QWidget *parent) :
     ui->label_getUsername->setText(userQStr);
     user->getAccount()->writeData();
 
+    user->getAccount()->setExpenseType("FOOD");
+    double foodCost = user->getAccount()->getExpense();
+    ui->label_foodCost->setText(QString::number(foodCost));
+
+    user->getAccount()->setExpenseType("RENT");
+    double rentCost = user->getAccount()->getExpense();
+    ui->label_rentCost->setText(QString::number(rentCost));
+
+    user->getAccount()->setExpenseType("ENTERTAINMENT");
+    double entertainmentCost = user->getAccount()->getExpense();
+    ui->label_entertainmentCost->setText(QString::number(entertainmentCost));
+
+    user->getAccount()->setExpenseType("TUITION");
+    double tuitionCost = user->getAccount()->getExpense();
+    ui->label_tuitionCost->setText(QString::number(tuitionCost));
+
+    user->getAccount()->setExpenseType("SAVINGS");
+    double savingsCost = user->getAccount()->getExpense();
+    ui->label_savingsCost->setText(QString::number(savingsCost));
+
+    user->getAccount()->setExpenseType("MISC");
+    double miscCost = user->getAccount()->getExpense();
+    ui->label_miscCost->setText(QString::number(miscCost));
+
     user->getAccount()->setExpenseType("FOODBUDGET");
     double foodBudget = user->getAccount()->getExpense();
     ui->label_foodBudget->setText(QString::number(foodBudget));
