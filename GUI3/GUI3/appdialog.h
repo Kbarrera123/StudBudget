@@ -20,6 +20,8 @@ public:
 private slots:
     void on_pushButton_signOut_clicked();
 
+    void on_comboBox_currentIndexChanged(int index);
+
 private:
     User* _user;
     Ui::AppDialog *ui;
