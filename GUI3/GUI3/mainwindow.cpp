@@ -34,5 +34,6 @@ void MainWindow::on_pushButton_clicked()
     authenticator->fillMapOfUsers();
     authenticator->clearUsers();
     remove("authData.txt");
+    remove("accountData.txt");
     delete authenticator;
 }
