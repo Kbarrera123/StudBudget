@@ -35,10 +35,17 @@ AppDialog::AppDialog(User* &user, QWidget *parent) :
     ui->comboBox->addItem("December");
 
     string username = this->_user->getUsername();
-
     QString userQStr = QString::fromUtf8(username.c_str());
 
+    user->getAccount()->setUsername(username);
+    user->getAccount()->setMonth(ui->comboBox->currentIndex());
+
     ui->label_getUsername->setText(userQStr);
+    user->getAccount()->writeData();
+    user->getAccount()->setExpenseType("FOODBUDGET");
+    user->getAccount()->deposit(100);
+    double foodBudget = user->getAccount()->getExpense();
+    ui->label_foodBudget->setText(QString::number(foodBudget));
 }
 
 AppDialog::~AppDialog()

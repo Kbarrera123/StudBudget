@@ -1,3 +1,9 @@
+/*
+ * account.cpp
+ *
+ *  Created on: Apr 15, 2018
+ *      Author: Luke H
+ */
 #include <string>
 #include <cstdlib>
 #include <iostream>
@@ -12,6 +18,7 @@
 #include "user.h"
 #include "account.h"
 #include "authenticator.h"
+
 
 const vector<string> months = {"January", "February", "March", "April", "May", "June", "July",
                          "August", "September", "October", "November", "December"};	//vector for months, used for .find
@@ -64,6 +71,7 @@ void Account::writeData(){
                       << " | " << "TUITION: " 				<< 	this->expenses->getTuitionCost(i)		//each month, then each expense is printed for that month
                       << " | " << "SAVINGS: "	    		<< 	this->expenses->getSavingsCost(i)
                       << " | " << "MISC: "					<< 	this->expenses->getMiscCost(i)
+                      << " | " << "FOODBUDGET: " 			<<	this->expenses->getFoodBudget(i)
                       << " | " << "RENTBUDGET: " 			<< 	this->expenses->getRentBudget(i)
                       << " | " << "ENTERTAINMENTBUDGET: " 	<< 	this->expenses->getEntertainmentBudget(i)
                       << " | " << "TUITIONBUDGET: " 		<< 	this->expenses->getTuitionBudget(i)
@@ -120,6 +128,9 @@ void Account::setCost(double amount){
     }
     else if(this->expenseType == "MISC"){
         this->expenses->setMiscCost(amount, this->month);
+    }
+    else if(this->expenseType == "FOODBUDGET"){
+        this->expenses->setFoodBudget(amount, this->month);
     }
     else if(this->expenseType == "RENTBUDGET"){
         this->expenses->setRentBudget(amount, this->month);
@@ -238,4 +249,3 @@ void Account::withdraw(double withdrawAmount){
     //outgoing done. TODO incoming needs to be done
 
 }*/
-

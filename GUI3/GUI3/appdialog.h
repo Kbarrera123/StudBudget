@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include "user.h"
+#include "account.h"
 
 namespace Ui {
 class AppDialog;
