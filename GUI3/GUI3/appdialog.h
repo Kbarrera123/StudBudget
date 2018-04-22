@@ -51,6 +51,8 @@ private slots:
 
     void on_pushButton_depositFoodB_clicked();
 
+    void on_pushButton_withdrawFoodB_clicked();
+
 private:
     User* _user;
     int month;

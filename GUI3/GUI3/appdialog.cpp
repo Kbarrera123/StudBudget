@@ -290,3 +290,24 @@ void AppDialog::on_pushButton_depositFoodB_clicked()
 
     this->updateBudget();
 }
+
+
+
+void AppDialog::on_pushButton_withdrawFoodB_clicked()
+{
+    this->_user->getAccount()->setMonth(this->month);
+
+    QString withdrawAmt = ui->lineEdit_foodBudgetChanged->text();
+    double withdrawAmtDouble = withdrawAmt.toDouble();
+    this->_user->getAccount()->setExpenseType("FOODBUDGET");
+
+    if (this->_user->getAccount()->getExpense() - withdrawAmtDouble < 0) {
+        QMessageBox::warning(this, "Below Zero", "Withdrawing this amount will result in a negative budget. Please try again.");
+    }
+    else {
+        this->_user->getAccount()->withdraw(withdrawAmtDouble);
+        this->updateBudget();
+    }
+
+
+}
