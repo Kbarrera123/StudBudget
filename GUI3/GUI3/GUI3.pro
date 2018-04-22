@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
+QT       += charts
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -34,6 +35,9 @@ SOURCES += \
     expenses.cpp \
     authenticator.cpp \
     mainbackend.cpp
+
+target.path = $$[QT_INSTALL_EXAMPLES]/charts/barchart
+INSTALLS += target
 
 HEADERS += \
         mainwindow.h \
