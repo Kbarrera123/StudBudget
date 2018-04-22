@@ -20,8 +20,8 @@ private slots:
     void on_pushButton_signOut_clicked();
 
 private:
-    Ui::AppDialog *ui;
     User* _user;
+    Ui::AppDialog *ui;
 };
 
 #endif // APPDIALOG_H
