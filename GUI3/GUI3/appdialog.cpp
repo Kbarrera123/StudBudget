@@ -129,7 +129,7 @@ void AppDialog::on_pushButton_depositFoodC_clicked()
 {
     this->_user->getAccount()->setMonth(this->month);
 
-    QString depositAmt = ui->lineEdit_FoodCostChanged->text();
+    QString depositAmt = ui->lineEdit_foodCostChanged->text();
     double depositAmtDouble = depositAmt.toDouble();
     this->_user->getAccount()->setExpenseType("FOOD");
     this->_user->getAccount()->deposit(depositAmtDouble);

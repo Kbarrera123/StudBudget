@@ -36,7 +36,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="tab">
     <attribute name="title">
@@ -259,7 +259,7 @@
        </item>
       </layout>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_FoodCostChanged">
+     <widget class="QLineEdit" name="lineEdit_foodCostChanged">
       <property name="geometry">
        <rect>
         <x>190</x>
@@ -770,7 +770,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_EntertainmentBudgetChanged">
+     <widget class="QLineEdit" name="lineEdit_entertainmentBudgetChanged">
       <property name="geometry">
        <rect>
         <x>190</x>
@@ -800,7 +800,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_MiscBudgetChanged">
+     <widget class="QLineEdit" name="lineEdit_miscBudgetChanged">
       <property name="geometry">
        <rect>
         <x>190</x>
