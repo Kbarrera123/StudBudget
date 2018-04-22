@@ -311,3 +311,93 @@ void AppDialog::on_pushButton_withdrawFoodB_clicked()
 
 
 }
+
+void AppDialog::on_pushButton_depositRentB_clicked()
+{
+    this->_user->getAccount()->setMonth(this->month);
+
+    QString depositAmt = ui->lineEdit_rentBudgetChanged->text();
+    double depositAmtDouble = depositAmt.toDouble();
+    this->_user->getAccount()->setExpenseType("RENTBUDGET");
+    this->_user->getAccount()->deposit(depositAmtDouble);
+
+    this->updateBudget();
+}
+
+void AppDialog::on_pushButton_withdrawRentB_clicked()
+{
+    this->_user->getAccount()->setMonth(this->month);
+
+    QString withdrawAmt = ui->lineEdit_rentBudgetChanged->text();
+    double withdrawAmtDouble = withdrawAmt.toDouble();
+    this->_user->getAccount()->setExpenseType("RENTBUDGET");
+
+    if (this->_user->getAccount()->getExpense() - withdrawAmtDouble < 0) {
+        QMessageBox::warning(this, "Below Zero", "Withdrawing this amount will result in a negative budget. Please try again.");
+    }
+    else {
+        this->_user->getAccount()->withdraw(withdrawAmtDouble);
+        this->updateBudget();
+    }
+}
+
+
+
+void AppDialog::on_pushButton_depositEntertainmentB_clicked()
+{
+    this->_user->getAccount()->setMonth(this->month);
+
+    QString depositAmt = ui->lineEdit_entertainmentBudgetChanged->text();
+    double depositAmtDouble = depositAmt.toDouble();
+    this->_user->getAccount()->setExpenseType("ENTERTAINMENTBUDGET");
+    this->_user->getAccount()->deposit(depositAmtDouble);
+
+    this->updateBudget();
+}
+
+void AppDialog::on_pushButton_withdrawEntertainmentB_clicked()
+{
+    this->_user->getAccount()->setMonth(this->month);
+
+    QString withdrawAmt = ui->lineEdit_entertainmentBudgetChanged->text();
+    double withdrawAmtDouble = withdrawAmt.toDouble();
+    this->_user->getAccount()->setExpenseType("ENTERTAINMENTBUDGET");
+
+    if (this->_user->getAccount()->getExpense() - withdrawAmtDouble < 0) {
+        QMessageBox::warning(this, "Below Zero", "Withdrawing this amount will result in a negative budget. Please try again.");
+    }
+    else {
+        this->_user->getAccount()->withdraw(withdrawAmtDouble);
+        this->updateBudget();
+    }
+}
+
+void AppDialog::on_pushButton_depositTuitionB_clicked()
+{
+    this->_user->getAccount()->setMonth(this->month);
+
+    QString depositAmt = ui->lineEdit_tuitionBudgetChanged->text();
+    double depositAmtDouble = depositAmt.toDouble();
+    this->_user->getAccount()->setExpenseType("TUITIONBUDGET");
+    this->_user->getAccount()->deposit(depositAmtDouble);
+
+    this->updateBudget();
+}
+
+void AppDialog::on_pushButton_withdrawTuitionB_clicked()
+{
+    this->_user->getAccount()->setMonth(this->month);
+
+    QString withdrawAmt = ui->lineEdit_tuitionBudgetChanged->text();
+    double withdrawAmtDouble = withdrawAmt.toDouble();
+    this->_user->getAccount()->setExpenseType("TUITIONBUDGET");
+
+
+    if (this->_user->getAccount()->getExpense() - withdrawAmtDouble < 0) {
+        QMessageBox::warning(this, "Below Zero", "Withdrawing this amount will result in a negative budget. Please try again.");
+    }
+    else {
+        this->_user->getAccount()->withdraw(withdrawAmtDouble);
+        this->updateBudget();
+    }
+}

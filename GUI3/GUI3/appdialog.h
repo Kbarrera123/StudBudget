@@ -53,6 +53,19 @@ private slots:
 
     void on_pushButton_withdrawFoodB_clicked();
 
+    void on_pushButton_depositRentB_clicked();
+
+    void on_pushButton_withdrawRentB_clicked();
+
+
+    void on_pushButton_depositEntertainmentB_clicked();
+
+    void on_pushButton_withdrawEntertainmentB_clicked();
+
+    void on_pushButton_depositTuitionB_clicked();
+
+    void on_pushButton_withdrawTuitionB_clicked();
+
 private:
     User* _user;
     int month;

@@ -873,7 +873,7 @@
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_14">
        <item>
-        <widget class="QPushButton" name="pushButton_depositRentE">
+        <widget class="QPushButton" name="pushButton_depositEntertainmentB">
          <property name="text">
           <string>+</string>
          </property>
