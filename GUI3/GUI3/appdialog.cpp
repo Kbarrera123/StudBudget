@@ -53,34 +53,12 @@ void AppDialog::on_pushButton_signOut_clicked()
     hide();
 }
 
-void AppDialog::on_comboBox_currentIndexChanged(int index)
-{
-    this->_user->getAccount()->setMonth(index);
-    this->_user->getAccount()->writeData();
+void AppDialog::setMonth(int month) {
+    this->month = month;
+}
 
-    this->_user->getAccount()->setExpenseType("FOOD");
-    double foodCost = this->_user->getAccount()->getExpense();
-    ui->label_foodCost->setText(QString::number(foodCost));
-
-    this->_user->getAccount()->setExpenseType("RENT");
-    double rentCost = this->_user->getAccount()->getExpense();
-    ui->label_rentCost->setText(QString::number(rentCost));
-
-    this->_user->getAccount()->setExpenseType("ENTERTAINMENT");
-    double entertainmentCost = this->_user->getAccount()->getExpense();
-    ui->label_entertainmentCost->setText(QString::number(entertainmentCost));
-
-    this->_user->getAccount()->setExpenseType("TUITION");
-    double tuitionCost = this->_user->getAccount()->getExpense();
-    ui->label_tuitionCost->setText(QString::number(tuitionCost));
-
-    this->_user->getAccount()->setExpenseType("SAVINGS");
-    double savingsCost = this->_user->getAccount()->getExpense();
-    ui->label_savingsCost->setText(QString::number(savingsCost));
-
-    this->_user->getAccount()->setExpenseType("MISC");
-    double miscCost = this->_user->getAccount()->getExpense();
-    ui->label_miscCost->setText(QString::number(miscCost));
+void AppDialog::updateBudget(){
+    this->_user->getAccount()->setMonth(this->month);
 
     this->_user->getAccount()->setExpenseType("FOODBUDGET");
     double foodBudget = this->_user->getAccount()->getExpense();
@@ -107,3 +85,55 @@ void AppDialog::on_comboBox_currentIndexChanged(int index)
     ui->label_miscBudget->setText(QString::number(miscBudget));
 }
 
+void AppDialog::updateBalance(){
+    this->_user->getAccount()->setMonth(this->month);
+
+    this->_user->getAccount()->setExpenseType("FOOD");
+    double foodCost = this->_user->getAccount()->getExpense();
+    ui->label_foodCost->setText(QString::number(foodCost));
+
+    this->_user->getAccount()->setExpenseType("RENT");
+    double rentCost = this->_user->getAccount()->getExpense();
+    ui->label_rentCost->setText(QString::number(rentCost));
+
+    this->_user->getAccount()->setExpenseType("ENTERTAINMENT");
+    double entertainmentCost = this->_user->getAccount()->getExpense();
+    ui->label_entertainmentCost->setText(QString::number(entertainmentCost));
+
+    this->_user->getAccount()->setExpenseType("TUITION");
+    double tuitionCost = this->_user->getAccount()->getExpense();
+    ui->label_tuitionCost->setText(QString::number(tuitionCost));
+
+    this->_user->getAccount()->setExpenseType("SAVINGS");
+    double savingsCost = this->_user->getAccount()->getExpense();
+    ui->label_savingsCost->setText(QString::number(savingsCost));
+
+    this->_user->getAccount()->setExpenseType("MISC");
+    double miscCost = this->_user->getAccount()->getExpense();
+    ui->label_miscCost->setText(QString::number(miscCost));
+}
+
+void AppDialog::on_comboBox_currentIndexChanged(int index)
+{
+    this->setMonth(index);
+    this->_user->getAccount()->setMonth(this->month);
+    this->_user->getAccount()->writeData();
+
+    this->updateBudget();
+    this->updateBalance();
+
+}
+
+
+void AppDialog::on_pushButton_depositFoodC_clicked()
+{
+    this->_user->getAccount()->setMonth(this->month);
+
+    QString depositAmt = ui->lineEdit_FoodCostChanged->text();
+    double depositAmtDouble = depositAmt.toDouble();
+    this->_user->getAccount()->setExpenseType("FOOD");
+    this->_user->getAccount()->deposit(depositAmtDouble);
+
+    this->updateBalance();
+
+}
