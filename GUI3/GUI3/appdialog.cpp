@@ -42,10 +42,30 @@ AppDialog::AppDialog(User* &user, QWidget *parent) :
 
     ui->label_getUsername->setText(userQStr);
     user->getAccount()->writeData();
+
     user->getAccount()->setExpenseType("FOODBUDGET");
-    user->getAccount()->deposit(100);
     double foodBudget = user->getAccount()->getExpense();
     ui->label_foodBudget->setText(QString::number(foodBudget));
+
+    user->getAccount()->setExpenseType("RENTBUDGET");
+    double rentBudget = user->getAccount()->getExpense();
+    ui->label_rentBudget->setText(QString::number(rentBudget));
+
+    user->getAccount()->setExpenseType("ENTERTAINMENTBUDGET");
+    double entertainmentBudget = user->getAccount()->getExpense();
+    ui->label_entertainmentBudget->setText(QString::number(entertainmentBudget));
+
+    user->getAccount()->setExpenseType("TUITIONBUDGET");
+    double tuitionBudget = user->getAccount()->getExpense();
+    ui->label_tuitionBudget->setText(QString::number(tuitionBudget));
+
+    user->getAccount()->setExpenseType("SAVINGSBUDGET");
+    double savingsBudget = user->getAccount()->getExpense();
+    ui->label_savingsBudget->setText(QString::number(savingsBudget));
+
+    user->getAccount()->setExpenseType("MISCBUDGET");
+    double miscBudget = user->getAccount()->getExpense();
+    ui->label_miscBudget->setText(QString::number(miscBudget));
 }
 
 AppDialog::~AppDialog()
