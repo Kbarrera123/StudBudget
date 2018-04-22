@@ -16,6 +16,7 @@ private:
 
 public:
     Account();
+    void fillArrayExpenses();
     void setUsername(string username);
     void setMonth(int month);
     void setExpenseType(string expenseType);

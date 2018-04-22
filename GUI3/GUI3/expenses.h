@@ -24,7 +24,7 @@ public:
     //explicit Expenses(QWidget *parent = 0);
     //~Expenses();
     Expenses(int num);
-    void fillArrays(int* f, int* r, int* e, int* t, int* s, int* m, int* fBudget, int* rBudget, int* eBudget, int* tBudget, int* sBudget, int* mBudget);
+    void fillArrays(double* f, double* r, double* e, double* t, double* s, double* m, double* fBudget, double* rBudget, double* eBudget, double* tBudget, double* sBudget, double* mBudget);
     void setFoodCost(double food, int month);
     double getFoodCost(int month);
     void getFoodGraph();

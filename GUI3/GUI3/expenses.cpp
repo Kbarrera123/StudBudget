@@ -34,7 +34,7 @@ Expenses::Expenses(int num) {
     }
 }
 
-void Expenses::fillArrays(int* f, int* r, int* e, int* t, int* s, int* m, int* fBudget, int* rBudget, int* eBudget, int* tBudget, int* sBudget, int* mBudget) {
+void Expenses::fillArrays(double* f, double* r, double* e, double* t, double* s, double* m, double* fBudget, double* rBudget, double* eBudget, double* tBudget, double* sBudget, double* mBudget) {
     for(int i = 0; i < 12; i++) {
         foodCost[i] = f[i];
         foodBudget[i] = fBudget[i];
