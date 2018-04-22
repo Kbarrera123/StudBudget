@@ -73,6 +73,8 @@ private slots:
 
     void on_pushButton_withdrawMiscB_clicked();
 
+    void on_comboBox_2_currentIndexChanged(int index);
+
 private:
     User* _user;
     int month;

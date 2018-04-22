@@ -68,26 +68,32 @@ void AppDialog::updateBudget(){
     this->_user->getAccount()->setExpenseType("FOODBUDGET");
     double foodBudget = this->_user->getAccount()->getExpense();
     ui->label_foodBudget->setText(QString::number(foodBudget));
+    ui->label_foodBudget->repaint();
 
     this->_user->getAccount()->setExpenseType("RENTBUDGET");
     double rentBudget = this->_user->getAccount()->getExpense();
     ui->label_rentBudget->setText(QString::number(rentBudget));
+    ui->label_rentBudget->repaint();
 
     this->_user->getAccount()->setExpenseType("ENTERTAINMENTBUDGET");
     double entertainmentBudget = this->_user->getAccount()->getExpense();
     ui->label_entertainmentBudget->setText(QString::number(entertainmentBudget));
+    ui->label_entertainmentBudget->repaint();
 
     this->_user->getAccount()->setExpenseType("TUITIONBUDGET");
     double tuitionBudget = this->_user->getAccount()->getExpense();
     ui->label_tuitionBudget->setText(QString::number(tuitionBudget));
+    ui->label_tuitionBudget->repaint();
 
     this->_user->getAccount()->setExpenseType("SAVINGSBUDGET");
     double savingsBudget = this->_user->getAccount()->getExpense();
     ui->label_savingsBudget->setText(QString::number(savingsBudget));
+    ui->label_savingsBudget->repaint();
 
     this->_user->getAccount()->setExpenseType("MISCBUDGET");
     double miscBudget = this->_user->getAccount()->getExpense();
     ui->label_miscBudget->setText(QString::number(miscBudget));
+    ui->label_miscBudget->repaint();
 }
 
 void AppDialog::updateBalance(){
@@ -124,10 +130,19 @@ void AppDialog::on_comboBox_currentIndexChanged(int index)
     this->_user->getAccount()->setMonth(this->month);
     this->_user->getAccount()->writeData();
 
-    this->updateBudget();
     this->updateBalance();
 
 }
+
+void AppDialog::on_comboBox_2_currentIndexChanged(int index)
+{
+    this->setMonth(index);
+    this->_user->getAccount()->setMonth(this->month);
+    this->_user->getAccount()->writeData();
+
+    this->updateBudget();
+}
+
 
 
 void AppDialog::on_pushButton_depositFoodC_clicked()
@@ -461,3 +476,4 @@ void AppDialog::on_pushButton_withdrawMiscB_clicked()
         this->updateBudget();
     }
 }
+
