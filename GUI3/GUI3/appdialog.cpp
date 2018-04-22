@@ -40,9 +40,10 @@ AppDialog::AppDialog(User* &user, QWidget *parent) :
     user->getAccount()->setUsername(username);
 
     ui->label_getUsername->setText(userQStr);
+    user->getAccount()->writeData();
     this->updateBalance();
     this->updateBudget();
-    user->getAccount()->writeData();
+
 
 }
 
@@ -156,3 +157,123 @@ void AppDialog::on_pushButton_withdrawFoodC_clicked()
 
 
 
+
+void AppDialog::on_pushButton_depositRentC_clicked()
+{
+    this->_user->getAccount()->setMonth(this->month);
+
+    QString depositAmt = ui->lineEdit_rentCostChanged->text();
+    double depositAmtDouble = depositAmt.toDouble();
+    this->_user->getAccount()->setExpenseType("RENT");
+    this->_user->getAccount()->deposit(depositAmtDouble);
+
+    this->updateBalance();
+}
+
+void AppDialog::on_pushButton_withdrawRentC_clicked()
+{
+    this->_user->getAccount()->setMonth(this->month);
+
+    QString withdrawAmt = ui->lineEdit_rentCostChanged->text();
+    double withdrawAmtDouble = withdrawAmt.toDouble();
+    this->_user->getAccount()->setExpenseType("RENT");
+    this->_user->getAccount()->withdraw(withdrawAmtDouble);
+
+    this->updateBalance();
+}
+
+void AppDialog::on_pushButton_depositEntertainmentC_clicked()
+{
+    this->_user->getAccount()->setMonth(this->month);
+
+    QString depositAmt = ui->lineEdit_entertainmentCostChanged->text();
+    double depositAmtDouble = depositAmt.toDouble();
+    this->_user->getAccount()->setExpenseType("ENTERTAINMENT");
+    this->_user->getAccount()->deposit(depositAmtDouble);
+
+    this->updateBalance();
+}
+
+void AppDialog::on_pushButton_withdrawEntertainmentC_clicked()
+{
+    this->_user->getAccount()->setMonth(this->month);
+
+    QString withdrawAmt = ui->lineEdit_entertainmentCostChanged->text();
+    double withdrawAmtDouble = withdrawAmt.toDouble();
+    this->_user->getAccount()->setExpenseType("ENTERTAINMENT");
+    this->_user->getAccount()->withdraw(withdrawAmtDouble);
+
+    this->updateBalance();
+}
+
+void AppDialog::on_pushButton_depositTuitionC_clicked()
+{
+    this->_user->getAccount()->setMonth(this->month);
+
+    QString depositAmt = ui->lineEdit_tuitionCostChanged->text();
+    double depositAmtDouble = depositAmt.toDouble();
+    this->_user->getAccount()->setExpenseType("TUITION");
+    this->_user->getAccount()->deposit(depositAmtDouble);
+
+    this->updateBalance();
+}
+
+void AppDialog::on_pushButton_withdrawTuitionC_clicked()
+{
+    this->_user->getAccount()->setMonth(this->month);
+
+    QString withdrawAmt = ui->lineEdit_tuitionCostChanged->text();
+    double withdrawAmtDouble = withdrawAmt.toDouble();
+    this->_user->getAccount()->setExpenseType("TUITION");
+    this->_user->getAccount()->withdraw(withdrawAmtDouble);
+
+    this->updateBalance();
+}
+
+void AppDialog::on_pushButton_depositSavingsC_clicked()
+{
+    this->_user->getAccount()->setMonth(this->month);
+
+    QString depositAmt = ui->lineEdit_savingsCostChanged->text();
+    double depositAmtDouble = depositAmt.toDouble();
+    this->_user->getAccount()->setExpenseType("SAVINGS");
+    this->_user->getAccount()->deposit(depositAmtDouble);
+
+    this->updateBalance();
+}
+
+void AppDialog::on_pushButton_withdrawSavingsC_clicked()
+{
+    this->_user->getAccount()->setMonth(this->month);
+
+    QString withdrawAmt = ui->lineEdit_savingsCostChanged->text();
+    double withdrawAmtDouble = withdrawAmt.toDouble();
+    this->_user->getAccount()->setExpenseType("SAVINGS");
+    this->_user->getAccount()->withdraw(withdrawAmtDouble);
+
+    this->updateBalance();
+}
+
+void AppDialog::on_pushButton_depositMiscC_clicked()
+{
+    this->_user->getAccount()->setMonth(this->month);
+
+    QString depositAmt = ui->lineEdit_miscCostChanged->text();
+    double depositAmtDouble = depositAmt.toDouble();
+    this->_user->getAccount()->setExpenseType("MISC");
+    this->_user->getAccount()->deposit(depositAmtDouble);
+
+    this->updateBalance();
+}
+
+void AppDialog::on_pushButton_withdrawMiscC_clicked()
+{
+    this->_user->getAccount()->setMonth(this->month);
+
+    QString withdrawAmt = ui->lineEdit_miscCostChanged->text();
+    double withdrawAmtDouble = withdrawAmt.toDouble();
+    this->_user->getAccount()->setExpenseType("MISC");
+    this->_user->getAccount()->withdraw(withdrawAmtDouble);
+
+    this->updateBalance();
+}
