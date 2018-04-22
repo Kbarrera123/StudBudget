@@ -57,7 +57,6 @@ private slots:
 
     void on_pushButton_withdrawRentB_clicked();
 
-
     void on_pushButton_depositEntertainmentB_clicked();
 
     void on_pushButton_withdrawEntertainmentB_clicked();
@@ -65,6 +64,10 @@ private slots:
     void on_pushButton_depositTuitionB_clicked();
 
     void on_pushButton_withdrawTuitionB_clicked();
+
+    void on_pushButton_depositSavingsB_clicked();
+
+    void on_pushButton_withdrawSavingsB_clicked();
 
 private:
     User* _user;

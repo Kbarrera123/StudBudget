@@ -401,3 +401,63 @@ void AppDialog::on_pushButton_withdrawTuitionB_clicked()
         this->updateBudget();
     }
 }
+
+void AppDialog::on_pushButton_depositSavingsB_clicked()
+{
+    this->_user->getAccount()->setMonth(this->month);
+
+    QString depositAmt = ui->lineEdit_savingsBudgetChanged->text();
+    double depositAmtDouble = depositAmt.toDouble();
+    this->_user->getAccount()->setExpenseType("SAVINGSBUDGET");
+    this->_user->getAccount()->deposit(depositAmtDouble);
+
+    this->updateBudget();
+}
+
+void AppDialog::on_pushButton_withdrawSavingsB_clicked()
+{
+    this->_user->getAccount()->setMonth(this->month);
+
+    QString withdrawAmt = ui->lineEdit_savingsBudgetChanged->text();
+    double withdrawAmtDouble = withdrawAmt.toDouble();
+    this->_user->getAccount()->setExpenseType("SAVINGSBUDGET");
+
+
+    if (this->_user->getAccount()->getExpense() - withdrawAmtDouble < 0) {
+        QMessageBox::warning(this, "Below Zero", "Withdrawing this amount will result in a negative budget. Please try again.");
+    }
+    else {
+        this->_user->getAccount()->withdraw(withdrawAmtDouble);
+        this->updateBudget();
+    }
+}
+
+void AppDialog::on_pushButton_depositMiscB_clicked()
+{
+    this->_user->getAccount()->setMonth(this->month);
+
+    QString depositAmt = ui->lineEdit_miscBudgetChanged->text();
+    double depositAmtDouble = depositAmt.toDouble();
+    this->_user->getAccount()->setExpenseType("MISCBUDGET");
+    this->_user->getAccount()->deposit(depositAmtDouble);
+
+    this->updateBudget();
+}
+
+void AppDialog::on_pushButton_withdrawMiscB_clicked()
+{
+    this->_user->getAccount()->setMonth(this->month);
+
+    QString withdrawAmt = ui->lineEdit_miscBudgetChanged->text();
+    double withdrawAmtDouble = withdrawAmt.toDouble();
+    this->_user->getAccount()->setExpenseType("MISCBUDGET");
+
+
+    if (this->_user->getAccount()->getExpense() - withdrawAmtDouble < 0) {
+        QMessageBox::warning(this, "Below Zero", "Withdrawing this amount will result in a negative budget. Please try again.");
+    }
+    else {
+        this->_user->getAccount()->withdraw(withdrawAmtDouble);
+        this->updateBudget();
+    }
+}
