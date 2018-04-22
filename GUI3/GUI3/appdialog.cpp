@@ -1,5 +1,6 @@
 #include "appdialog.h"
 #include "ui_appdialog.h"
+#include <QMessageBox>
 
 AppDialog::AppDialog(User* &user, QWidget *parent) :
     QDialog(parent),
@@ -276,4 +277,16 @@ void AppDialog::on_pushButton_withdrawMiscC_clicked()
     this->_user->getAccount()->withdraw(withdrawAmtDouble);
 
     this->updateBalance();
+}
+
+void AppDialog::on_pushButton_depositFoodB_clicked()
+{
+    this->_user->getAccount()->setMonth(this->month);
+
+    QString depositAmt = ui->lineEdit_foodBudgetChanged->text();
+    double depositAmtDouble = depositAmt.toDouble();
+    this->_user->getAccount()->setExpenseType("FOODBUDGET");
+    this->_user->getAccount()->deposit(depositAmtDouble);
+
+    this->updateBudget();
 }
