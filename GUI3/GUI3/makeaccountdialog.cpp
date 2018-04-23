@@ -1,7 +1,7 @@
 #include "makeaccountdialog.h"
 #include "ui_makeaccountdialog.h"
 #include "authenticator.h"
-//#include "sha256.h"
+#include "sha256.h"
 #include <QMessageBox>
 
 MakeAccountDialog::MakeAccountDialog(QWidget *parent) :
@@ -34,6 +34,7 @@ void MakeAccountDialog::on_pushButton_accountMade_clicked()
     delete algorithm;*/
 
     authenticator->signUp(usernameStr, passwordStr, exists);
+    //authenticator->signUp(hashUsername, hashPassword, exists);
     delete authenticator;
 
     if (exists) {

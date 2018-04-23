@@ -1,7 +1,7 @@
 #include "logindialog.h"
 #include "ui_logindialog.h"
 #include "authenticator.h"
-//#include "sha256.h"
+#include "sha256.h"
 
 #include <QMessageBox>
 
@@ -34,6 +34,7 @@ void LogInDialog::on_pushButton_Login_clicked()
     delete algorithm;*/
 
     authenticator->logIn(usernameStr, passwordStr, finished);
+    //authenticator->logIn(hashUsername, hashPassword, finished);
     User* user = authenticator->getUser();
 
        if(finished) {

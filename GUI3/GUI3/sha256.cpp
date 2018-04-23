@@ -178,6 +178,7 @@ std::string decimalToHex(unsigned int n)
 
 std::string sha256::doSha256(std::string input)
 {
+
     h0 = stringToHex(h0_string);
     h1 = stringToHex(h1_string);
     h2 = stringToHex(h2_string);
@@ -304,6 +305,7 @@ std::string sha256::doSha256(std::string input)
 
     // Produce the final hash value (big-endian):
     std::string hash = decimalToHex(h0) + decimalToHex(h1) + decimalToHex(h2) + decimalToHex(h3) + decimalToHex(h4) + decimalToHex(h5) + decimalToHex(h6) + decimalToHex(h7);
+    //h0 = 0; h1 = 0; h2 = 0; h3 = 0; h4 = 0; h5 = 0; h6 = 0; h7 = 0;
     return hash;
 }
 
