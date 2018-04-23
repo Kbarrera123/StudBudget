@@ -75,6 +75,8 @@ private slots:
 
     void on_comboBox_2_currentIndexChanged(int index);
 
+    void on_tabWidget_tabBarClicked(int index);
+
 private:
     User* _user;
     int month;

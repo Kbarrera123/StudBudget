@@ -35,6 +35,9 @@ AppDialog::AppDialog(User* &user, QWidget *parent) :
     ui->comboBox->addItem("November");
     ui->comboBox->addItem("December");
 
+    ui->tabWidget->setCurrentIndex(0);
+
+
     string username = user->getUsername();
     QString userQStr = QString::fromUtf8(username.c_str());
 
@@ -42,10 +45,9 @@ AppDialog::AppDialog(User* &user, QWidget *parent) :
 
     ui->label_getUsername->setText(userQStr);
     user->getAccount()->writeData();
+
     this->updateBalance();
     this->updateBudget();
-
-
 }
 
 AppDialog::~AppDialog()
@@ -94,6 +96,14 @@ void AppDialog::updateBudget(){
     double miscBudget = this->_user->getAccount()->getExpense();
     ui->label_miscBudget->setText(QString::number(miscBudget));
     ui->label_miscBudget->repaint();
+
+    //this->_user->getAccount()->fillArrayExpenses();
+
+    std::string finAdvice = this->_user->getAccount()->getExpensesObj()->financialAdvice(this->month);
+    QString finAdviceQStr = QString::fromUtf8(finAdvice.c_str());
+
+    ui->label_financialAdvice->setText(finAdviceQStr);
+    ui->label_financialAdvice->repaint();
 }
 
 void AppDialog::updateBalance(){
@@ -122,6 +132,15 @@ void AppDialog::updateBalance(){
     this->_user->getAccount()->setExpenseType("MISC");
     double miscCost = this->_user->getAccount()->getExpense();
     ui->label_miscCost->setText(QString::number(miscCost));
+
+    //this->_user->getAccount()->fillArrayExpenses();
+
+    std::string finAdvice = this->_user->getAccount()->getExpensesObj()->financialAdvice(this->month);
+    QString finAdviceQStr = QString::fromUtf8(finAdvice.c_str());
+
+
+    ui->label_financialAdvice->setText(finAdviceQStr);
+    ui->label_financialAdvice->repaint();
 }
 
 void AppDialog::on_comboBox_currentIndexChanged(int index)
@@ -142,8 +161,6 @@ void AppDialog::on_comboBox_2_currentIndexChanged(int index)
 
     this->updateBudget();
 }
-
-
 
 void AppDialog::on_pushButton_depositFoodC_clicked()
 {
@@ -169,10 +186,6 @@ void AppDialog::on_pushButton_withdrawFoodC_clicked()
 
     this->updateBalance();
 }
-
-
-
-
 
 void AppDialog::on_pushButton_depositRentC_clicked()
 {
@@ -477,3 +490,29 @@ void AppDialog::on_pushButton_withdrawMiscB_clicked()
     }
 }
 
+
+void AppDialog::on_tabWidget_tabBarClicked(int index)
+{
+    //this->updateBalance();
+    //this->updateBudget();
+
+    if (index == 0 || index == 1) {
+        ui->label_financialAdvice->show();
+        ui->label_yearAdvice->hide();
+    }
+    else if (index == 2) {
+        ui->label_financialAdvice->hide();
+
+        //this->_user->getAccount()->fillArrayExpenses();
+
+        std::string finAdvice = this->_user->getAccount()->getExpensesObj()->financialAdvice();
+        QString finAdviceQStr = QString::fromUtf8(finAdvice.c_str());
+
+        ui->label_yearAdvice->setText(finAdviceQStr);
+        ui->label_yearAdvice->repaint();
+
+        ui->label_yearAdvice->show();
+
+    }
+
+}

@@ -30,9 +30,14 @@ Account::Account(){
     this->expenseType = "";
 }
 
+Expenses* Account::getExpensesObj(){
+    return this->expenses;
+}
+
 void Account::setUsername(string username){
     this->username = username;
 }
+
 void Account::setMonth(int month){
     this->month = month;
 }

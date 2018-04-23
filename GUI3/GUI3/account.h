@@ -16,6 +16,7 @@ private:
 
 public:
     Account();
+    Expenses* getExpensesObj();
     void fillArrayExpenses();
     void setUsername(string username);
     void setMonth(int month);

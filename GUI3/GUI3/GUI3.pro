@@ -33,8 +33,7 @@ SOURCES += \
     user.cpp \
     account.cpp \
     expenses.cpp \
-    authenticator.cpp \
-    mainbackend.cpp
+    authenticator.cpp
 
 target.path = $$[QT_INSTALL_EXAMPLES]/charts/barchart
 INSTALLS += target

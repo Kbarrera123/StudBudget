@@ -19,35 +19,35 @@ Expenses::~Expenses()
 */
 Expenses::Expenses(int num) {
     for(int i = 0; i < 12; i++) {
-        foodCost[i] = 0;
-        foodBudget[i] = 0;
-        rentCost[i] = 0;
-        rentBudget[i] = 0;
-        entertainmentCost[i] = 0;
-        entertainmentBudget[i] = 0;
-        tuitionCost[i] = 0;
-        tuitionBudget[i] = 0;
-        savingsCost[i] = 0;
-        savingsBudget[i] = 0;
-        miscCost[i] = 0;
-        miscBudget[i] = 0;
+        this->foodCost[i] = 0;
+        this->foodBudget[i] = 0;
+        this->rentCost[i] = 0;
+        this->rentBudget[i] = 0;
+        this->entertainmentCost[i] = 0;
+        this->entertainmentBudget[i] = 0;
+        this->tuitionCost[i] = 0;
+        this->tuitionBudget[i] = 0;
+        this->savingsCost[i] = 0;
+        this->savingsBudget[i] = 0;
+        this->miscCost[i] = 0;
+        this->miscBudget[i] = 0;
     }
 }
 
 void Expenses::fillArrays(double* f, double* r, double* e, double* t, double* s, double* m, double* fBudget, double* rBudget, double* eBudget, double* tBudget, double* sBudget, double* mBudget) {
     for(int i = 0; i < 12; i++) {
-        foodCost[i] = f[i];
-        foodBudget[i] = fBudget[i];
-        rentCost[i] = r[i];
-        rentBudget[i] = rBudget[i];
-        entertainmentCost[i] = e[i];
-        entertainmentBudget[i] = eBudget[i];
-        tuitionCost[i] = t[i];
-        tuitionBudget[i] = tBudget[i];
-        savingsCost[i] = s[i];
-        savingsBudget[i] = sBudget[i];
-        miscCost[i] = m[i];
-        miscBudget[i] = mBudget[i];
+        this->foodCost[i] = f[i];
+        this->foodBudget[i] = fBudget[i];
+        this->rentCost[i] = r[i];
+        this->rentBudget[i] = rBudget[i];
+        this->entertainmentCost[i] = e[i];
+        this->entertainmentBudget[i] = eBudget[i];
+        this->tuitionCost[i] = t[i];
+        this->tuitionBudget[i] = tBudget[i];
+        this->savingsCost[i] = s[i];
+        this->savingsBudget[i] = sBudget[i];
+        this->miscCost[i] = m[i];
+        this->miscBudget[i] = mBudget[i];
     }
 }
 
@@ -641,28 +641,43 @@ std::string Expenses::financialAdvice(int month) {
     switch(month) {
 
     case 0: monthString = "January";
+            break;
 
     case 1: monthString = "February";
+            break;
 
     case 2: monthString = "March";
+            break;
 
     case 3: monthString = "April";
+            break;
 
     case 4: monthString = "May";
+            break;
 
     case 5: monthString = "June";
+            break;
 
     case 6: monthString = "July";
+            break;
 
     case 7: monthString = "August";
+            break;
 
     case 8: monthString = "September";
+            break;
 
     case 9: monthString = "October";
+            break;
 
     case 10: monthString = "November";
+             break;
 
     case 11: monthString = "December";
+             break;
+    default:
+        monthString = "Error";
+        break;
     }
 
 
