@@ -61,6 +61,7 @@ public:
     void getExtraDeficitGraphYear();
     void getExtraDeficitGraphMonth(int month);
     std::string financialAdvice();
+    std::string financialAdvice(int num);
 
 private:
     //Ui::Expenses *ui;
