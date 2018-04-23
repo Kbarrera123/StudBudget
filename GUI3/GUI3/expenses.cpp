@@ -46,7 +46,7 @@ double Expenses::getFoodCost(int month) {
   return foodCost[month];
 }
 
-void Expenses::getFoodGraph(){ // annual food spending line graph
+QChartView* Expenses::getFoodGraph(){ // annual food spending line graph
   // set foodGraph data
    QLineSeries *foodGraph = new QLineSeries();
    for(int i = 0; i < 12; i++) {
@@ -63,10 +63,12 @@ void Expenses::getFoodGraph(){ // annual food spending line graph
   // view food graph
   QChartView *foodView = new QChartView(foodChart);
   foodView->setRenderHint(QPainter::Antialiasing);
-  QMainWindow window;
+
+  return foodView;
+  /*QMainWindow window;
   window.setCentralWidget(foodView);
   window.resize(400, 300);
-  window.show();
+  window.show(); */
 }
 
 void Expenses::setFoodBudget(double food, int month) {

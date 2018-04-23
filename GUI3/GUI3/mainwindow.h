@@ -16,6 +16,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+    void hideMainWindow();
 
 private slots:
     void on_pushButton_makeAccount_clicked();

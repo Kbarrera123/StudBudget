@@ -30,6 +30,10 @@ Account::Account(){
     this->expenseType = "";
 }
 
+Expenses* Account::getExpenseObj(){
+    return this->expenses;
+}
+
 std::string Account::getFinancialAdvice(int month){
     if(month < 0){
         return this->expenses->financialAdvice();

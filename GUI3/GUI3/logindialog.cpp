@@ -3,6 +3,7 @@
 #include "authenticator.h"
 #include "sha256.h"
 
+
 #include <QMessageBox>
 
 LogInDialog::LogInDialog(QWidget *parent) : QDialog(parent),
@@ -39,6 +40,7 @@ void LogInDialog::on_pushButton_Login_clicked()
            appDialog = new AppDialog(user, this);
            appDialog->show();
            hide();
+           this->parentWidget()->hide(); //MAKES THE MAINWINDOW HIDE
        }
        else {
            QMessageBox::warning(this,"Login", "Username or password is not correct");

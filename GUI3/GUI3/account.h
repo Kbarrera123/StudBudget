@@ -16,6 +16,7 @@ private:
 
 public:
     Account();
+    Expenses* getExpenseObj();
     void setProjectedBudget();
     void updateArrayExpenses(int month);
     void fillArrayExpenses();

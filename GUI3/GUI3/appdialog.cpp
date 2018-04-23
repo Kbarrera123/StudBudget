@@ -1,6 +1,7 @@
 #include "appdialog.h"
 #include "ui_appdialog.h"
 #include <QMessageBox>
+#include "newwindow.h"
 
 AppDialog::AppDialog(User* &user, QWidget *parent) :
     QDialog(parent),
@@ -504,6 +505,10 @@ void AppDialog::on_tabWidget_tabBarClicked(int index)
         ui->label_yearAdvice->hide();
     }
     else if (index == 2) {
+        Expenses *expenses = this->_user->getAccount()->getExpenseObj();
+        newWindow *graphWindow = new newWindow(expenses);
+        graphWindow->show();
+
         ui->label_financialAdvice->hide();
 
         std::string finAdvice = this->_user->getAccount()->getFinancialAdvice(-1); // -1 is to make it do year cost instead of monthly

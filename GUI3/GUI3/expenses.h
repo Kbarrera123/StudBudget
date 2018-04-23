@@ -26,7 +26,7 @@ public:
     Expenses();
     void setFoodCost(double food, int month);
     double getFoodCost(int month);
-    void getFoodGraph();
+    QChartView* getFoodGraph();
     void setFoodBudget(double food, int month);
     double getFoodBudget(int month);
     void setRentCost(double rent, int month);

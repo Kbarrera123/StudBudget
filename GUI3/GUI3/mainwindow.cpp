@@ -3,17 +3,21 @@
 #include "authenticator.h"
 #include <QMessageBox>
 
-
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::hideMainWindow(){
+    this->hide();
 }
 
 void MainWindow::on_pushButton_makeAccount_clicked()
