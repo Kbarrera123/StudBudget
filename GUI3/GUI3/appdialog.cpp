@@ -95,11 +95,10 @@ void AppDialog::updateBudget(){
     ui->label_miscBudget->setText(QString::number(miscBudget));
     ui->label_miscBudget->repaint();
 
-    //this->_user->getAccount()->fillArrayExpenses();
-
     std::string finAdvice = this->_user->getAccount()->getFinancialAdvice(this->month);
     QString finAdviceQStr = QString::fromUtf8(finAdvice.c_str());
 
+    ui->label_financialAdvice->clear();
     ui->label_financialAdvice->setText(finAdviceQStr);
     ui->label_financialAdvice->repaint();
 }
@@ -110,33 +109,37 @@ void AppDialog::updateBalance(){
     this->_user->getAccount()->setExpenseType("FOOD");
     double foodCost = this->_user->getAccount()->getExpense();
     ui->label_foodCost->setText(QString::number(foodCost));
+    ui->label_foodCost->repaint();
 
     this->_user->getAccount()->setExpenseType("RENT");
     double rentCost = this->_user->getAccount()->getExpense();
     ui->label_rentCost->setText(QString::number(rentCost));
+    ui->label_rentCost->repaint();
 
     this->_user->getAccount()->setExpenseType("ENTERTAINMENT");
     double entertainmentCost = this->_user->getAccount()->getExpense();
     ui->label_entertainmentCost->setText(QString::number(entertainmentCost));
+    ui->label_entertainmentCost->repaint();
 
     this->_user->getAccount()->setExpenseType("TUITION");
     double tuitionCost = this->_user->getAccount()->getExpense();
     ui->label_tuitionCost->setText(QString::number(tuitionCost));
+    ui->label_tuitionCost->repaint();
 
     this->_user->getAccount()->setExpenseType("SAVINGS");
     double savingsCost = this->_user->getAccount()->getExpense();
     ui->label_savingsCost->setText(QString::number(savingsCost));
+    ui->label_savingsCost->repaint();
 
     this->_user->getAccount()->setExpenseType("MISC");
     double miscCost = this->_user->getAccount()->getExpense();
     ui->label_miscCost->setText(QString::number(miscCost));
-
-    //this->_user->getAccount()->fillArrayExpenses();
+    ui->label_miscCost->repaint();
 
     std::string finAdvice = this->_user->getAccount()->getFinancialAdvice(this->month);
     QString finAdviceQStr = QString::fromUtf8(finAdvice.c_str());
 
-
+    ui->label_financialAdvice->clear();
     ui->label_financialAdvice->setText(finAdviceQStr);
     ui->label_financialAdvice->repaint();
 }
@@ -503,11 +506,10 @@ void AppDialog::on_tabWidget_tabBarClicked(int index)
     else if (index == 2) {
         ui->label_financialAdvice->hide();
 
-        //this->_user->getAccount()->fillArrayExpenses();
-
         std::string finAdvice = this->_user->getAccount()->getFinancialAdvice(-1); // -1 is to make it do year cost instead of monthly
         QString finAdviceQStr = QString::fromUtf8(finAdvice.c_str());
 
+        ui->label_financialAdvice->clear();
         ui->label_yearAdvice->setText(finAdviceQStr);
         ui->label_yearAdvice->repaint();
 

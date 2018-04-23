@@ -24,7 +24,6 @@ public:
     //explicit Expenses(QWidget *parent = 0);
     //~Expenses();
     Expenses();
-    void fillArrays(double* f, double* r, double* e, double* t, double* s, double* m, double* fBudget, double* rBudget, double* eBudget, double* tBudget, double* sBudget, double* mBudget);
     void setFoodCost(double food, int month);
     double getFoodCost(int month);
     void getFoodGraph();
@@ -61,7 +60,7 @@ public:
     void getExtraDeficitGraphYear();
     void getExtraDeficitGraphMonth(int month);
     std::string financialAdvice();
-    std::string financialAdvice(int num);
+    std::string financialAdvice(int month);
 
 private:
     //Ui::Expenses *ui;
