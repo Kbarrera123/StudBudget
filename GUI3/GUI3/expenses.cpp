@@ -4,19 +4,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QMainWindow>
 #include <QtCharts>
-/*
-Expenses::Expenses(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::Expenses)
-{
-    ui->setupUi(this);
-}
 
-Expenses::~Expenses()
-{
-    delete ui;
-}
-*/
 Expenses::Expenses() {
     for(int i = 0; i < 12; i++) {
         this->foodCost[i] = 0;
@@ -65,10 +53,6 @@ QChartView* Expenses::getFoodGraph(){ // annual food spending line graph
   foodView->setRenderHint(QPainter::Antialiasing);
 
   return foodView;
-  /*QMainWindow window;
-  window.setCentralWidget(foodView);
-  window.resize(400, 300);
-  window.show(); */
 }
 
 void Expenses::setFoodBudget(double food, int month) {
@@ -87,7 +71,7 @@ double Expenses::getRentCost(int month) {
   return foodCost[month];
 }
 
-void Expenses::getRentGraph() { // annual rent spending line graph
+QChartView* Expenses::getRentGraph() { // annual rent spending line graph
   // set rentGraph data
    QLineSeries *rentGraph = new QLineSeries();
    for(int i = 0; i < 12; i++) {
@@ -104,10 +88,8 @@ void Expenses::getRentGraph() { // annual rent spending line graph
   // view rent graph
   QChartView *rentView = new QChartView(rentChart);
   rentView->setRenderHint(QPainter::Antialiasing);
-  QMainWindow window;
-  window.setCentralWidget(rentView);
-  window.resize(400, 300);
-  window.show();
+
+  return rentView;
 }
 
 void Expenses::setRentBudget(double rent, int month) {
@@ -126,7 +108,7 @@ double Expenses::getEntertainmentCost(int month) {
   return entertainmentCost[month];
 }
 
-void Expenses::getEntertainmentGraph() { // annual entertainment spending line graph
+QChartView* Expenses::getEntertainmentGraph() { // annual entertainment spending line graph
   // set entertainmentGraph data
    QLineSeries *entertainmentGraph = new QLineSeries();
    for(int i = 0; i < 12; i++) {
@@ -143,10 +125,8 @@ void Expenses::getEntertainmentGraph() { // annual entertainment spending line g
   // view entertainment graph
   QChartView *entertainmentView = new QChartView(entertainmentChart);
   entertainmentView->setRenderHint(QPainter::Antialiasing);
-  QMainWindow window;
-  window.setCentralWidget(entertainmentView);
-  window.resize(400, 300);
-  window.show();
+
+  return entertainmentView;
 }
 
 void Expenses::setEntertainmentBudget(double entertainment, int month) {
@@ -165,7 +145,7 @@ double Expenses::getTuitionCost(int month) {
   return tuitionCost[month];
 }
 
-void Expenses::getTuitionGraph() { // annual tuition spending line graph
+QChartView* Expenses::getTuitionGraph() { // annual tuition spending line graph
   // set tuitionGraph data
    QLineSeries *tuitionGraph = new QLineSeries();
    for(int i = 0; i < 12; i++) {
@@ -182,10 +162,8 @@ void Expenses::getTuitionGraph() { // annual tuition spending line graph
   // view tuition graph
   QChartView *tuitionView = new QChartView(tuitionChart);
   tuitionView->setRenderHint(QPainter::Antialiasing);
-  QMainWindow window;
-  window.setCentralWidget(tuitionView);
-  window.resize(400, 300);
-  window.show();
+
+  return tuitionView;
 }
 
 void Expenses::setTuitionBudget(double tuition, int month) {
@@ -204,7 +182,7 @@ double Expenses::getSavingsCost(int month) {
   return savingsCost[month];
 }
 
-void Expenses::getSavingsGraph() { // annual savings spending line graph
+QChartView* Expenses::getSavingsGraph() { // annual savings spending line graph
   // set savingsGraph data
   QLineSeries *savingsGraph = new QLineSeries();
   for(int i = 0; i < 12; i++) {
@@ -221,10 +199,8 @@ void Expenses::getSavingsGraph() { // annual savings spending line graph
   // view savings graph
   QChartView *savingsView = new QChartView(savingsChart);
   savingsView->setRenderHint(QPainter::Antialiasing);
-  QMainWindow window;
-  window.setCentralWidget(savingsView);
-  window.resize(400, 300);
-  window.show();
+
+  return savingsView;
 }
 
 void Expenses::setSavingsBudget(double savings, int month) {
@@ -243,7 +219,7 @@ double Expenses::getMiscCost(int month) {
   return miscCost[month];
 }
 
-void Expenses::getMiscGraph() { // annual misc spending line graph
+QChartView* Expenses::getMiscGraph() { // annual misc spending line graph
   // set miscGraph data
    QLineSeries *miscGraph = new QLineSeries();
    for(int i = 0; i < 12; i++) {
@@ -260,10 +236,8 @@ void Expenses::getMiscGraph() { // annual misc spending line graph
   // view misc graph
   QChartView *miscView = new QChartView(miscChart);
   miscView->setRenderHint(QPainter::Antialiasing);
-  QMainWindow window;
-  window.setCentralWidget(miscView);
-  window.resize(400, 300);
-  window.show();
+
+  return miscView;
 }
 
 void Expenses::setMiscBudget(double misc, int month) {

@@ -6,23 +6,11 @@
 
 #include <QtCharts>
 
-//QT_CHARTS_USE_NAMESPACE
-
 using namespace QtCharts;
 
-/*namespace Ui {
-class Expenses;
-}
-
-class Expenses : public QMainWindow
-{
-    Q_OBJECT
-*/
 class Expenses {
 
 public:
-    //explicit Expenses(QWidget *parent = 0);
-    //~Expenses();
     Expenses();
     void setFoodCost(double food, int month);
     double getFoodCost(int month);
@@ -31,27 +19,27 @@ public:
     double getFoodBudget(int month);
     void setRentCost(double rent, int month);
     double getRentCost(int month);
-    void getRentGraph();
+    QChartView* getRentGraph();
     void setRentBudget(double rent, int month);
     double getRentBudget(int month);
     void setEntertainmentCost(double entertainment, int month);
     double getEntertainmentCost(int month);
-    void getEntertainmentGraph();
+    QChartView* getEntertainmentGraph();
     void setEntertainmentBudget(double entertainment, int month);
     double getEntertainmentBudget(int month);
     void setTuitionCost(double tuition, int month);
     double getTuitionCost(int month);
-    void getTuitionGraph();
+    QChartView* getTuitionGraph();
     void setTuitionBudget(double tuition, int month);
     double getTuitionBudget(int month);
     void setSavingsCost(double savings, int month);
     double getSavingsCost(int month);
-    void getSavingsGraph();
+    QChartView* getSavingsGraph();
     void setSavingsBudget(double savings, int month);
     double getSavingsBudget(int month);
     void setMiscCost(double misc, int month);
     double getMiscCost(int month);
-    void getMiscGraph();
+    QChartView* getMiscGraph();
     void setMiscBudget(double misc, int month);
     double getMiscBudget(int month);
     void setExtraDeficit();

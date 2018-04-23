@@ -16,17 +16,23 @@ newWindow::newWindow(Expenses* &expenses, QWidget *parent) :
     ui->setupUi(this);
     ui->centralwidget = new QWidget(this);
     this->setCentralWidget(ui->centralwidget);
-/*
-    QChart *chart = new QChart;
-    QChartView *chartView = new QChartView(chart);
-    QGridLayout *gridLayout = new QGridLayout(ui->centralwidget);
-    gridLayout->addWidget(chartView, 0, 0); */
 
     QChartView *foodChart = this->_expenses->getFoodGraph();
-    foodChart->resize(400,300);
-    this->setCentralWidget(foodChart);
-    //this->resize(400, 300);
-    this->lower();
+    QChartView *rentChart = this->_expenses->getRentGraph();
+    QChartView *entertainmentChart = this->_expenses->getEntertainmentGraph();
+    QChartView *savingsChart = this->_expenses->getSavingsGraph();
+    QChartView *tuitionChart = this->_expenses->getTuitionGraph();
+    QChartView *miscChart = this->_expenses->getMiscGraph();
+
+    QGridLayout *gridLayout = new QGridLayout(ui->centralwidget);
+    ui->centralwidget->setLayout(gridLayout);
+    gridLayout->addWidget(foodChart, 0, 0, 1, 1);
+    gridLayout->addWidget(rentChart, 0, 1, 1, 1);
+    gridLayout->addWidget(entertainmentChart, 1, 1, 1, 1);
+    gridLayout->addWidget(savingsChart, 1, 0, 1, 1);
+    gridLayout->addWidget(tuitionChart, 0, 2, 1, 1);
+    gridLayout->addWidget(miscChart, 1, 2, 1, 1);
+
 }
 
 newWindow::~newWindow()

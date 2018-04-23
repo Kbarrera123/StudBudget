@@ -505,6 +505,8 @@ void AppDialog::on_tabWidget_tabBarClicked(int index)
         ui->label_yearAdvice->hide();
     }
     else if (index == 2) {
+        this->updateBudget();
+        this->updateBalance();
         Expenses *expenses = this->_user->getAccount()->getExpenseObj();
         newWindow *graphWindow = new newWindow(expenses);
         graphWindow->show();
