@@ -43,6 +43,8 @@ AppDialog::AppDialog(User* &user, QWidget *parent) :
 
     user->getAccount()->setUsername(username);
     user->getAccount()->writeData();
+    user->getAccount()->setProjectedBudget();
+
 
     this->updateBalance();
     this->updateBudget();
@@ -343,10 +345,8 @@ void AppDialog::on_pushButton_withdrawFoodB_clicked()
     }
     else {
         this->_user->getAccount()->withdraw(withdrawAmtDouble);
-        this->updateBudget();
     }
-
-
+    this->updateBudget();
 }
 
 void AppDialog::on_pushButton_depositRentB_clicked()
@@ -374,8 +374,8 @@ void AppDialog::on_pushButton_withdrawRentB_clicked()
     }
     else {
         this->_user->getAccount()->withdraw(withdrawAmtDouble);
-        this->updateBudget();
     }
+    this->updateBudget();
 }
 
 void AppDialog::on_pushButton_depositEntertainmentB_clicked()
@@ -403,8 +403,8 @@ void AppDialog::on_pushButton_withdrawEntertainmentB_clicked()
     }
     else {
         this->_user->getAccount()->withdraw(withdrawAmtDouble);
-        this->updateBudget();
     }
+    this->updateBudget();
 }
 
 void AppDialog::on_pushButton_depositTuitionB_clicked()
@@ -433,8 +433,8 @@ void AppDialog::on_pushButton_withdrawTuitionB_clicked()
     }
     else {
         this->_user->getAccount()->withdraw(withdrawAmtDouble);
-        this->updateBudget();
     }
+    this->updateBudget();
 }
 
 void AppDialog::on_pushButton_depositSavingsB_clicked()
@@ -463,8 +463,8 @@ void AppDialog::on_pushButton_withdrawSavingsB_clicked()
     }
     else {
         this->_user->getAccount()->withdraw(withdrawAmtDouble);
-        this->updateBudget();
     }
+    this->updateBudget();
 }
 
 void AppDialog::on_pushButton_depositMiscB_clicked()
@@ -493,8 +493,8 @@ void AppDialog::on_pushButton_withdrawMiscB_clicked()
     }
     else {
         this->_user->getAccount()->withdraw(withdrawAmtDouble);
-        this->updateBudget();
     }
+    this->updateBudget();
 }
 
 void AppDialog::on_tabWidget_tabBarClicked(int index)
@@ -564,6 +564,7 @@ void AppDialog::on_pushButton_makeBudget_clicked()
         this->_user->getAccount()->setExpenseType("MISCBUDGET");
         this->_user->getAccount()->deposit(miscAmt);
     }
+    this->_user->getAccount()->setProjectedBudget();
     this->updateBalance();
     this->updateBudget();
 }

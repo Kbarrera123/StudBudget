@@ -31,12 +31,15 @@ Expenses::Expenses() {
         this->savingsBudget[i] = 0;
         this->miscCost[i] = 0;
         this->miscBudget[i] = 0;
+        this->totalCost[i] = 0;
+        this->totalBudget[i] = 0;
+        this->totalDeficit[i] = 0;
+        this->totalExtra[i] = 0;
     }
 }
 
 void Expenses::setFoodCost(double food, int month) {
   foodCost[month] = food;
-  totalCost[month] += food;
 }
 
 double Expenses::getFoodCost(int month) {
@@ -68,7 +71,6 @@ void Expenses::getFoodGraph(){ // annual food spending line graph
 
 void Expenses::setFoodBudget(double food, int month) {
   foodBudget[month] = food;
-  totalBudget[month] += food;
 }
 
 double Expenses::getFoodBudget(int month) {
@@ -77,7 +79,6 @@ double Expenses::getFoodBudget(int month) {
 
 void Expenses::setRentCost(double rent, int month) {
   rentCost[month] = rent;
-  totalCost[month] += rent;
 }
 
 double Expenses::getRentCost(int month) {
@@ -109,7 +110,6 @@ void Expenses::getRentGraph() { // annual rent spending line graph
 
 void Expenses::setRentBudget(double rent, int month) {
   rentBudget[month] = rent;
-  totalBudget[month] += rent;
 }
 
 double Expenses::getRentBudget(int month) {
@@ -118,7 +118,6 @@ double Expenses::getRentBudget(int month) {
 
 void Expenses::setEntertainmentCost(double entertainment, int month) {
   entertainmentCost[month] = entertainment;
-  totalCost[month] += entertainment;
 }
 
 double Expenses::getEntertainmentCost(int month) {
@@ -150,7 +149,6 @@ void Expenses::getEntertainmentGraph() { // annual entertainment spending line g
 
 void Expenses::setEntertainmentBudget(double entertainment, int month) {
   entertainmentBudget[month] = entertainment;
-  totalBudget[month] += entertainment;
 }
 
 double Expenses::getEntertainmentBudget(int month) {
@@ -159,7 +157,6 @@ double Expenses::getEntertainmentBudget(int month) {
 
 void Expenses::setTuitionCost(double tuition, int month) {
   tuitionCost[month] = tuition;
-  totalCost[month] += tuition;
 }
 
 double Expenses::getTuitionCost(int month) {
@@ -191,7 +188,6 @@ void Expenses::getTuitionGraph() { // annual tuition spending line graph
 
 void Expenses::setTuitionBudget(double tuition, int month) {
   tuitionBudget[month] = tuition;
-  totalBudget[month] += tuition;
 }
 
 double Expenses::getTuitionBudget(int month) {
@@ -200,7 +196,6 @@ double Expenses::getTuitionBudget(int month) {
 
 void Expenses::setSavingsCost(double savings, int month) {
   savingsCost[month] = savings;
-  totalCost[month] += savings;
 }
 
 double Expenses::getSavingsCost(int month) {
@@ -232,7 +227,6 @@ void Expenses::getSavingsGraph() { // annual savings spending line graph
 
 void Expenses::setSavingsBudget(double savings, int month) {
   savingsBudget[month] = savings;
-  totalBudget[month] += savings;
 }
 
 double Expenses::getSavingsBudget(int month) {
@@ -241,7 +235,6 @@ double Expenses::getSavingsBudget(int month) {
 
 void Expenses::setMiscCost(double misc, int month) {
   miscCost[month] = misc;
-  totalCost[month] += misc;
 }
 
 double Expenses::getMiscCost(int month) {
@@ -273,15 +266,45 @@ void Expenses::getMiscGraph() { // annual misc spending line graph
 
 void Expenses::setMiscBudget(double misc, int month) {
   miscBudget[month] = misc;
-  totalBudget[month] += misc;
 }
 
 double Expenses::getMiscBudget(int month) {
   return miscBudget[month];
 }
 
+void Expenses::projectBudget(){
+    for(int i = 0; i < 12; i++){
+        totalBudget[i] = foodBudget[i] + rentBudget[i] + entertainmentBudget[i] + tuitionBudget[i] + savingsBudget[i] + miscBudget[i];
+    }
+}
+
 void Expenses::setExtraDeficit() {
-  for(int i = 0; i < 12; i++) {
+    totalFoodCost = 0;
+    totalFoodBudget = 0;
+    totalFoodExtra = 0;
+    totalFoodDeficit = 0;
+    totalRentCost = 0;
+    totalRentBudget = 0;
+    totalRentExtra = 0;
+    totalRentDeficit = 0;
+    totalEntertainmentCost = 0;
+    totalEntertainmentBudget = 0;
+    totalEntertainmentExtra = 0;
+    totalEntertainmentDeficit = 0;
+    totalTuitionCost = 0;
+    totalTuitionBudget = 0;
+    totalTuitionExtra = 0;
+    totalTuitionDeficit = 0;
+    totalSavingsCost = 0;
+    totalSavingsBudget = 0;
+    totalSavingsExtra = 0;
+    totalSavingsDeficit = 0;
+    totalMiscCost = 0;
+    totalMiscBudget = 0;
+    totalMiscExtra = 0;
+    totalMiscDeficit = 0;
+
+    for(int i = 0; i < 12; i++) {
     if(getFoodBudget(i) - getFoodCost(i) > 0) {
       foodExtra[i] = getFoodBudget(i) - getFoodCost(i);
       foodDeficit[i] = 0;
@@ -371,11 +394,16 @@ void Expenses::setExtraDeficit() {
     totalMiscBudget += miscBudget[i];
     totalMiscExtra += miscExtra[i];
     totalMiscDeficit += miscDeficit[i];
-  }
-  totalAnnualBudget = totalFoodBudget + totalRentBudget + totalEntertainmentBudget + totalTuitionBudget + totalSavingsBudget + totalMiscBudget;
-  totalAnnualCost = totalFoodCost + totalRentCost + totalEntertainmentCost + totalTuitionCost + totalSavingsCost + totalMiscCost;
-  totalAnnualDeficit = totalFoodDeficit + totalRentDeficit + totalEntertainmentDeficit + totalTuitionDeficit + totalSavingsDeficit + totalMiscDeficit;
-  totalAnnualExtra = totalFoodExtra + totalRentExtra + totalEntertainmentExtra + totalTuitionExtra + totalSavingsExtra + totalMiscExtra;
+
+    totalCost[i] = foodCost[i] + rentCost[i] + entertainmentCost[i] + tuitionCost[i] + savingsCost[i] + miscCost[i];
+    totalDeficit[i] = foodDeficit[i] + rentDeficit[i] + entertainmentDeficit[i] + tuitionDeficit[i] + savingsDeficit[i] + miscDeficit[i];
+    totalExtra[i] = foodExtra[i] + rentExtra[i] + entertainmentExtra[i] + tuitionExtra[i] + savingsExtra[i] + miscExtra[i];
+
+    }
+    totalAnnualBudget = totalFoodBudget + totalRentBudget + totalEntertainmentBudget + totalTuitionBudget + totalSavingsBudget + totalMiscBudget;
+    totalAnnualCost = totalFoodCost + totalRentCost + totalEntertainmentCost + totalTuitionCost + totalSavingsCost + totalMiscCost;
+    totalAnnualDeficit = totalFoodDeficit + totalRentDeficit + totalEntertainmentDeficit + totalTuitionDeficit + totalSavingsDeficit + totalMiscDeficit;
+    totalAnnualExtra = totalFoodExtra + totalRentExtra + totalEntertainmentExtra + totalTuitionExtra + totalSavingsExtra + totalMiscExtra;
 }
 
 void Expenses::getAnnualCostChart() { // expenses pie chart by year
@@ -669,63 +697,57 @@ std::string Expenses::financialAdvice(int month) {
     }
 
 
-    if (foodDeficit[month] > 0) {
+    if (foodCost[month]/totalCost[month] > .17) {
         concatAdvice += "It is recommended to spend no more than 15% on Food in ";
         concatAdvice += monthString;
         concatAdvice += ".\n";
     }
 
-    if (rentDeficit[month]  > 0) {
+    if (rentCost[month]/totalCost[month] < .28 || rentCost[month]/totalCost[month] > .32) {
         concatAdvice += "Remember, put 30% of your income towards Rent in ";
         concatAdvice += monthString;
         concatAdvice += ".\n";
     }
 
-    if (entertainmentDeficit[month] > 0) {
+    if (entertainmentCost[month]/totalCost[month] > .12) {
         concatAdvice += "Prioritize your spending! Your Entertainment costs have exceeded 10% in ";
         concatAdvice += monthString;
         concatAdvice += ".\n";
     }
 
-    if (tuitionExtra[month] > 0) {
-        concatAdvice += "Delegate 20% of your income to Tuition this month to avoid student loan debt!\n";
+    if (tuitionCost[month]/totalCost[month] < .18 || tuitionCost[month]/totalCost[month] > .24) {
+        concatAdvice += "Make sure that 20% of your income to Tuition this month to avoid student loan debt!\n";
     }
 
-    if (tuitionDeficit[month] > 0) {
-        concatAdvice += "Only 20% of your income should be spent on Tuition in ";
-        concatAdvice += monthString;
-        concatAdvice += ".\n";
-    }
-
-    if ((savingsCost[month] / totalAnnualCost) > .04 ) { // is this correct?
+    if ((savingsCost[month] / totalCost[month]) < .04 ) { // is this correct?
         concatAdvice += "Your Savings are low, make sure to save at least 5% of your income this month!\n";
     }
 
-    if (miscDeficit[month] > 0) {
-        concatAdvice += "Miscellaneous costs like clothing or transportation shouldn't exceed 20% of your income. Shop smart!\n";
+    if (miscCost[month]/totalCost[month] > .22) {
+        concatAdvice += "Miscellaneous costs like clothing or transportation shouldn't exceed 20% of your income!\n";
     }
 
     if (savingsExtra[month] > 0) {
         concatAdvice += "You have some extra money! Add it to Savings!\n";
     }
 
-    if ((foodBudget[month] / totalAnnualBudget) > .17) {
+    if ((foodBudget[month] / totalBudget[month]) > .17) {
         concatAdvice += "Too much of your budget is in food this month.\n";
     }
 
-    if ((rentBudget[month] / totalAnnualBudget) > .33) {
+    if ((rentBudget[month] / totalBudget[month]) > .33) {
         concatAdvice += "Too much of your budget is in rent this month.\n";
     }
 
-    if ((entertainmentBudget[month] / totalAnnualBudget) > .12) {
+    if ((entertainmentBudget[month] / totalBudget[month]) > .12) {
         concatAdvice += "Too much of your budget is in entertainment this month.\n";
     }
 
-    if ((tuitionBudget[month] / totalAnnualBudget) > .22) {
+    if ((tuitionBudget[month] / totalBudget[month]) > .22) {
         concatAdvice += "Too much of your budget is in tuition this month.\n";
     }
 
-    if ((miscBudget[month] / totalAnnualBudget) > .22) {
+    if ((miscBudget[month] / totalBudget[month]) > .22) {
         concatAdvice += "Too much of your budget is in miscellaneous expenses this month.\n";
     }
 

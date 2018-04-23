@@ -55,6 +55,7 @@ public:
     void setMiscBudget(double misc, int month);
     double getMiscBudget(int month);
     void setExtraDeficit();
+    void projectBudget();
     void getAnnualCostChart();
     void getMonthCostChart(int month);
     void getExtraDeficitGraphYear();
@@ -118,8 +119,8 @@ private:
     double totalMiscDeficit;
     double totalAnnualCost;
     double totalAnnualBudget;
-    double totalAnnualExtra;
     double totalAnnualDeficit;
+    double totalAnnualExtra;
 };
 
 #endif // EXPENSES_H

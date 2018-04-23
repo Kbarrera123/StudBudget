@@ -51,6 +51,11 @@ void Account::setExpenseType(string expenseType){
     this->expenseType = expenseType;
 }
 
+void Account::setProjectedBudget(){
+    this->expenses->projectBudget();
+}
+
+
 bool Account::dataExists(){
     ifstream readData;
     string tempLine;
@@ -62,45 +67,6 @@ bool Account::dataExists(){
     }
     return false;
 }
-
-/*
-void Account::updateArrayExpenses(int i){
-    double f[12], r[12], e[12], t[12], s[12], m[12], fBudget[12], rBudget[12], eBudget[12], tBudget[12], sBudget[12], mBudget[12];
-    this->setExpenseType("FOOD");
-    f[i] = this->getExpense();
-    this->setExpenseType("RENT");
-    r[i] = this->getExpense();
-    this->setExpenseType("ENTERTAINMENT");
-    e[i] = this->getExpense();
-    this->setExpenseType("TUITION");
-    t[i] = this->getExpense();
-    this->setExpenseType("SAVINGS");
-    s[i] = this->getExpense();
-    this->setExpenseType("MISC");
-    m[i] = this->getExpense();
-
-    this->setExpenseType("FOODBUDGET");
-    fBudget[i] = this->getExpense();
-    this->setExpenseType("RENTBUDGET");
-    rBudget[i] = this->getExpense();
-    this->setExpenseType("ENTERTAINMENTBUDGET");
-    eBudget[i] = this->getExpense();
-    this->setExpenseType("TUITIONBUDGET");
-    tBudget[i] = this->getExpense();
-    this->setExpenseType("SAVINGSBUDGET");
-    sBudget[i] = this->getExpense();
-    this->setExpenseType("MISCBUDGET");
-    mBudget[i] = this->getExpense();
-
-    this->expenses->updateArrays(i, f, r, e, t, s, m, fBudget, rBudget, eBudget, tBudget, sBudget, mBudget);
-}
-
-void Account::fillArrayExpenses(){
-    this->setUsername(this->username);
-    for(int i = 0; i < 12; i++){
-        this->updateArrayExpenses(i);
-    }
-}*/
 
 void Account::writeData(){
     if(!this->dataExists()){ // If the given user hasn't already had data logged

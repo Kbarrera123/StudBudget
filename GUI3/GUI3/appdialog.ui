@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1029</width>
-    <height>914</height>
+    <width>1053</width>
+    <height>901</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -31,7 +31,7 @@
    <property name="font">
     <font>
      <family>Yu Gothic UI</family>
-     <pointsize>9</pointsize>
+     <pointsize>8</pointsize>
     </font>
    </property>
    <property name="currentIndex">
@@ -57,7 +57,7 @@
     <widget class="QLabel" name="label_2">
      <property name="geometry">
       <rect>
-       <x>200</x>
+       <x>190</x>
        <y>10</y>
        <width>41</width>
        <height>21</height>
@@ -85,7 +85,7 @@
         <x>19</x>
         <y>30</y>
         <width>161</width>
-        <height>21</height>
+        <height>22</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -111,7 +111,7 @@
         <x>20</x>
         <y>73</y>
         <width>161</width>
-        <height>21</height>
+        <height>22</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout">
@@ -130,6 +130,9 @@
          <property name="text">
           <string>0.0</string>
          </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+         </property>
         </widget>
        </item>
       </layout>
@@ -140,7 +143,7 @@
         <x>20</x>
         <y>101</y>
         <width>161</width>
-        <height>21</height>
+        <height>22</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_6">
@@ -166,12 +169,17 @@
         <x>20</x>
         <y>132</y>
         <width>161</width>
-        <height>21</height>
+        <height>22</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_11">
        <item>
         <widget class="QLabel" name="label_13">
+         <property name="font">
+          <font>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
          <property name="text">
           <string>Entertainment</string>
          </property>
@@ -192,7 +200,7 @@
         <x>20</x>
         <y>161</y>
         <width>161</width>
-        <height>21</height>
+        <height>22</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_16">
@@ -218,7 +226,7 @@
         <x>20</x>
         <y>191</y>
         <width>161</width>
-        <height>21</height>
+        <height>22</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_21">
@@ -244,12 +252,17 @@
         <x>20</x>
         <y>221</y>
         <width>161</width>
-        <height>21</height>
+        <height>22</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_24">
        <item>
         <widget class="QLabel" name="label_19">
+         <property name="font">
+          <font>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
          <property name="text">
           <string>Miscellaneous</string>
          </property>
@@ -355,8 +368,8 @@
        <rect>
         <x>320</x>
         <y>70</y>
-        <width>158</width>
-        <height>26</height>
+        <width>168</width>
+        <height>21</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -381,8 +394,8 @@
        <rect>
         <x>320</x>
         <y>100</y>
-        <width>158</width>
-        <height>26</height>
+        <width>168</width>
+        <height>21</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_7">
@@ -407,8 +420,8 @@
        <rect>
         <x>320</x>
         <y>130</y>
-        <width>158</width>
-        <height>26</height>
+        <width>168</width>
+        <height>21</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_13">
@@ -433,8 +446,8 @@
        <rect>
         <x>320</x>
         <y>160</y>
-        <width>158</width>
-        <height>26</height>
+        <width>168</width>
+        <height>21</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_19">
@@ -459,8 +472,8 @@
        <rect>
         <x>320</x>
         <y>190</y>
-        <width>158</width>
-        <height>26</height>
+        <width>168</width>
+        <height>21</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_23">
@@ -485,8 +498,8 @@
        <rect>
         <x>320</x>
         <y>220</y>
-        <width>158</width>
-        <height>26</height>
+        <width>168</width>
+        <height>21</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_25">
@@ -523,10 +536,10 @@
     <widget class="QLabel" name="label_24">
      <property name="geometry">
       <rect>
-       <x>90</x>
+       <x>70</x>
        <y>310</y>
-       <width>241</width>
-       <height>31</height>
+       <width>261</width>
+       <height>61</height>
       </rect>
      </property>
      <property name="font">
@@ -606,7 +619,7 @@
         <x>19</x>
         <y>30</y>
         <width>161</width>
-        <height>21</height>
+        <height>25</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_5">
@@ -632,7 +645,7 @@
         <x>20</x>
         <y>73</y>
         <width>161</width>
-        <height>21</height>
+        <height>25</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -658,7 +671,7 @@
         <x>20</x>
         <y>101</y>
         <width>161</width>
-        <height>21</height>
+        <height>25</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_8">
@@ -684,12 +697,17 @@
         <x>20</x>
         <y>132</y>
         <width>161</width>
-        <height>21</height>
+        <height>25</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_12">
        <item>
         <widget class="QLabel" name="label_14">
+         <property name="font">
+          <font>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
          <property name="text">
           <string>Entertainment</string>
          </property>
@@ -710,7 +728,7 @@
         <x>20</x>
         <y>161</y>
         <width>161</width>
-        <height>21</height>
+        <height>25</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_17">
@@ -736,7 +754,7 @@
         <x>20</x>
         <y>191</y>
         <width>161</width>
-        <height>21</height>
+        <height>25</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_22">
@@ -762,12 +780,17 @@
         <x>20</x>
         <y>221</y>
         <width>161</width>
-        <height>21</height>
+        <height>25</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_26">
        <item>
         <widget class="QLabel" name="label_33">
+         <property name="font">
+          <font>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
          <property name="text">
           <string>Miscellaneous</string>
          </property>
@@ -876,8 +899,8 @@
        <rect>
         <x>320</x>
         <y>70</y>
-        <width>158</width>
-        <height>26</height>
+        <width>168</width>
+        <height>21</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_9">
@@ -902,8 +925,8 @@
        <rect>
         <x>320</x>
         <y>100</y>
-        <width>158</width>
-        <height>26</height>
+        <width>168</width>
+        <height>21</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_10">
@@ -928,8 +951,8 @@
        <rect>
         <x>320</x>
         <y>130</y>
-        <width>158</width>
-        <height>26</height>
+        <width>168</width>
+        <height>21</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_14">
@@ -954,8 +977,8 @@
        <rect>
         <x>320</x>
         <y>160</y>
-        <width>158</width>
-        <height>26</height>
+        <width>168</width>
+        <height>21</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_20">
@@ -980,8 +1003,8 @@
        <rect>
         <x>320</x>
         <y>190</y>
-        <width>158</width>
-        <height>26</height>
+        <width>168</width>
+        <height>21</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_27">
@@ -1006,8 +1029,8 @@
        <rect>
         <x>320</x>
         <y>220</y>
-        <width>158</width>
-        <height>26</height>
+        <width>168</width>
+        <height>21</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_28">
@@ -1047,12 +1070,12 @@
        <x>10</x>
        <y>310</y>
        <width>241</width>
-       <height>31</height>
+       <height>41</height>
       </rect>
      </property>
      <property name="font">
       <font>
-       <pointsize>9</pointsize>
+       <pointsize>8</pointsize>
       </font>
      </property>
      <property name="text">
@@ -1149,7 +1172,7 @@
   <widget class="QLabel" name="label_getUsername">
    <property name="geometry">
     <rect>
-     <x>380</x>
+     <x>390</x>
      <y>30</y>
      <width>291</width>
      <height>31</height>

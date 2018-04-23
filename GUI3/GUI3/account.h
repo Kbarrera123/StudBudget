@@ -16,6 +16,7 @@ private:
 
 public:
     Account();
+    void setProjectedBudget();
     void updateArrayExpenses(int month);
     void fillArrayExpenses();
     std::string getFinancialAdvice(int month);
