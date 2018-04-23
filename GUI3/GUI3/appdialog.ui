@@ -35,13 +35,13 @@
     </font>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="tab">
     <attribute name="title">
      <string>My Balance</string>
     </attribute>
-    <widget class="QComboBox" name="comboBox">
+    <widget class="QComboBox" name="comboBox_monthBalance">
      <property name="geometry">
       <rect>
        <x>240</x>
@@ -562,7 +562,7 @@
     <attribute name="title">
      <string>My Budget</string>
     </attribute>
-    <widget class="QComboBox" name="comboBox_2">
+    <widget class="QComboBox" name="comboBox_monthBudget">
      <property name="geometry">
       <rect>
        <x>240</x>
@@ -1149,9 +1149,9 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>550</y>
+     <y>570</y>
      <width>521</width>
-     <height>171</height>
+     <height>161</height>
     </rect>
    </property>
    <property name="font">
@@ -1171,9 +1171,9 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>550</y>
+     <y>570</y>
      <width>521</width>
-     <height>171</height>
+     <height>161</height>
     </rect>
    </property>
    <property name="font">

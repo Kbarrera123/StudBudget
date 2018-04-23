@@ -23,7 +23,8 @@ public:
 private slots:
     void on_pushButton_signOut_clicked();
 
-    void on_comboBox_currentIndexChanged(int index);
+    void on_comboBox_monthBalance_currentIndexChanged(int index);
+    void on_comboBox_monthBudget_currentIndexChanged(int index);
 
     void on_pushButton_depositFoodC_clicked();
 
@@ -72,8 +73,6 @@ private slots:
     void on_pushButton_depositMiscB_clicked();
 
     void on_pushButton_withdrawMiscB_clicked();
-
-    void on_comboBox_2_currentIndexChanged(int index);
 
     void on_tabWidget_tabBarClicked(int index);
 

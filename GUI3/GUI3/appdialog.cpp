@@ -9,31 +9,31 @@ AppDialog::AppDialog(User* &user, QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ui->comboBox_2->addItem("January");
-    ui->comboBox_2->addItem("February");
-    ui->comboBox_2->addItem("March");
-    ui->comboBox_2->addItem("April");
-    ui->comboBox_2->addItem("May");
-    ui->comboBox_2->addItem("June");
-    ui->comboBox_2->addItem("July");
-    ui->comboBox_2->addItem("August");
-    ui->comboBox_2->addItem("September");
-    ui->comboBox_2->addItem("October");
-    ui->comboBox_2->addItem("November");
-    ui->comboBox_2->addItem("December");
+    ui->comboBox_monthBalance->addItem("January");
+    ui->comboBox_monthBalance->addItem("February");
+    ui->comboBox_monthBalance->addItem("March");
+    ui->comboBox_monthBalance->addItem("April");
+    ui->comboBox_monthBalance->addItem("May");
+    ui->comboBox_monthBalance->addItem("June");
+    ui->comboBox_monthBalance->addItem("July");
+    ui->comboBox_monthBalance->addItem("August");
+    ui->comboBox_monthBalance->addItem("September");
+    ui->comboBox_monthBalance->addItem("October");
+    ui->comboBox_monthBalance->addItem("November");
+    ui->comboBox_monthBalance->addItem("December");
 
-    ui->comboBox->addItem("January");
-    ui->comboBox->addItem("February");
-    ui->comboBox->addItem("March");
-    ui->comboBox->addItem("April");
-    ui->comboBox->addItem("May");
-    ui->comboBox->addItem("June");
-    ui->comboBox->addItem("July");
-    ui->comboBox->addItem("August");
-    ui->comboBox->addItem("September");
-    ui->comboBox->addItem("October");
-    ui->comboBox->addItem("November");
-    ui->comboBox->addItem("December");
+    ui->comboBox_monthBudget->addItem("January");
+    ui->comboBox_monthBudget->addItem("February");
+    ui->comboBox_monthBudget->addItem("March");
+    ui->comboBox_monthBudget->addItem("April");
+    ui->comboBox_monthBudget->addItem("May");
+    ui->comboBox_monthBudget->addItem("June");
+    ui->comboBox_monthBudget->addItem("July");
+    ui->comboBox_monthBudget->addItem("August");
+    ui->comboBox_monthBudget->addItem("September");
+    ui->comboBox_monthBudget->addItem("October");
+    ui->comboBox_monthBudget->addItem("November");
+    ui->comboBox_monthBudget->addItem("December");
 
     ui->tabWidget->setCurrentIndex(0);
 
@@ -97,7 +97,7 @@ void AppDialog::updateBudget(){
 
     //this->_user->getAccount()->fillArrayExpenses();
 
-    std::string finAdvice = this->_user->getAccount()->getExpensesObj()->financialAdvice(this->month);
+    std::string finAdvice = this->_user->getAccount()->getFinancialAdvice(this->month);
     QString finAdviceQStr = QString::fromUtf8(finAdvice.c_str());
 
     ui->label_financialAdvice->setText(finAdviceQStr);
@@ -133,7 +133,7 @@ void AppDialog::updateBalance(){
 
     //this->_user->getAccount()->fillArrayExpenses();
 
-    std::string finAdvice = this->_user->getAccount()->getExpensesObj()->financialAdvice(this->month);
+    std::string finAdvice = this->_user->getAccount()->getFinancialAdvice(this->month);
     QString finAdviceQStr = QString::fromUtf8(finAdvice.c_str());
 
 
@@ -141,18 +141,32 @@ void AppDialog::updateBalance(){
     ui->label_financialAdvice->repaint();
 }
 
-void AppDialog::on_comboBox_currentIndexChanged(int index)
+void AppDialog::on_comboBox_monthBalance_currentIndexChanged(int index)
 {
     this->setMonth(index);
     this->_user->getAccount()->setMonth(this->month);
+
+    ui->lineEdit_foodCostChanged->clear();
+    ui->lineEdit_rentCostChanged->clear();
+    ui->lineEdit_entertainmentCostChanged->clear();
+    ui->lineEdit_tuitionCostChanged->clear();
+    ui->lineEdit_savingsCostChanged->clear();
+    ui->lineEdit_miscCostChanged->clear();
 
     this->updateBalance();
 }
 
-void AppDialog::on_comboBox_2_currentIndexChanged(int index)
+void AppDialog::on_comboBox_monthBudget_currentIndexChanged(int index)
 {
     this->setMonth(index);
     this->_user->getAccount()->setMonth(this->month);
+
+    ui->lineEdit_foodBudgetChanged->clear();
+    ui->lineEdit_rentBudgetChanged->clear();
+    ui->lineEdit_entertainmentBudgetChanged->clear();
+    ui->lineEdit_tuitionBudgetChanged->clear();
+    ui->lineEdit_savingsBudgetChanged->clear();
+    ui->lineEdit_miscBudgetChanged->clear();
 
     this->updateBudget();
 }
@@ -482,9 +496,6 @@ void AppDialog::on_pushButton_withdrawMiscB_clicked()
 
 void AppDialog::on_tabWidget_tabBarClicked(int index)
 {
-    //this->updateBalance();
-    //this->updateBudget();
-
     if (index == 0 || index == 1) {
         ui->label_financialAdvice->show();
         ui->label_yearAdvice->hide();
@@ -494,14 +505,13 @@ void AppDialog::on_tabWidget_tabBarClicked(int index)
 
         //this->_user->getAccount()->fillArrayExpenses();
 
-        std::string finAdvice = this->_user->getAccount()->getExpensesObj()->financialAdvice();
+        std::string finAdvice = this->_user->getAccount()->getFinancialAdvice(-1); // -1 is to make it do year cost instead of monthly
         QString finAdviceQStr = QString::fromUtf8(finAdvice.c_str());
 
         ui->label_yearAdvice->setText(finAdviceQStr);
         ui->label_yearAdvice->repaint();
 
         ui->label_yearAdvice->show();
-
     }
 
 }

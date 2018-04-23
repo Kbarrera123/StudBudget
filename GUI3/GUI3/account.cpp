@@ -24,14 +24,19 @@ const vector<string> months = {"January", "February", "March", "April", "May", "
                          "August", "September", "October", "November", "December"};	//vector for months, used for .find
 
 Account::Account(){
-    this->expenses = new Expenses(0);
+    this->expenses = new Expenses();
     this->username = "";
     this->month = 0;
     this->expenseType = "";
 }
 
-Expenses* Account::getExpensesObj(){
-    return this->expenses;
+std::string Account::getFinancialAdvice(int month){
+    if(month < 0){
+        return this->expenses->financialAdvice();
+    }
+    else{
+        return this->expenses->financialAdvice(month);
+    }
 }
 
 void Account::setUsername(string username){

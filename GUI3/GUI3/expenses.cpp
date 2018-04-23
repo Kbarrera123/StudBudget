@@ -17,7 +17,7 @@ Expenses::~Expenses()
     delete ui;
 }
 */
-Expenses::Expenses(int num) {
+Expenses::Expenses() {
     for(int i = 0; i < 12; i++) {
         this->foodCost[i] = 0;
         this->foodBudget[i] = 0;

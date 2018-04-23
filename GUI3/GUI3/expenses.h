@@ -23,7 +23,7 @@ class Expenses {
 public:
     //explicit Expenses(QWidget *parent = 0);
     //~Expenses();
-    Expenses(int num);
+    Expenses();
     void fillArrays(double* f, double* r, double* e, double* t, double* s, double* m, double* fBudget, double* rBudget, double* eBudget, double* tBudget, double* sBudget, double* mBudget);
     void setFoodCost(double food, int month);
     double getFoodCost(int month);

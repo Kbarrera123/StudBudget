@@ -16,8 +16,8 @@ private:
 
 public:
     Account();
-    Expenses* getExpensesObj();
     void fillArrayExpenses();
+    std::string getFinancialAdvice(int month);
     void setUsername(string username);
     void setMonth(int month);
     void setExpenseType(string expenseType);
