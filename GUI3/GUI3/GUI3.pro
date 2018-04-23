@@ -33,7 +33,8 @@ SOURCES += \
     user.cpp \
     account.cpp \
     expenses.cpp \
-    authenticator.cpp
+    authenticator.cpp \
+    sha256.cpp
 
 target.path = $$[QT_INSTALL_EXAMPLES]/charts/barchart
 INSTALLS += target
@@ -46,10 +47,14 @@ HEADERS += \
     user.h \
     account.h \
     expenses.h \
-    authenticator.h
+    authenticator.h \
+    sha256.h
 
 FORMS += \
         mainwindow.ui \
     appdialog.ui \
     logindialog.ui \
     makeaccountdialog.ui
+
+RESOURCES += \
+    logo.qrc

@@ -46,7 +46,6 @@ void Account::setExpenseType(string expenseType){
     this->expenseType = expenseType;
 }
 
-
 bool Account::dataExists(){
     ifstream readData;
     string tempLine;
@@ -147,7 +146,6 @@ vector<string> split(const string &s, char delim) {
     return elems;
 }
 /////////////////// For delimiting a string by spaces on one line ////////////////////////////
-
 
 void Account::setCost(double amount){
     if(this->expenseType == "FOOD"){

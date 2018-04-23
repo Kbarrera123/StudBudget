@@ -1,10 +1,11 @@
 #include "logindialog.h"
-#include "authenticator.h"
 #include "ui_logindialog.h"
+#include "authenticator.h"
+//#include "sha256.h"
+
 #include <QMessageBox>
 
-LogInDialog::LogInDialog(QWidget *parent) :
-    QDialog(parent),
+LogInDialog::LogInDialog(QWidget *parent) : QDialog(parent),
     ui(new Ui::LogInDialog)
 {
     ui->setupUi(this);
@@ -27,11 +28,15 @@ void LogInDialog::on_pushButton_Login_clicked()
     std::string usernameStr = username.toUtf8().constData();
     std::string passwordStr = password.toUtf8().constData();
 
+    /*sha256 * algorithm = new sha256;
+    std::string hashUsername = algorithm->doSha256(usernameStr);
+    std::string hashPassword = algorithm->doSha256(passwordStr);
+    delete algorithm;*/
+
     authenticator->logIn(usernameStr, passwordStr, finished);
     User* user = authenticator->getUser();
 
        if(finished) {
-           //hide();
            appDialog = new AppDialog(user, this);
            appDialog->show();
            hide();

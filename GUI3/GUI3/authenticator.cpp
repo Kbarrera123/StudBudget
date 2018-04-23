@@ -127,7 +127,6 @@ void Authenticator::signUp(string username, string password, bool &exists){
 
 
         if(tempUsername == username || tempPassword == password ){
-            //cout << "Username or password already in use! Try something else." << endl;
             exists = true;
             break;
         }
@@ -140,8 +139,6 @@ void Authenticator::signUp(string username, string password, bool &exists){
         ofstream writeData;
         writeData.open ("authData.txt", ios_base::app); // Appends new data to the file
         writeData << auth << endl;
-
-        //cout << "Account created! You can now log in." << endl;
         writeData.close();
     }
 }
@@ -162,64 +159,3 @@ void Authenticator::printUsers(){
     }
     readData.close();
 }
-/*
-void Authenticator::authenticate(){
-    string username = "", password = "", choice2 = "";
-    int choice = 0, count = 0;
-    bool finished = false;
-
-    cout << "\nWelcome to the Budgeting App. Sign up below! \nIf you have an account already, please enter your username and password.\n" << endl
-         << "\t1. Log in\n\t2. Sign up\n\t3. Print users\n\t4. Clear all users\n\t5. Exit" << endl;
-
-    while(!finished) {
-        while (true){
-            cout << "\nYour choice: "; cin >> choice;
-            if(cin.fail()){
-                cin.clear(); //This corrects the stream.
-                cin.ignore(); //This skips the left over stream data.
-                if(count == 0)
-                    cout << "Please enter an integer only." << endl;
-                count++;
-            }
-            else break;
-        }
-
-        switch(choice){
-            case 1:
-                this->fillMapOfUsers(); // Properly assigns pointers to every user.
-                cout << "Username : "; cin >> username;
-                cout << "Password : "; cin >> password;
-                this->logIn(username, password, finished);
-                break;
-            case 2:
-                cout << "Username : "; cin >> username;
-                cout << "Password : "; cin >> password;
-                this->signUp(username, password);
-                break;
-            case 3:
-                this->printUsers();
-                break;
-            case 4:
-                cout << "Are you sure you want to clear all users? y/n : ";
-                cin >> choice2;
-                if(choice2 == "y"){
-                    remove("authData.txt");
-                }
-                else break;
-                this->users.clear();
-                cin.clear();
-                break;
-            case 5:
-                this->currentUser = NULL; //Set to null to exit
-                finished = true;
-                break;
-            default:
-                cout << "Please enter an integer 1-5!" << endl;
-                break;
-        }
-        count = 0;
-    }
-}
-
-
-*/

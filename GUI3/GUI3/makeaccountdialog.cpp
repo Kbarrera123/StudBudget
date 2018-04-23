@@ -1,6 +1,7 @@
 #include "makeaccountdialog.h"
 #include "ui_makeaccountdialog.h"
 #include "authenticator.h"
+//#include "sha256.h"
 #include <QMessageBox>
 
 MakeAccountDialog::MakeAccountDialog(QWidget *parent) :
@@ -27,15 +28,19 @@ void MakeAccountDialog::on_pushButton_accountMade_clicked()
     std::string usernameStr = username.toUtf8().constData();
     std::string passwordStr = password.toUtf8().constData();
 
+    /*sha256 * algorithm = new sha256;
+    std::string hashUsername = algorithm->doSha256(usernameStr);
+    std::string hashPassword = algorithm->doSha256(passwordStr);
+    delete algorithm;*/
+
     authenticator->signUp(usernameStr, passwordStr, exists);
     delete authenticator;
 
     if (exists) {
         QMessageBox::warning(this, "Signup", "Username or password already in use! Try something else.");
+    }else{
+        logInDialog = new LogInDialog(this);
+        logInDialog->show();
+        hide();
     }
-
-    logInDialog = new LogInDialog(this);
-    logInDialog->show();
-    hide();
-
 }

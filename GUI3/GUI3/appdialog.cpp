@@ -37,13 +37,11 @@ AppDialog::AppDialog(User* &user, QWidget *parent) :
 
     ui->tabWidget->setCurrentIndex(0);
 
-
     string username = user->getUsername();
-    QString userQStr = QString::fromUtf8(username.c_str());
+    QString userQStr = QString::fromUtf8((username + '!').c_str());
+    ui->label_getUsername->setText(userQStr);
 
     user->getAccount()->setUsername(username);
-
-    ui->label_getUsername->setText(userQStr);
     user->getAccount()->writeData();
 
     this->updateBalance();
@@ -147,17 +145,14 @@ void AppDialog::on_comboBox_currentIndexChanged(int index)
 {
     this->setMonth(index);
     this->_user->getAccount()->setMonth(this->month);
-    this->_user->getAccount()->writeData();
 
     this->updateBalance();
-
 }
 
 void AppDialog::on_comboBox_2_currentIndexChanged(int index)
 {
     this->setMonth(index);
     this->_user->getAccount()->setMonth(this->month);
-    this->_user->getAccount()->writeData();
 
     this->updateBudget();
 }
@@ -172,7 +167,6 @@ void AppDialog::on_pushButton_depositFoodC_clicked()
     this->_user->getAccount()->deposit(depositAmtDouble);
 
     this->updateBalance();
-
 }
 
 void AppDialog::on_pushButton_withdrawFoodC_clicked()
@@ -319,8 +313,6 @@ void AppDialog::on_pushButton_depositFoodB_clicked()
     this->updateBudget();
 }
 
-
-
 void AppDialog::on_pushButton_withdrawFoodB_clicked()
 {
     this->_user->getAccount()->setMonth(this->month);
@@ -368,8 +360,6 @@ void AppDialog::on_pushButton_withdrawRentB_clicked()
         this->updateBudget();
     }
 }
-
-
 
 void AppDialog::on_pushButton_depositEntertainmentB_clicked()
 {
@@ -489,7 +479,6 @@ void AppDialog::on_pushButton_withdrawMiscB_clicked()
         this->updateBudget();
     }
 }
-
 
 void AppDialog::on_tabWidget_tabBarClicked(int index)
 {
