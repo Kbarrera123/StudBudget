@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1023</width>
-    <height>755</height>
+    <width>1029</width>
+    <height>914</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -1099,6 +1099,31 @@
      </property>
      <property name="text">
       <string>Clear Budget</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_25">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>350</y>
+       <width>381</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>8</pointsize>
+       <underline>false</underline>
+      </font>
+     </property>
+     <property name="text">
+      <string>Recommended Budget                                                                                            Food: 15% | Rent: 30% | Ent: 10% | Tuition: 20% | Misc: 20% | Savings: 5%</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
      </property>
     </widget>
    </widget>
