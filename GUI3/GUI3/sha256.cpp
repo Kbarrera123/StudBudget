@@ -287,21 +287,21 @@ std::string sha256::doSha256(std::string input)
 
     // Add the compressed chunk to the current hash value:
     h0 += a;
-    h0_string = decimalToHex(h0);
+    //h0_string = decimalToHex(h0);
     h1 += b;
-    h1_string = decimalToHex(h1);
+    //h1_string = decimalToHex(h1);
     h2 += c;
-    h2_string = decimalToHex(h2);
+    //h2_string = decimalToHex(h2);
     h3 += d;
-    h3_string = decimalToHex(h3);
+    //h3_string = decimalToHex(h3);
     h4 += e;
-    h4_string = decimalToHex(h4);
+    //h4_string = decimalToHex(h4);
     h5 += f;
-    h5_string = decimalToHex(h5);
+    //h5_string = decimalToHex(h5);
     h6 += g;
-    h6_string = decimalToHex(h6);
+    //h6_string = decimalToHex(h6);
     h7 += h;
-    h7_string = decimalToHex(h7);
+    //h7_string = decimalToHex(h7);
 
     // Produce the final hash value (big-endian):
     std::string hash = decimalToHex(h0) + decimalToHex(h1) + decimalToHex(h2) + decimalToHex(h3) + decimalToHex(h4) + decimalToHex(h5) + decimalToHex(h6) + decimalToHex(h7);

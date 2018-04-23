@@ -28,13 +28,13 @@ void LogInDialog::on_pushButton_Login_clicked()
     std::string usernameStr = username.toUtf8().constData();
     std::string passwordStr = password.toUtf8().constData();
 
-    /*sha256 * algorithm = new sha256;
+    sha256 * algorithm = new sha256;
     std::string hashUsername = algorithm->doSha256(usernameStr);
     std::string hashPassword = algorithm->doSha256(passwordStr);
-    delete algorithm;*/
+    delete algorithm;
 
-    authenticator->logIn(usernameStr, passwordStr, finished);
-    //authenticator->logIn(hashUsername, hashPassword, finished);
+    //authenticator->logIn(usernameStr, passwordStr, finished);
+    authenticator->logIn(hashUsername, hashPassword, finished);
     User* user = authenticator->getUser();
 
        if(finished) {

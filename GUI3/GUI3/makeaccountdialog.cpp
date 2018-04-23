@@ -28,13 +28,13 @@ void MakeAccountDialog::on_pushButton_accountMade_clicked()
     std::string usernameStr = username.toUtf8().constData();
     std::string passwordStr = password.toUtf8().constData();
 
-    /*sha256 * algorithm = new sha256;
+    sha256 * algorithm = new sha256;
     std::string hashUsername = algorithm->doSha256(usernameStr);
     std::string hashPassword = algorithm->doSha256(passwordStr);
-    delete algorithm;*/
+    delete algorithm;
 
-    authenticator->signUp(usernameStr, passwordStr, exists);
-    //authenticator->signUp(hashUsername, hashPassword, exists);
+    //authenticator->signUp(usernameStr, passwordStr, exists);
+    authenticator->signUp(hashUsername, hashPassword, exists);
     delete authenticator;
 
     if (exists) {
