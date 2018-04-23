@@ -505,3 +505,137 @@ void AppDialog::on_tabWidget_tabBarClicked(int index)
     }
 
 }
+
+void AppDialog::on_pushButton_makeBudget_clicked()
+{
+    QString totalAmt = ui->lineEdit_makeBudget->text();
+    double totalAmtDouble = totalAmt.toDouble(); // Take in a total budget
+    totalAmtDouble /= 12; // Split it into 12 months
+
+    double foodAmt          = .15 * totalAmtDouble; // Make the proper percentages
+    double rentAmt          = .30 * totalAmtDouble;
+    double entertainmentAmt = .10 * totalAmtDouble;
+    double tuitionAmt       = .20 * totalAmtDouble;
+    double savingsAmt       = .05 * totalAmtDouble;
+    double miscAmt          = .20 * totalAmtDouble;
+
+    for(int i = 0; i < 12; i++){
+        this->_user->getAccount()->setMonth(i);
+
+        this->_user->getAccount()->setExpenseType("FOODBUDGET");
+        this->_user->getAccount()->changeExpenseField(0);
+        this->_user->getAccount()->setExpenseType("RENTBUDGET");
+        this->_user->getAccount()->changeExpenseField(0);
+        this->_user->getAccount()->setExpenseType("ENTERTAINMENTBUDGET");
+        this->_user->getAccount()->changeExpenseField(0);
+        this->_user->getAccount()->setExpenseType("TUITIONBUDGET");
+        this->_user->getAccount()->changeExpenseField(0);
+        this->_user->getAccount()->setExpenseType("SAVINGSBUDGET");
+        this->_user->getAccount()->changeExpenseField(0);
+        this->_user->getAccount()->setExpenseType("MISCBUDGET");
+        this->_user->getAccount()->changeExpenseField(0);
+    }
+
+    for(int i = 0; i < 12; i++){
+        this->_user->getAccount()->setMonth(i);
+
+        this->_user->getAccount()->setExpenseType("FOODBUDGET");
+        this->_user->getAccount()->deposit(foodAmt);
+        this->_user->getAccount()->setExpenseType("RENTBUDGET");
+        this->_user->getAccount()->deposit(rentAmt);
+        this->_user->getAccount()->setExpenseType("ENTERTAINMENTBUDGET");
+        this->_user->getAccount()->deposit(entertainmentAmt);
+        this->_user->getAccount()->setExpenseType("TUITIONBUDGET");
+        this->_user->getAccount()->deposit(tuitionAmt);
+        this->_user->getAccount()->setExpenseType("SAVINGSBUDGET");
+        this->_user->getAccount()->deposit(savingsAmt);
+        this->_user->getAccount()->setExpenseType("MISCBUDGET");
+        this->_user->getAccount()->deposit(miscAmt);
+    }
+    this->updateBalance();
+    this->updateBudget();
+}
+
+void AppDialog::on_pushButton_clearBudget_clicked()
+{
+    for(int i = 0; i < 12; i++){
+        this->_user->getAccount()->setMonth(i);
+
+        this->_user->getAccount()->setExpenseType("FOODBUDGET");
+        this->_user->getAccount()->changeExpenseField(0);
+        this->_user->getAccount()->setExpenseType("RENTBUDGET");
+        this->_user->getAccount()->changeExpenseField(0);
+        this->_user->getAccount()->setExpenseType("ENTERTAINMENTBUDGET");
+        this->_user->getAccount()->changeExpenseField(0);
+        this->_user->getAccount()->setExpenseType("TUITIONBUDGET");
+        this->_user->getAccount()->changeExpenseField(0);
+        this->_user->getAccount()->setExpenseType("SAVINGSBUDGET");
+        this->_user->getAccount()->changeExpenseField(0);
+        this->_user->getAccount()->setExpenseType("MISCBUDGET");
+        this->_user->getAccount()->changeExpenseField(0);
+    }
+    this->updateBalance();
+    this->updateBudget();
+}
+
+void AppDialog::on_pushButton_clearBalance_clicked()
+{
+    for(int i = 0; i < 12; i++){
+        this->_user->getAccount()->setMonth(i);
+
+        this->_user->getAccount()->setExpenseType("FOOD");
+        this->_user->getAccount()->changeExpenseField(0);
+        this->_user->getAccount()->setExpenseType("RENT");
+        this->_user->getAccount()->changeExpenseField(0);
+        this->_user->getAccount()->setExpenseType("ENTERTAINMENT");
+        this->_user->getAccount()->changeExpenseField(0);
+        this->_user->getAccount()->setExpenseType("TUITION");
+        this->_user->getAccount()->changeExpenseField(0);
+        this->_user->getAccount()->setExpenseType("SAVINGS");
+        this->_user->getAccount()->changeExpenseField(0);
+        this->_user->getAccount()->setExpenseType("MISC");
+        this->_user->getAccount()->changeExpenseField(0);
+    }
+    this->updateBalance();
+    this->updateBudget();
+}
+
+void AppDialog::on_pushButton_makeBalance_clicked()
+{
+    double value;
+    for(int i = 0; i < 12; i++){
+        this->_user->getAccount()->setMonth(i);
+
+        this->_user->getAccount()->setExpenseType("FOODBUDGET");
+        value = this->_user->getAccount()->getExpense();
+        this->_user->getAccount()->setExpenseType("FOOD");
+        this->_user->getAccount()->changeExpenseField(value);
+
+        this->_user->getAccount()->setExpenseType("RENTBUDGET");
+        value = this->_user->getAccount()->getExpense();
+        this->_user->getAccount()->setExpenseType("RENT");
+        this->_user->getAccount()->changeExpenseField(value);
+
+        this->_user->getAccount()->setExpenseType("ENTERTAINMENTBUDGET");
+        value = this->_user->getAccount()->getExpense();
+        this->_user->getAccount()->setExpenseType("ENTERTAINMENT");
+        this->_user->getAccount()->changeExpenseField(value);
+
+        this->_user->getAccount()->setExpenseType("TUITIONBUDGET");
+        value = this->_user->getAccount()->getExpense();
+        this->_user->getAccount()->setExpenseType("TUITION");
+        this->_user->getAccount()->changeExpenseField(value);
+
+        this->_user->getAccount()->setExpenseType("SAVINGSBUDGET");
+        value = this->_user->getAccount()->getExpense();
+        this->_user->getAccount()->setExpenseType("SAVINGS");
+        this->_user->getAccount()->changeExpenseField(value);
+
+        this->_user->getAccount()->setExpenseType("MISCBUDGET");
+        value = this->_user->getAccount()->getExpense();
+        this->_user->getAccount()->setExpenseType("MISC");
+        this->_user->getAccount()->changeExpenseField(value);
+    }
+    this->updateBalance();
+    this->updateBudget();
+}

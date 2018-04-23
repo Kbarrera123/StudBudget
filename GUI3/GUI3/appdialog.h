@@ -77,6 +77,14 @@ private slots:
 
     void on_tabWidget_tabBarClicked(int index);
 
+    void on_pushButton_makeBudget_clicked();
+
+    void on_pushButton_clearBudget_clicked();
+
+    void on_pushButton_clearBalance_clicked();
+
+    void on_pushButton_makeBalance_clicked();
+
 private:
     User* _user;
     int month;

@@ -16,10 +16,10 @@
   <widget class="QTabWidget" name="tabWidget">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>10</x>
      <y>100</y>
-     <width>511</width>
-     <height>351</height>
+     <width>531</width>
+     <height>431</height>
     </rect>
    </property>
    <property name="sizePolicy">
@@ -35,7 +35,7 @@
     </font>
    </property>
    <property name="currentIndex">
-    <number>2</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="tab">
     <attribute name="title">
@@ -49,6 +49,9 @@
        <width>111</width>
        <height>21</height>
       </rect>
+     </property>
+     <property name="maxVisibleItems">
+      <number>12</number>
      </property>
     </widget>
     <widget class="QLabel" name="label_2">
@@ -81,7 +84,7 @@
        <rect>
         <x>19</x>
         <y>30</y>
-        <width>151</width>
+        <width>161</width>
         <height>21</height>
        </rect>
       </property>
@@ -274,10 +277,10 @@
      <widget class="QLabel" name="label_7">
       <property name="geometry">
        <rect>
-        <x>190</x>
+        <x>198</x>
         <y>30</y>
-        <width>119</width>
-        <height>19</height>
+        <width>111</width>
+        <height>20</height>
        </rect>
       </property>
       <property name="text">
@@ -504,6 +507,56 @@
       </layout>
      </widget>
     </widget>
+    <widget class="QPushButton" name="pushButton_clearBalance">
+     <property name="geometry">
+      <rect>
+       <x>400</x>
+       <y>360</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Clear Balance</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_24">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>310</y>
+       <width>241</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>9</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Want to start your balance at your current budget amounts? Press 'Create Balance'!</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_makeBalance">
+     <property name="geometry">
+      <rect>
+       <x>400</x>
+       <y>310</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Create Balance</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="tab_2">
     <attribute name="title">
@@ -517,6 +570,9 @@
        <width>111</width>
        <height>21</height>
       </rect>
+     </property>
+     <property name="maxVisibleItems">
+      <number>12</number>
      </property>
     </widget>
     <widget class="QLabel" name="label_4">
@@ -542,14 +598,14 @@
       </rect>
      </property>
      <property name="title">
-      <string>Edit Budgets</string>
+      <string>Edit Budget</string>
      </property>
      <widget class="QWidget" name="horizontalLayoutWidget_14">
       <property name="geometry">
        <rect>
         <x>19</x>
         <y>30</y>
-        <width>151</width>
+        <width>161</width>
         <height>21</height>
        </rect>
       </property>
@@ -739,10 +795,10 @@
      <widget class="QLabel" name="label_15">
       <property name="geometry">
        <rect>
-        <x>190</x>
+        <x>198</x>
         <y>30</y>
-        <width>119</width>
-        <height>19</height>
+        <width>111</width>
+        <height>20</height>
        </rect>
       </property>
       <property name="text">
@@ -972,6 +1028,79 @@
       </layout>
      </widget>
     </widget>
+    <widget class="QPushButton" name="pushButton_makeBudget">
+     <property name="geometry">
+      <rect>
+       <x>400</x>
+       <y>310</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Create Budget</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_22">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>310</y>
+       <width>241</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>9</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>If you want a premade recommended budget, enter your income and press create!</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_23">
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>300</y>
+       <width>61</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Income</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_makeBudget">
+     <property name="geometry">
+      <rect>
+       <x>270</x>
+       <y>320</y>
+       <width>113</width>
+       <height>20</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_clearBudget">
+     <property name="geometry">
+      <rect>
+       <x>400</x>
+       <y>360</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Clear Budget</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="widget">
     <attribute name="title">
@@ -1020,9 +1149,9 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>480</y>
+     <y>550</y>
      <width>521</width>
-     <height>241</height>
+     <height>171</height>
     </rect>
    </property>
    <property name="font">
@@ -1042,9 +1171,9 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>480</y>
+     <y>550</y>
      <width>521</width>
-     <height>241</height>
+     <height>171</height>
     </rect>
    </property>
    <property name="font">
@@ -1111,9 +1240,9 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>450</y>
+     <y>520</y>
      <width>141</width>
-     <height>31</height>
+     <height>41</height>
     </rect>
    </property>
    <property name="font">
