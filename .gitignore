@@ -8,6 +8,9 @@ GUI2.creator.user
 GUI3/GUI3/GUI3.pro.user
 GUI3/build-GUI3-Desktop_Qt_5_11_0_clang_64bit-Debug/
 moc_predefs.h
+expenses_copy.ui
+mainwindow.h.autosave
+build-GUI3-Desktop_Qt_5_10_1_clang_64bit2-Debug/
 
 
 # In repository we don't need to have:
