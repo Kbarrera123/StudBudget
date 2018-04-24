@@ -2,6 +2,12 @@
 #include "ui_appdialog.h"
 #include <QMessageBox>
 #include "newwindow.h"
+#include <QtCharts>
+#include <QWidget>
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QMainWindow>
+
+using namespace QtCharts;
 
 AppDialog::AppDialog(User* &user, QWidget *parent) :
     QDialog(parent),
@@ -10,31 +16,18 @@ AppDialog::AppDialog(User* &user, QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ui->comboBox_monthBalance->addItem("January");
-    ui->comboBox_monthBalance->addItem("February");
-    ui->comboBox_monthBalance->addItem("March");
-    ui->comboBox_monthBalance->addItem("April");
-    ui->comboBox_monthBalance->addItem("May");
-    ui->comboBox_monthBalance->addItem("June");
-    ui->comboBox_monthBalance->addItem("July");
-    ui->comboBox_monthBalance->addItem("August");
-    ui->comboBox_monthBalance->addItem("September");
-    ui->comboBox_monthBalance->addItem("October");
-    ui->comboBox_monthBalance->addItem("November");
-    ui->comboBox_monthBalance->addItem("December");
-
-    ui->comboBox_monthBudget->addItem("January");
-    ui->comboBox_monthBudget->addItem("February");
-    ui->comboBox_monthBudget->addItem("March");
-    ui->comboBox_monthBudget->addItem("April");
-    ui->comboBox_monthBudget->addItem("May");
-    ui->comboBox_monthBudget->addItem("June");
-    ui->comboBox_monthBudget->addItem("July");
-    ui->comboBox_monthBudget->addItem("August");
-    ui->comboBox_monthBudget->addItem("September");
-    ui->comboBox_monthBudget->addItem("October");
-    ui->comboBox_monthBudget->addItem("November");
-    ui->comboBox_monthBudget->addItem("December");
+    ui->comboBox_month->addItem("January");
+    ui->comboBox_month->addItem("February");
+    ui->comboBox_month->addItem("March");
+    ui->comboBox_month->addItem("April");
+    ui->comboBox_month->addItem("May");
+    ui->comboBox_month->addItem("June");
+    ui->comboBox_month->addItem("July");
+    ui->comboBox_month->addItem("August");
+    ui->comboBox_month->addItem("September");
+    ui->comboBox_month->addItem("October");
+    ui->comboBox_month->addItem("November");
+    ui->comboBox_month->addItem("December");
 
     ui->tabWidget->setCurrentIndex(0);
 
@@ -76,33 +69,33 @@ void AppDialog::updateBudget(){
 
     this->_user->getAccount()->setExpenseType("FOODBUDGET");
     double foodBudget = this->_user->getAccount()->getExpense();
-    ui->label_foodBudget->setText(QString::number(foodBudget));
-    ui->label_foodBudget->repaint();
+    ui->label_foodBudget_3->setText(QString::number(foodBudget));
+    ui->label_foodBudget_3->repaint();
 
     this->_user->getAccount()->setExpenseType("RENTBUDGET");
     double rentBudget = this->_user->getAccount()->getExpense();
-    ui->label_rentBudget->setText(QString::number(rentBudget));
-    ui->label_rentBudget->repaint();
+    ui->label_rentBudget_3->setText(QString::number(rentBudget));
+    ui->label_rentBudget_3->repaint();
 
     this->_user->getAccount()->setExpenseType("ENTERTAINMENTBUDGET");
     double entertainmentBudget = this->_user->getAccount()->getExpense();
-    ui->label_entertainmentBudget->setText(QString::number(entertainmentBudget));
-    ui->label_entertainmentBudget->repaint();
+    ui->label_entertainmentBudget_3->setText(QString::number(entertainmentBudget));
+    ui->label_entertainmentBudget_3->repaint();
 
     this->_user->getAccount()->setExpenseType("TUITIONBUDGET");
     double tuitionBudget = this->_user->getAccount()->getExpense();
-    ui->label_tuitionBudget->setText(QString::number(tuitionBudget));
-    ui->label_tuitionBudget->repaint();
+    ui->label_tuitionBudget_3->setText(QString::number(tuitionBudget));
+    ui->label_tuitionBudget_3->repaint();
 
     this->_user->getAccount()->setExpenseType("SAVINGSBUDGET");
     double savingsBudget = this->_user->getAccount()->getExpense();
-    ui->label_savingsBudget->setText(QString::number(savingsBudget));
-    ui->label_savingsBudget->repaint();
+    ui->label_savingsBudget_3->setText(QString::number(savingsBudget));
+    ui->label_savingsBudget_3->repaint();
 
     this->_user->getAccount()->setExpenseType("MISCBUDGET");
     double miscBudget = this->_user->getAccount()->getExpense();
-    ui->label_miscBudget->setText(QString::number(miscBudget));
-    ui->label_miscBudget->repaint();
+    ui->label_miscBudget_3->setText(QString::number(miscBudget));
+    ui->label_miscBudget_3->repaint();
 
     std::string finAdvice = this->_user->getAccount()->getFinancialAdvice(this->month);
     QString finAdviceQStr = QString::fromUtf8(finAdvice.c_str());
@@ -153,7 +146,7 @@ void AppDialog::updateBalance(){
     ui->label_financialAdvice->repaint();
 }
 
-void AppDialog::on_comboBox_monthBalance_currentIndexChanged(int index)
+void AppDialog::on_comboBox_month_currentIndexChanged(int index)
 {
     this->setMonth(index);
     this->_user->getAccount()->setMonth(this->month);
@@ -164,22 +157,14 @@ void AppDialog::on_comboBox_monthBalance_currentIndexChanged(int index)
     ui->lineEdit_tuitionCostChanged->clear();
     ui->lineEdit_savingsCostChanged->clear();
     ui->lineEdit_miscCostChanged->clear();
+    ui->lineEdit_foodBudgetChanged_3->clear();
+    ui->lineEdit_rentBudgetChanged_3->clear();
+    ui->lineEdit_entertainmentBudgetChanged_3->clear();
+    ui->lineEdit_tuitionBudgetChanged_3->clear();
+    ui->lineEdit_savingsBudgetChanged_3->clear();
+    ui->lineEdit_miscBudgetChanged_3->clear();
 
     this->updateBalance();
-}
-
-void AppDialog::on_comboBox_monthBudget_currentIndexChanged(int index)
-{
-    this->setMonth(index);
-    this->_user->getAccount()->setMonth(this->month);
-
-    ui->lineEdit_foodBudgetChanged->clear();
-    ui->lineEdit_rentBudgetChanged->clear();
-    ui->lineEdit_entertainmentBudgetChanged->clear();
-    ui->lineEdit_tuitionBudgetChanged->clear();
-    ui->lineEdit_savingsBudgetChanged->clear();
-    ui->lineEdit_miscBudgetChanged->clear();
-
     this->updateBudget();
 }
 
@@ -331,7 +316,7 @@ void AppDialog::on_pushButton_depositFoodB_clicked()
 {
     this->_user->getAccount()->setMonth(this->month);
 
-    QString depositAmt = ui->lineEdit_foodBudgetChanged->text();
+    QString depositAmt = ui->lineEdit_foodBudgetChanged_3->text();
     double depositAmtDouble = depositAmt.toDouble();
     this->_user->getAccount()->setExpenseType("FOODBUDGET");
     this->_user->getAccount()->deposit(depositAmtDouble);
@@ -343,7 +328,7 @@ void AppDialog::on_pushButton_withdrawFoodB_clicked()
 {
     this->_user->getAccount()->setMonth(this->month);
 
-    QString withdrawAmt = ui->lineEdit_foodBudgetChanged->text();
+    QString withdrawAmt = ui->lineEdit_foodBudgetChanged_3->text();
     double withdrawAmtDouble = withdrawAmt.toDouble();
     this->_user->getAccount()->setExpenseType("FOODBUDGET");
 
@@ -360,7 +345,7 @@ void AppDialog::on_pushButton_depositRentB_clicked()
 {
     this->_user->getAccount()->setMonth(this->month);
 
-    QString depositAmt = ui->lineEdit_rentBudgetChanged->text();
+    QString depositAmt = ui->lineEdit_rentBudgetChanged_3->text();
     double depositAmtDouble = depositAmt.toDouble();
     this->_user->getAccount()->setExpenseType("RENTBUDGET");
     this->_user->getAccount()->deposit(depositAmtDouble);
@@ -372,7 +357,7 @@ void AppDialog::on_pushButton_withdrawRentB_clicked()
 {
     this->_user->getAccount()->setMonth(this->month);
 
-    QString withdrawAmt = ui->lineEdit_rentBudgetChanged->text();
+    QString withdrawAmt = ui->lineEdit_rentBudgetChanged_3->text();
     double withdrawAmtDouble = withdrawAmt.toDouble();
     this->_user->getAccount()->setExpenseType("RENTBUDGET");
 
@@ -389,7 +374,7 @@ void AppDialog::on_pushButton_depositEntertainmentB_clicked()
 {
     this->_user->getAccount()->setMonth(this->month);
 
-    QString depositAmt = ui->lineEdit_entertainmentBudgetChanged->text();
+    QString depositAmt = ui->lineEdit_entertainmentBudgetChanged_3->text();
     double depositAmtDouble = depositAmt.toDouble();
     this->_user->getAccount()->setExpenseType("ENTERTAINMENTBUDGET");
     this->_user->getAccount()->deposit(depositAmtDouble);
@@ -401,7 +386,7 @@ void AppDialog::on_pushButton_withdrawEntertainmentB_clicked()
 {
     this->_user->getAccount()->setMonth(this->month);
 
-    QString withdrawAmt = ui->lineEdit_entertainmentBudgetChanged->text();
+    QString withdrawAmt = ui->lineEdit_entertainmentBudgetChanged_3->text();
     double withdrawAmtDouble = withdrawAmt.toDouble();
     this->_user->getAccount()->setExpenseType("ENTERTAINMENTBUDGET");
 
@@ -418,7 +403,7 @@ void AppDialog::on_pushButton_depositTuitionB_clicked()
 {
     this->_user->getAccount()->setMonth(this->month);
 
-    QString depositAmt = ui->lineEdit_tuitionBudgetChanged->text();
+    QString depositAmt = ui->lineEdit_tuitionBudgetChanged_3->text();
     double depositAmtDouble = depositAmt.toDouble();
     this->_user->getAccount()->setExpenseType("TUITIONBUDGET");
     this->_user->getAccount()->deposit(depositAmtDouble);
@@ -430,7 +415,7 @@ void AppDialog::on_pushButton_withdrawTuitionB_clicked()
 {
     this->_user->getAccount()->setMonth(this->month);
 
-    QString withdrawAmt = ui->lineEdit_tuitionBudgetChanged->text();
+    QString withdrawAmt = ui->lineEdit_tuitionBudgetChanged_3->text();
     double withdrawAmtDouble = withdrawAmt.toDouble();
     this->_user->getAccount()->setExpenseType("TUITIONBUDGET");
 
@@ -448,7 +433,7 @@ void AppDialog::on_pushButton_depositSavingsB_clicked()
 {
     this->_user->getAccount()->setMonth(this->month);
 
-    QString depositAmt = ui->lineEdit_savingsBudgetChanged->text();
+    QString depositAmt = ui->lineEdit_savingsBudgetChanged_3->text();
     double depositAmtDouble = depositAmt.toDouble();
     this->_user->getAccount()->setExpenseType("SAVINGSBUDGET");
     this->_user->getAccount()->deposit(depositAmtDouble);
@@ -460,7 +445,7 @@ void AppDialog::on_pushButton_withdrawSavingsB_clicked()
 {
     this->_user->getAccount()->setMonth(this->month);
 
-    QString withdrawAmt = ui->lineEdit_savingsBudgetChanged->text();
+    QString withdrawAmt = ui->lineEdit_savingsBudgetChanged_3->text();
     double withdrawAmtDouble = withdrawAmt.toDouble();
     this->_user->getAccount()->setExpenseType("SAVINGSBUDGET");
 
@@ -478,7 +463,7 @@ void AppDialog::on_pushButton_depositMiscB_clicked()
 {
     this->_user->getAccount()->setMonth(this->month);
 
-    QString depositAmt = ui->lineEdit_miscBudgetChanged->text();
+    QString depositAmt = ui->lineEdit_miscBudgetChanged_3->text();
     double depositAmtDouble = depositAmt.toDouble();
     this->_user->getAccount()->setExpenseType("MISCBUDGET");
     this->_user->getAccount()->deposit(depositAmtDouble);
@@ -490,7 +475,7 @@ void AppDialog::on_pushButton_withdrawMiscB_clicked()
 {
     this->_user->getAccount()->setMonth(this->month);
 
-    QString withdrawAmt = ui->lineEdit_miscBudgetChanged->text();
+    QString withdrawAmt = ui->lineEdit_miscBudgetChanged_3->text();
     double withdrawAmtDouble = withdrawAmt.toDouble();
     this->_user->getAccount()->setExpenseType("MISCBUDGET");
 
@@ -514,8 +499,33 @@ void AppDialog::on_tabWidget_tabBarClicked(int index)
         this->updateBudget();
         this->updateBalance();
         Expenses *expenses = this->_user->getAccount()->getExpenseObj();
-        newWindow *graphWindow = new newWindow(expenses);
-        graphWindow->show();
+        //newWindow *graphWindow = new newWindow(expenses);
+        //graphWindow->show();
+
+
+        //this->setCentralWidget(ui->AppDialog);
+
+        QChartView *foodChart = expenses->getFoodGraph();
+        QChartView *rentChart = expenses->getRentGraph();
+        QChartView *entertainmentChart = expenses->getEntertainmentGraph();
+        QChartView *savingsChart = expenses->getSavingsGraph();
+        QChartView *tuitionChart = expenses->getTuitionGraph();
+        QChartView *miscChart = expenses->getMiscGraph();
+        QChartView *stackedChart = expenses->getExtraDeficitGraphYear();
+
+        QGridLayout *gridLayout = new QGridLayout(ui->groupBox_graphs);
+        ui->groupBox_graphs->setLayout(gridLayout);
+        gridLayout->addWidget(foodChart, 0, 0, 1, 1);
+        gridLayout->addWidget(rentChart, 0, 1, 1, 1);
+        gridLayout->addWidget(entertainmentChart, 1, 1, 1, 1);
+        gridLayout->addWidget(savingsChart, 1, 0, 1, 1);
+        gridLayout->addWidget(tuitionChart, 0, 2, 1, 1);
+        gridLayout->addWidget(miscChart, 1, 2, 1, 1);
+
+        //gridLayout->addWidget(stackedChart, 0, 3, 1, 1);
+        //this->resize(300, 300);
+
+        //gridLayout->addWidget(ui->pushButton, 2, 1, 1, 1);
 
         ui->label_financialAdvice->hide();
 
