@@ -46,9 +46,7 @@ AppDialog::AppDialog(User* &user, QWidget *parent) :
     user->getAccount()->writeData();
     user->getAccount()->setProjectedBudget();
 
-
-    this->updateBalance();
-    this->updateBudget();
+    this->updateAll();
 }
 
 AppDialog::~AppDialog()
@@ -63,6 +61,14 @@ void AppDialog::on_pushButton_signOut_clicked()
 
 void AppDialog::setMonth(int month) {
     this->month = month;
+}
+
+void AppDialog::updateAll(){
+    for (int i = 0; i < 12; i++) {
+        this->setMonth(i);
+        updateBudget();
+        updateBalance();
+    }
 }
 
 void AppDialog::updateBudget(){

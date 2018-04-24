@@ -237,12 +237,14 @@ double Account::getExpense() {
                 if (!(convert >> expenseValue)) {
                     expenseValue = 0;	//if it's not converted, this returns a zero
                 }
+                this->setCost(expenseValue);
                 return expenseValue;
             }
         }
         lineContents.clear();	//cleanup stuff
     }
     readData.close();
+
     return expenseValue;
 }
 

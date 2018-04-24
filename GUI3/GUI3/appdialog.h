@@ -14,6 +14,7 @@ class AppDialog : public QDialog
     Q_OBJECT
 
 public:
+    void updateAll();
     void setMonth(int month);
     void updateBudget();
     void updateBalance();
