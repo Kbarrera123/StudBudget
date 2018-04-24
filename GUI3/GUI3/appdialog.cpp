@@ -522,7 +522,6 @@ void AppDialog::on_tabWidget_tabBarClicked(int index)
         std::string finAdvice = this->_user->getAccount()->getFinancialAdvice(-1); // -1 is to make it do year cost instead of monthly
         QString finAdviceQStr = QString::fromUtf8(finAdvice.c_str());
 
-        ui->label_financialAdvice->clear();
         ui->label_yearAdvice->setText(finAdviceQStr);
         ui->label_yearAdvice->repaint();
 
