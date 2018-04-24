@@ -46,7 +46,7 @@ public:
     void projectBudget();
     void getAnnualCostChart();
     void getMonthCostChart(int month);
-    void getExtraDeficitGraphYear();
+    QChartView* getExtraDeficitGraphYear();
     void getExtraDeficitGraphMonth(int month);
     std::string financialAdvice();
     std::string financialAdvice(int month);

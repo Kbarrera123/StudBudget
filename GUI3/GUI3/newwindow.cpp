@@ -23,6 +23,7 @@ newWindow::newWindow(Expenses* &expenses, QWidget *parent) :
     QChartView *savingsChart = this->_expenses->getSavingsGraph();
     QChartView *tuitionChart = this->_expenses->getTuitionGraph();
     QChartView *miscChart = this->_expenses->getMiscGraph();
+    QChartView *stackedChart = this->_expenses->getExtraDeficitGraphYear();
 
     QGridLayout *gridLayout = new QGridLayout(ui->centralwidget);
     ui->centralwidget->setLayout(gridLayout);
@@ -32,6 +33,11 @@ newWindow::newWindow(Expenses* &expenses, QWidget *parent) :
     gridLayout->addWidget(savingsChart, 1, 0, 1, 1);
     gridLayout->addWidget(tuitionChart, 0, 2, 1, 1);
     gridLayout->addWidget(miscChart, 1, 2, 1, 1);
+
+    gridLayout->addWidget(stackedChart, 0, 3, 1, 1);
+
+    gridLayout->addWidget(ui->pushButton, 2, 1, 1, 1);
+
 
 }
 

@@ -478,7 +478,7 @@ void Expenses::getMonthCostChart(int month) { // expenses pie chart by month
   window.show();
 }
 
-void Expenses::getExtraDeficitGraphYear() { // expenses bar chart by year
+QChartView* Expenses::getExtraDeficitGraphYear() { // expenses bar chart by year
   setExtraDeficit();
 
   QBarSet *set0 = new QBarSet("Under budget spending");
@@ -516,10 +516,7 @@ void Expenses::getExtraDeficitGraphYear() { // expenses bar chart by year
   QChartView *chartView = new QChartView(chart);
   chartView->setRenderHint(QPainter::Antialiasing);
 
-  QMainWindow window;
-   window.setCentralWidget(chartView);
-   window.resize(420, 300);
-   window.show();
+  return chartView;
 }
 
 void Expenses::getExtraDeficitGraphMonth(int month) { // expenses bar chart by month
