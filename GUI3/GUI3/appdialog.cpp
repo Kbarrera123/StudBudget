@@ -491,19 +491,14 @@ void AppDialog::on_pushButton_withdrawMiscB_clicked()
 
 void AppDialog::on_tabWidget_tabBarClicked(int index)
 {
-    if (index == 0 || index == 1) {
+    if (index == 0) {
         ui->label_financialAdvice->show();
         ui->label_yearAdvice->hide();
     }
-    else if (index == 2) {
+    else if (index == 1) {
         this->updateBudget();
         this->updateBalance();
         Expenses *expenses = this->_user->getAccount()->getExpenseObj();
-        //newWindow *graphWindow = new newWindow(expenses);
-        //graphWindow->show();
-
-
-        //this->setCentralWidget(ui->AppDialog);
 
         QChartView *foodChart = expenses->getFoodGraph();
         QChartView *rentChart = expenses->getRentGraph();
