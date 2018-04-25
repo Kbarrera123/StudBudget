@@ -645,15 +645,15 @@
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>410</y>
+         <y>407</y>
          <width>691</width>
-         <height>141</height>
+         <height>171</height>
         </rect>
        </property>
        <property name="font">
         <font>
          <family>Yu Gothic UI</family>
-         <pointsize>14</pointsize>
+         <pointsize>12</pointsize>
         </font>
        </property>
        <property name="frameShadow">
