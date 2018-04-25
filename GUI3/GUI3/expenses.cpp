@@ -482,6 +482,14 @@ QChartView* Expenses::getExtraDeficitGraphYear() { // expenses bar chart by year
   QBarSet *set1 = new QBarSet("Unused budget");
   QBarSet *set2 = new QBarSet("Over budget spending");
 
+  if(totalAnnualCost > totalAnnualBudget){
+      *set0 << totalFoodBudget << totalRentBudget << totalEntertainmentBudget << totalTuitionBudget << totalSavingsBudget << totalMiscBudget;
+  }
+  else{
+      *set0 << totalFoodCost << totalRentCost << totalEntertainmentCost << totalTuitionCost << totalSavingsCost << totalMiscCost;
+  }
+
+
   *set0 << totalFoodCost << totalRentCost << totalEntertainmentCost << totalTuitionCost << totalSavingsCost << totalMiscCost;
   *set1 << totalFoodExtra << totalRentExtra << totalEntertainmentExtra << totalTuitionExtra << totalSavingsExtra << totalMiscExtra;
   *set2 << totalFoodDeficit << totalRentDeficit << totalEntertainmentDeficit << totalTuitionDeficit << totalSavingsDeficit << totalMiscDeficit;
@@ -519,11 +527,17 @@ QChartView* Expenses::getExtraDeficitGraphYear() { // expenses bar chart by year
 QChartView* Expenses::getExtraDeficitGraphMonth(int month) { // expenses bar chart by month
   setExtraDeficit();
 
-  QBarSet *set0 = new QBarSet("Under budet spending");
+  QBarSet *set0 = new QBarSet("Under budget spending");
   QBarSet *set1 = new QBarSet("Unused budget");
   QBarSet *set2 = new QBarSet("Over budget spending");
 
-  *set0 << foodCost[month] << rentCost[month] << entertainmentCost[month] << tuitionCost[month] << savingsCost[month] << miscCost[month];
+  if(foodCost[month] > foodBudget[month]){
+      *set0 << foodBudget[month] << rentBudget[month] << entertainmentBudget[month] << tuitionBudget[month] << savingsBudget[month] << miscBudget[month];
+  }
+  else{
+      *set0 << foodCost[month] << rentCost[month] << entertainmentCost[month] << tuitionCost[month]<< savingsCost[month]<< miscCost[month];
+  }
+
   *set1 << foodExtra[month] << rentExtra[month] << entertainmentExtra[month] << tuitionExtra[month] << savingsExtra[month] << miscExtra[month];
   *set2 << foodDeficit[month] << rentDeficit[month] << entertainmentDeficit[month] << tuitionDeficit[month] << savingsDeficit[month] << miscDeficit[month];
 

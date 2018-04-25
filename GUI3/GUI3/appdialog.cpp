@@ -73,6 +73,14 @@ AppDialog::AppDialog(User* &user, QWidget *parent) :
     gridLayout->addWidget(tuitionChart, 0, 2, 1, 1);
     gridLayout->addWidget(miscChart, 1, 2, 1, 1);
     yearGridLayout->addWidget(stackedChart, 1, 1);
+
+
+    std::string finAdvice = this->_user->getAccount()->getFinancialAdvice(this->month);
+    QString finAdviceQStr = QString::fromUtf8(finAdvice.c_str());
+
+    ui->label_financialAdvice->clear();
+    ui->label_financialAdvice->setText(finAdviceQStr);
+    ui->label_financialAdvice->show();
 }
 
 AppDialog::~AppDialog()
@@ -92,6 +100,7 @@ void AppDialog::updateAll(){
         updateBudget();
         updateBalance();
     }
+    this->month = 0;
 }
 
 void AppDialog::updateBudget(){
@@ -126,6 +135,13 @@ void AppDialog::updateBudget(){
     double miscBudget = this->_user->getAccount()->getExpense();
     ui->label_miscBudget_3->setText(QString::number(miscBudget));
     ui->label_miscBudget_3->repaint();
+
+    std::string finAdvice = this->_user->getAccount()->getFinancialAdvice(this->month);
+    QString finAdviceQStr = QString::fromUtf8(finAdvice.c_str());
+
+    ui->label_financialAdvice->clear();
+    ui->label_financialAdvice->setText(finAdviceQStr);
+    ui->label_financialAdvice->show();
 }
 
 void AppDialog::updateBalance(){
@@ -160,6 +176,13 @@ void AppDialog::updateBalance(){
     double miscCost = this->_user->getAccount()->getExpense();
     ui->label_miscCost->setText(QString::number(miscCost));
     ui->label_miscCost->repaint();
+
+    std::string finAdvice = this->_user->getAccount()->getFinancialAdvice(this->month);
+    QString finAdviceQStr = QString::fromUtf8(finAdvice.c_str());
+
+    ui->label_financialAdvice->clear();
+    ui->label_financialAdvice->setText(finAdviceQStr);
+    ui->label_financialAdvice->show();
 }
 
 void AppDialog::on_comboBox_month_activated(int index)
@@ -189,14 +212,6 @@ void AppDialog::on_comboBox_month_activated(int index)
 
     monthGridLayout->addWidget(monthStackedChart, 0, 0, 1, 1);
     pieGridLayout->addWidget(pieChart, 0, 0, 1, 1);
-
-    std::string finAdvice = this->_user->getAccount()->getFinancialAdvice(this->month);
-    QString finAdviceQStr = QString::fromUtf8(finAdvice.c_str());
-
-    ui->label_financialAdvice->clear();
-    ui->label_financialAdvice->setText(finAdviceQStr);
-    //ui->label_financialAdvice->repaint();
-    ui->label_financialAdvice->show();
 }
 
 void AppDialog::on_pushButton_depositFoodC_clicked()
