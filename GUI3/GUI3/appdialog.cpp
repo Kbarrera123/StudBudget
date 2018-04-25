@@ -683,3 +683,20 @@ void AppDialog::on_tabWidget_currentChanged(int index)
         ui->label_yearAdvice->show();
     }
 }
+
+void AppDialog::on_tabWidget_3_currentChanged(int index)
+{
+    if (index == 1) {
+        Expenses *expenses = this->_user->getAccount()->getExpenseObj();
+
+        this->updateBalance();
+        this->updateBudget();
+
+        QChartView *monthStackedChart = expenses->getExtraDeficitGraphMonth(this->month);
+        QChartView *pieChart = expenses->getMonthCostChart(this->month);
+
+        monthGridLayout->addWidget(monthStackedChart, 0, 0, 1, 1);
+        pieGridLayout->addWidget(pieChart, 0, 0, 1, 1);
+    }
+
+}

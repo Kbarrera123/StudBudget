@@ -53,6 +53,8 @@ private slots:
     void on_pushButton_makeBalance_clicked();
     void on_tabWidget_currentChanged(int index);
 
+    void on_tabWidget_3_currentChanged(int index);
+
 private:
     User* _user;
     QGridLayout *yearGridLayout;
