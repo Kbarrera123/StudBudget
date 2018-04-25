@@ -529,11 +529,47 @@ QChartView* Expenses::getExtraDeficitGraphMonth(int month) { // expenses bar cha
   QBarSet *set2 = new QBarSet("Over budget spending");
 
   if(foodCost[month] > foodBudget[month]){
-      *set0 << foodBudget[month] << rentBudget[month] << entertainmentBudget[month] << tuitionBudget[month] << savingsBudget[month] << miscBudget[month];
+      *set0 << foodBudget[month];
   }
   else{
-      *set0 << foodCost[month] << rentCost[month] << entertainmentCost[month] << tuitionCost[month]<< savingsCost[month]<< miscCost[month];
+      *set0 << foodCost[month];
   }
+
+  if(rentCost[month] > rentBudget[month]){
+      *set0 << rentBudget[month];
+  }
+  else{
+      *set0 << rentCost[month];
+  }
+
+  if(entertainmentCost[month] > entertainmentBudget[month]){
+      *set0 << entertainmentBudget[month];
+  }
+  else{
+      *set0 << entertainmentCost[month];
+  }
+
+  if(tuitionCost[month] > tuitionBudget[month]){
+      *set0 << tuitionBudget[month];
+  }
+  else{
+      *set0 << tuitionCost[month];
+  }
+
+  if(savingsCost[month] > savingsBudget[month]){
+      *set0 << savingsBudget[month];
+  }
+  else{
+      *set0 << savingsCost[month];
+  }
+
+  if(miscCost[month] > miscBudget[month]){
+      *set0 << miscBudget[month];
+  }
+  else{
+      *set0 << miscCost[month];
+  }
+
 
   *set1 << foodExtra[month] << rentExtra[month] << entertainmentExtra[month] << tuitionExtra[month] << savingsExtra[month] << miscExtra[month];
   *set2 << foodDeficit[month] << rentDeficit[month] << entertainmentDeficit[month] << tuitionDeficit[month] << savingsDeficit[month] << miscDeficit[month];
@@ -620,7 +656,10 @@ std::string Expenses::financialAdvice() {
         concatAdvice += "Too much of your budget is in miscellaneous expenses.\n";
     }
 
-    concatAdvice += "Treat yourself, but don't overspend.\n";
+
+    if(concatAdvice == ""){
+        concatAdvice += "You're doing a good job! Keep it up.";
+    }
 
     return concatAdvice;
 
@@ -675,33 +714,33 @@ std::string Expenses::financialAdvice(int month) {
     }
 
 
-    if (foodCost[month]/totalCost[month] > .17) {
+    if (foodCost[month]/totalBudget[month] > .17) {
         concatAdvice += "It is recommended to spend no more than 15% on Food in ";
         concatAdvice += monthString;
         concatAdvice += ".\n";
     }
 
-    if (rentCost[month]/totalCost[month] < .28 || rentCost[month]/totalCost[month] > .32) {
+    if (rentCost[month]/totalBudget[month] < .28 || rentCost[month]/totalBudget[month] > .32) {
         concatAdvice += "Remember, put 30% of your income towards Rent in ";
         concatAdvice += monthString;
         concatAdvice += ".\n";
     }
 
-    if (entertainmentCost[month]/totalCost[month] > .12) {
+    if (entertainmentCost[month]/totalBudget[month] > .12) {
         concatAdvice += "Prioritize your spending! Your Entertainment costs have exceeded 10% in ";
         concatAdvice += monthString;
         concatAdvice += ".\n";
     }
 
-    if (tuitionCost[month]/totalCost[month] < .18 || tuitionCost[month]/totalCost[month] > .24) {
+    if (tuitionCost[month]/totalBudget[month] < .18 || tuitionCost[month]/totalBudget[month] > .24) {
         concatAdvice += "Make sure that 20% of your income to Tuition this month to avoid student loan debt!\n";
     }
 
-    if ((savingsCost[month] / totalCost[month]) < .04 ) { // is this correct?
+    if ((savingsCost[month] / totalBudget[month]) < .04 ) { // is this correct?
         concatAdvice += "Your Savings are low, make sure to save at least 5% of your income this month!\n";
     }
 
-    if (miscCost[month]/totalCost[month] > .22) {
+    if (miscCost[month]/totalBudget[month] > .22) {
         concatAdvice += "Miscellaneous costs like clothing or transportation shouldn't exceed 20% of your income!\n";
     }
 
@@ -729,7 +768,9 @@ std::string Expenses::financialAdvice(int month) {
         concatAdvice += "Too much of your budget is in miscellaneous expenses this month.\n";
     }
 
-    concatAdvice += "Treat yourself, but don't overspend.\n";
+    if(concatAdvice == ""){
+        concatAdvice += "You're doing a good job! Keep it up.";
+    }
 
     return concatAdvice;
 

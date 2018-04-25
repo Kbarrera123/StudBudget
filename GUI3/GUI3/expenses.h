@@ -50,6 +50,7 @@ public:
     QChartView* getExtraDeficitGraphMonth(int month);
     std::string financialAdvice();
     std::string financialAdvice(int month);
+    double totalBudget[12];
 
 private:
     double foodCost[12];
@@ -77,7 +78,7 @@ private:
     double miscExtra[12];
     double miscDeficit[12];
     double totalCost[12];
-    double totalBudget[12];
+    //double totalBudget[12];
     double totalExtra[12];
     double totalDeficit[12];
     double totalFoodCost;

@@ -40,6 +40,6 @@ void MakeAccountDialog::on_pushButton_accountMade_clicked()
     }else{
         logInDialog = new LogInDialog(this);
         logInDialog->show();
-        hide();
+        close();
     }
 }

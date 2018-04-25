@@ -85,6 +85,10 @@ AppDialog::AppDialog(User* &user, QWidget *parent) :
 
     this->updateBalance();
     this->updateBudget();
+    user->getAccount()->setProjectedBudget();
+
+    this->updateMonthlyAdvice();
+    QMessageBox::warning(this, "Yeah", QString::number(expenses->totalBudget[month]));
 }
 
 AppDialog::~AppDialog()
@@ -106,6 +110,16 @@ void AppDialog::updateAll(){
     }
     this->month = 0;
 }
+
+void AppDialog::updateMonthlyAdvice(){
+    std::string finAdvice = this->_user->getAccount()->getFinancialAdvice(this->month);
+    QString finAdviceQStr = QString::fromUtf8(finAdvice.c_str());
+
+    ui->label_financialAdvice->clear();
+    ui->label_financialAdvice->setText(finAdviceQStr);
+    ui->label_financialAdvice->show();
+}
+
 
 void AppDialog::updateBudget(){
     this->_user->getAccount()->setMonth(this->month);
@@ -139,13 +153,6 @@ void AppDialog::updateBudget(){
     double miscBudget = this->_user->getAccount()->getExpense();
     ui->label_miscBudget_3->setText(QString::number(miscBudget));
     ui->label_miscBudget_3->repaint();
-
-    std::string finAdvice = this->_user->getAccount()->getFinancialAdvice(this->month);
-    QString finAdviceQStr = QString::fromUtf8(finAdvice.c_str());
-
-    ui->label_financialAdvice->clear();
-    ui->label_financialAdvice->setText(finAdviceQStr);
-    ui->label_financialAdvice->show();
 }
 
 void AppDialog::updateBalance(){
@@ -180,13 +187,6 @@ void AppDialog::updateBalance(){
     double miscCost = this->_user->getAccount()->getExpense();
     ui->label_miscCost->setText(QString::number(miscCost));
     ui->label_miscCost->repaint();
-
-    std::string finAdvice = this->_user->getAccount()->getFinancialAdvice(this->month);
-    QString finAdviceQStr = QString::fromUtf8(finAdvice.c_str());
-
-    ui->label_financialAdvice->clear();
-    ui->label_financialAdvice->setText(finAdviceQStr);
-    ui->label_financialAdvice->show();
 }
 
 void AppDialog::on_comboBox_month_activated(int index)
@@ -210,6 +210,7 @@ void AppDialog::on_comboBox_month_activated(int index)
 
     this->updateBalance();
     this->updateBudget();
+    this->updateMonthlyAdvice();
 
     QChartView *monthStackedChart = expenses->getExtraDeficitGraphMonth(this->month);
     QChartView *pieChart = expenses->getMonthCostChart(this->month);
@@ -228,6 +229,7 @@ void AppDialog::on_pushButton_depositFoodC_clicked()
     this->_user->getAccount()->deposit(depositAmtDouble);
 
     this->updateBalance();
+    this->updateMonthlyAdvice();
 }
 
 void AppDialog::on_pushButton_withdrawFoodC_clicked()
@@ -240,6 +242,7 @@ void AppDialog::on_pushButton_withdrawFoodC_clicked()
     this->_user->getAccount()->withdraw(withdrawAmtDouble);
 
     this->updateBalance();
+    this->updateMonthlyAdvice();
 }
 
 void AppDialog::on_pushButton_depositRentC_clicked()
@@ -252,6 +255,7 @@ void AppDialog::on_pushButton_depositRentC_clicked()
     this->_user->getAccount()->deposit(depositAmtDouble);
 
     this->updateBalance();
+    this->updateMonthlyAdvice();
 }
 
 void AppDialog::on_pushButton_withdrawRentC_clicked()
@@ -264,6 +268,7 @@ void AppDialog::on_pushButton_withdrawRentC_clicked()
     this->_user->getAccount()->withdraw(withdrawAmtDouble);
 
     this->updateBalance();
+    this->updateMonthlyAdvice();
 }
 
 void AppDialog::on_pushButton_depositEntertainmentC_clicked()
@@ -276,6 +281,7 @@ void AppDialog::on_pushButton_depositEntertainmentC_clicked()
     this->_user->getAccount()->deposit(depositAmtDouble);
 
     this->updateBalance();
+    this->updateMonthlyAdvice();
 }
 
 void AppDialog::on_pushButton_withdrawEntertainmentC_clicked()
@@ -288,6 +294,7 @@ void AppDialog::on_pushButton_withdrawEntertainmentC_clicked()
     this->_user->getAccount()->withdraw(withdrawAmtDouble);
 
     this->updateBalance();
+    this->updateMonthlyAdvice();
 }
 
 void AppDialog::on_pushButton_depositTuitionC_clicked()
@@ -300,6 +307,7 @@ void AppDialog::on_pushButton_depositTuitionC_clicked()
     this->_user->getAccount()->deposit(depositAmtDouble);
 
     this->updateBalance();
+    this->updateMonthlyAdvice();
 }
 
 void AppDialog::on_pushButton_withdrawTuitionC_clicked()
@@ -312,6 +320,7 @@ void AppDialog::on_pushButton_withdrawTuitionC_clicked()
     this->_user->getAccount()->withdraw(withdrawAmtDouble);
 
     this->updateBalance();
+    this->updateMonthlyAdvice();
 }
 
 void AppDialog::on_pushButton_depositSavingsC_clicked()
@@ -324,6 +333,7 @@ void AppDialog::on_pushButton_depositSavingsC_clicked()
     this->_user->getAccount()->deposit(depositAmtDouble);
 
     this->updateBalance();
+    this->updateMonthlyAdvice();
 }
 
 void AppDialog::on_pushButton_withdrawSavingsC_clicked()
@@ -336,6 +346,7 @@ void AppDialog::on_pushButton_withdrawSavingsC_clicked()
     this->_user->getAccount()->withdraw(withdrawAmtDouble);
 
     this->updateBalance();
+    this->updateMonthlyAdvice();
 }
 
 void AppDialog::on_pushButton_depositMiscC_clicked()
@@ -348,6 +359,7 @@ void AppDialog::on_pushButton_depositMiscC_clicked()
     this->_user->getAccount()->deposit(depositAmtDouble);
 
     this->updateBalance();
+    this->updateMonthlyAdvice();
 }
 
 void AppDialog::on_pushButton_withdrawMiscC_clicked()
@@ -360,6 +372,7 @@ void AppDialog::on_pushButton_withdrawMiscC_clicked()
     this->_user->getAccount()->withdraw(withdrawAmtDouble);
 
     this->updateBalance();
+    this->updateMonthlyAdvice();
 }
 
 void AppDialog::on_pushButton_depositFoodB_clicked()
@@ -372,6 +385,7 @@ void AppDialog::on_pushButton_depositFoodB_clicked()
     this->_user->getAccount()->deposit(depositAmtDouble);
 
     this->updateBudget();
+    this->updateMonthlyAdvice();
 }
 
 void AppDialog::on_pushButton_withdrawFoodB_clicked()
@@ -389,6 +403,7 @@ void AppDialog::on_pushButton_withdrawFoodB_clicked()
         this->_user->getAccount()->withdraw(withdrawAmtDouble);
     }
     this->updateBudget();
+    this->updateMonthlyAdvice();
 }
 
 void AppDialog::on_pushButton_depositRentB_clicked()
@@ -401,6 +416,7 @@ void AppDialog::on_pushButton_depositRentB_clicked()
     this->_user->getAccount()->deposit(depositAmtDouble);
 
     this->updateBudget();
+    this->updateMonthlyAdvice();
 }
 
 void AppDialog::on_pushButton_withdrawRentB_clicked()
@@ -418,6 +434,7 @@ void AppDialog::on_pushButton_withdrawRentB_clicked()
         this->_user->getAccount()->withdraw(withdrawAmtDouble);
     }
     this->updateBudget();
+    this->updateMonthlyAdvice();
 }
 
 void AppDialog::on_pushButton_depositEntertainmentB_clicked()
@@ -430,6 +447,7 @@ void AppDialog::on_pushButton_depositEntertainmentB_clicked()
     this->_user->getAccount()->deposit(depositAmtDouble);
 
     this->updateBudget();
+    this->updateMonthlyAdvice();
 }
 
 void AppDialog::on_pushButton_withdrawEntertainmentB_clicked()
@@ -447,6 +465,7 @@ void AppDialog::on_pushButton_withdrawEntertainmentB_clicked()
         this->_user->getAccount()->withdraw(withdrawAmtDouble);
     }
     this->updateBudget();
+    this->updateMonthlyAdvice();
 }
 
 void AppDialog::on_pushButton_depositTuitionB_clicked()
@@ -459,6 +478,7 @@ void AppDialog::on_pushButton_depositTuitionB_clicked()
     this->_user->getAccount()->deposit(depositAmtDouble);
 
     this->updateBudget();
+    this->updateMonthlyAdvice();
 }
 
 void AppDialog::on_pushButton_withdrawTuitionB_clicked()
@@ -477,6 +497,7 @@ void AppDialog::on_pushButton_withdrawTuitionB_clicked()
         this->_user->getAccount()->withdraw(withdrawAmtDouble);
     }
     this->updateBudget();
+    this->updateMonthlyAdvice();
 }
 
 void AppDialog::on_pushButton_depositSavingsB_clicked()
@@ -489,6 +510,7 @@ void AppDialog::on_pushButton_depositSavingsB_clicked()
     this->_user->getAccount()->deposit(depositAmtDouble);
 
     this->updateBudget();
+    this->updateMonthlyAdvice();
 }
 
 void AppDialog::on_pushButton_withdrawSavingsB_clicked()
@@ -507,6 +529,7 @@ void AppDialog::on_pushButton_withdrawSavingsB_clicked()
         this->_user->getAccount()->withdraw(withdrawAmtDouble);
     }
     this->updateBudget();
+    this->updateMonthlyAdvice();
 }
 
 void AppDialog::on_pushButton_depositMiscB_clicked()
@@ -519,6 +542,7 @@ void AppDialog::on_pushButton_depositMiscB_clicked()
     this->_user->getAccount()->deposit(depositAmtDouble);
 
     this->updateBudget();
+    this->updateMonthlyAdvice();
 }
 
 void AppDialog::on_pushButton_withdrawMiscB_clicked()
@@ -537,6 +561,7 @@ void AppDialog::on_pushButton_withdrawMiscB_clicked()
         this->_user->getAccount()->withdraw(withdrawAmtDouble);
     }
     this->updateBudget();
+    this->updateMonthlyAdvice();
 }
 
 void AppDialog::on_pushButton_makeBudget_clicked()
@@ -588,6 +613,7 @@ void AppDialog::on_pushButton_makeBudget_clicked()
     this->_user->getAccount()->setProjectedBudget();
     this->updateBalance();
     this->updateBudget();
+    this->updateMonthlyAdvice();
 }
 
 void AppDialog::on_pushButton_clearBudget_clicked()
@@ -608,8 +634,10 @@ void AppDialog::on_pushButton_clearBudget_clicked()
         this->_user->getAccount()->setExpenseType("MISCBUDGET");
         this->_user->getAccount()->changeExpenseField(0);
     }
+    this->_user->getAccount()->setProjectedBudget();
     this->updateBalance();
     this->updateBudget();
+    this->updateMonthlyAdvice();
 }
 
 void AppDialog::on_pushButton_clearBalance_clicked()
@@ -632,6 +660,7 @@ void AppDialog::on_pushButton_clearBalance_clicked()
     }
     this->updateBalance();
     this->updateBudget();
+    this->updateMonthlyAdvice();
 }
 
 void AppDialog::on_pushButton_makeBalance_clicked()
@@ -672,6 +701,7 @@ void AppDialog::on_pushButton_makeBalance_clicked()
     }
     this->updateBalance();
     this->updateBudget();
+    this->updateMonthlyAdvice();
 }
 
 void AppDialog::on_tabWidget_currentChanged(int index)
@@ -712,6 +742,7 @@ void AppDialog::on_tabWidget_3_currentChanged(int index)
 
         this->updateBalance();
         this->updateBudget();
+        this->updateMonthlyAdvice();
 
         QChartView *monthStackedChart = expenses->getExtraDeficitGraphMonth(this->month);
         QChartView *pieChart = expenses->getMonthCostChart(this->month);
