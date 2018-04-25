@@ -1168,7 +1168,7 @@
     <widget class="QTabWidget" name="tabWidget_2">
      <property name="geometry">
       <rect>
-       <x>0</x>
+       <x>40</x>
        <y>10</y>
        <width>1011</width>
        <height>571</height>
