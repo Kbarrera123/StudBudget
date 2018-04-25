@@ -16,19 +16,18 @@ AppDialog::AppDialog(User* &user, QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ui->comboBox_month->addItem("December");
-    ui->comboBox_month->addItem("November");
-    ui->comboBox_month->addItem("October");
-    ui->comboBox_month->addItem("September");
-    ui->comboBox_month->addItem("August");
-    ui->comboBox_month->addItem("July");
-    ui->comboBox_month->addItem("June");
-    ui->comboBox_month->addItem("May");
-    ui->comboBox_month->addItem("April");
-    ui->comboBox_month->addItem("March");
-    ui->comboBox_month->addItem("February");
-    ui->comboBox_month->addItem("January");
-
+    ui->comboBox_month->insertItem(0, "January");
+    ui->comboBox_month->insertItem(1, "February");
+    ui->comboBox_month->insertItem(2, "March");
+    ui->comboBox_month->insertItem(3, "April");
+    ui->comboBox_month->insertItem(4, "May");
+    ui->comboBox_month->insertItem(5, "June");
+    ui->comboBox_month->insertItem(6, "July");
+    ui->comboBox_month->insertItem(7, "August");
+    ui->comboBox_month->insertItem(8, "September");
+    ui->comboBox_month->insertItem(9, "October");
+    ui->comboBox_month->insertItem(10, "November");
+    ui->comboBox_month->insertItem(11,"December");
 
     string username = user->getUsername();
     QString userQStr = QString::fromUtf8((username + '!').c_str());
