@@ -48,7 +48,6 @@ private slots:
     void on_pushButton_withdrawSavingsB_clicked();
     void on_pushButton_depositMiscB_clicked();
     void on_pushButton_withdrawMiscB_clicked();
-    void on_tabWidget_tabBarClicked(int index);
     void on_pushButton_makeBudget_clicked();
     void on_pushButton_clearBudget_clicked();
     void on_pushButton_clearBalance_clicked();
@@ -56,8 +55,14 @@ private slots:
 
     void on_tabWidget_3_currentChanged(int index);
 
+    void on_tabWidget_2_currentChanged(int index);
+
+    void on_tabWidget_currentChanged(int index);
+
 private:
     User* _user;
+    QGridLayout *yearGridLayout;
+    QGridLayout *gridLayout;
     int month;
     Ui::AppDialog *ui;
 };

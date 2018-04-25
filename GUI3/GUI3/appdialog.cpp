@@ -50,8 +50,8 @@ AppDialog::AppDialog(User* &user, QWidget *parent) :
     QChartView *miscChart = expenses->getMiscGraph();
     QChartView *stackedChart = expenses->getExtraDeficitGraphYear();
 
-    QGridLayout *yearGridLayout = new QGridLayout(ui->groupBox_yearlyGraphs);
-    QGridLayout *gridLayout = new QGridLayout(ui->groupBox_graphs);
+    yearGridLayout = new QGridLayout(ui->groupBox_yearlyGraphs);
+    gridLayout = new QGridLayout(ui->groupBox_graphs);
     ui->groupBox_graphs->setLayout(gridLayout);
     ui->groupBox_yearlyGraphs->setLayout(yearGridLayout);
 
@@ -505,26 +505,6 @@ void AppDialog::on_pushButton_withdrawMiscB_clicked()
     this->updateBudget();
 }
 
-void AppDialog::on_tabWidget_tabBarClicked(int index)
-{
-
-    if (index == 1) {
-        //ui->label_yearAdvice->hide();
-        //ui->label_financialAdvice->hide();
-
-        this->updateBalance();
-        this->updateBudget();
-
-        std::string yearlyFinAdvice = this->_user->getAccount()->getFinancialAdvice(-1); // -1 is to make it do year cost instead of monthly
-        QString yearlyFinAdviceQStr = QString::fromUtf8(yearlyFinAdvice.c_str());
-
-        ui->label_yearAdvice->setText(yearlyFinAdviceQStr);
-        //ui->label_yearAdvice->repaint();
-        ui->label_yearAdvice->show();
-    }
-
-}
-
 void AppDialog::on_pushButton_makeBudget_clicked()
 {
     QString totalAmt = ui->lineEdit_makeBudget->text();
@@ -673,5 +653,39 @@ void AppDialog::on_tabWidget_3_currentChanged(int index)
         QChartView *pieChart = this->_user->getAccount()->getExpenseObj()->getMonthCostChart(this->month);
         pieGridLayout->addWidget(pieChart, 0, 0, 1, 1);
 
+    }
+}
+
+void AppDialog::on_tabWidget_2_currentChanged(int index)
+{
+    ;
+}
+
+void AppDialog::on_tabWidget_currentChanged(int index)
+{
+    if (index == 1) {
+        Expenses *expenses = this->_user->getAccount()->getExpenseObj();
+
+        QChartView *foodChart = expenses->getFoodGraph();
+        QChartView *rentChart = expenses->getRentGraph();
+        QChartView *entertainmentChart = expenses->getEntertainmentGraph();
+        QChartView *savingsChart = expenses->getSavingsGraph();
+        QChartView *tuitionChart = expenses->getTuitionGraph();
+        QChartView *miscChart = expenses->getMiscGraph();
+        QChartView *stackedChart = expenses->getExtraDeficitGraphYear();
+
+        gridLayout->addWidget(foodChart, 0, 0, 1, 1);
+        gridLayout->addWidget(rentChart, 0, 1, 1, 1);
+        gridLayout->addWidget(entertainmentChart, 1, 1, 1, 1);
+        gridLayout->addWidget(savingsChart, 1, 0, 1, 1);
+        gridLayout->addWidget(tuitionChart, 0, 2, 1, 1);
+        gridLayout->addWidget(miscChart, 1, 2, 1, 1);
+        yearGridLayout->addWidget(stackedChart, 1, 1);
+
+        std::string yearlyFinAdvice = this->_user->getAccount()->getFinancialAdvice(-1); // -1 is to make it do year cost instead of monthly
+        QString yearlyFinAdviceQStr = QString::fromUtf8(yearlyFinAdvice.c_str());
+
+        ui->label_yearAdvice->setText(yearlyFinAdviceQStr);
+        ui->label_yearAdvice->show();
     }
 }

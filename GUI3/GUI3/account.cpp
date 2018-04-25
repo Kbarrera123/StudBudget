@@ -158,7 +158,7 @@ void Account::setCost(double amount){
     else if(this->expenseType == "TUITIONBUDGET"){
         this->expenses->setTuitionBudget(amount, this->month);
     }
-    else if(this->expenseType == "SAVINGBUDGET"){
+    else if(this->expenseType == "SAVINGSBUDGET"){
         this->expenses->setSavingsBudget(amount, this->month);
     }
     else if(this->expenseType == "MISCBUDGET"){
@@ -257,14 +257,3 @@ void Account::withdraw(double withdrawAmount){
     double updatedExpenses = this->getExpense() - withdrawAmount;
     changeExpenseField(updatedExpenses);
 }
-
-/*void Account::transfer(User * user, double transferAmount, int monthPos, string expenseType, string thisUsername){
-    double amount = this->withdraw(this->getExpense(thisUsername, month, expenseType), transferAmount);
-    this->changeExpenseField(thisUsername, month, expenseType, amount); //need to change the actual amount in the expenses
-
-    /////////////////////////// Sets the correct type of cost based on the input ///////////////////////////////////
-
-    setCost(amount, monthPos, expenseType);
-    //outgoing done. TODO incoming needs to be done
-
-}*/
