@@ -16,20 +16,19 @@ AppDialog::AppDialog(User* &user, QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ui->comboBox_month->addItem("January");
-    ui->comboBox_month->addItem("February");
-    ui->comboBox_month->addItem("March");
-    ui->comboBox_month->addItem("April");
-    ui->comboBox_month->addItem("May");
-    ui->comboBox_month->addItem("June");
-    ui->comboBox_month->addItem("July");
-    ui->comboBox_month->addItem("August");
-    ui->comboBox_month->addItem("September");
-    ui->comboBox_month->addItem("October");
-    ui->comboBox_month->addItem("November");
     ui->comboBox_month->addItem("December");
+    ui->comboBox_month->addItem("November");
+    ui->comboBox_month->addItem("October");
+    ui->comboBox_month->addItem("September");
+    ui->comboBox_month->addItem("August");
+    ui->comboBox_month->addItem("July");
+    ui->comboBox_month->addItem("June");
+    ui->comboBox_month->addItem("May");
+    ui->comboBox_month->addItem("April");
+    ui->comboBox_month->addItem("March");
+    ui->comboBox_month->addItem("February");
+    ui->comboBox_month->addItem("January");
 
-    ui->tabWidget->setCurrentIndex(0);
 
     string username = user->getUsername();
     QString userQStr = QString::fromUtf8((username + '!').c_str());
@@ -50,10 +49,23 @@ AppDialog::AppDialog(User* &user, QWidget *parent) :
     QChartView *miscChart = expenses->getMiscGraph();
     QChartView *stackedChart = expenses->getExtraDeficitGraphYear();
 
+    monthGridLayout = new QGridLayout(ui->groupBox_monthlyGraphs);
+    pieGridLayout = new QGridLayout(ui->groupBox_monthlyGraphs_2);
+
+
     yearGridLayout = new QGridLayout(ui->groupBox_yearlyGraphs);
     gridLayout = new QGridLayout(ui->groupBox_graphs);
+
     ui->groupBox_graphs->setLayout(gridLayout);
     ui->groupBox_yearlyGraphs->setLayout(yearGridLayout);
+    ui->groupBox_monthlyGraphs->setLayout(monthGridLayout);
+    ui->groupBox_monthlyGraphs_2->setLayout(pieGridLayout);
+
+    QChartView *monthStackedChart = expenses->getExtraDeficitGraphMonth(this->month);
+    QChartView *pieChart = expenses->getMonthCostChart(this->month);
+
+    monthGridLayout->addWidget(monthStackedChart, 0, 0, 1, 1);
+    pieGridLayout->addWidget(pieChart, 0, 0, 1, 1);
 
     gridLayout->addWidget(foodChart, 0, 0, 1, 1);
     gridLayout->addWidget(rentChart, 0, 1, 1, 1);
@@ -72,15 +84,12 @@ AppDialog::~AppDialog()
 void AppDialog::on_pushButton_signOut_clicked()
 {
     hide();
-}
-
-void AppDialog::setMonth(int month) {
-    this->month = month;
+    this->parentWidget()->parentWidget()->show();
 }
 
 void AppDialog::updateAll(){
     for (int i = 0; i < 12; i++) {
-        this->setMonth(i);
+        this->month = i;
         updateBudget();
         updateBalance();
     }
@@ -154,10 +163,11 @@ void AppDialog::updateBalance(){
     ui->label_miscCost->repaint();
 }
 
-void AppDialog::on_comboBox_month_currentIndexChanged(int index)
+void AppDialog::on_comboBox_month_activated(int index)
 {
-    this->setMonth(index);
+    this->month = index;
     this->_user->getAccount()->setMonth(this->month);
+    Expenses *expenses = this->_user->getAccount()->getExpenseObj();
 
     ui->lineEdit_foodCostChanged->clear();
     ui->lineEdit_rentCostChanged->clear();
@@ -174,6 +184,12 @@ void AppDialog::on_comboBox_month_currentIndexChanged(int index)
 
     this->updateBalance();
     this->updateBudget();
+
+    QChartView *monthStackedChart = expenses->getExtraDeficitGraphMonth(this->month);
+    QChartView *pieChart = expenses->getMonthCostChart(this->month);
+
+    monthGridLayout->addWidget(monthStackedChart, 0, 0, 1, 1);
+    pieGridLayout->addWidget(pieChart, 0, 0, 1, 1);
 
     std::string finAdvice = this->_user->getAccount()->getFinancialAdvice(this->month);
     QString finAdviceQStr = QString::fromUtf8(finAdvice.c_str());
@@ -638,27 +654,6 @@ void AppDialog::on_pushButton_makeBalance_clicked()
     }
     this->updateBalance();
     this->updateBudget();
-}
-
-void AppDialog::on_tabWidget_3_currentChanged(int index)
-{
-    if (index == 1) {
-        QChartView *monthStackedChart = this->_user->getAccount()->getExpenseObj()->getExtraDeficitGraphMonth(this->month);
-        QGridLayout *monthGridLayout = new QGridLayout(ui->groupBox_monthlyGraphs);
-
-        monthGridLayout->addWidget(monthStackedChart, 0, 0, 1, 1);
-
-        QGridLayout *pieGridLayout = new QGridLayout(ui->groupBox_monthlyGraphs_2);
-
-        QChartView *pieChart = this->_user->getAccount()->getExpenseObj()->getMonthCostChart(this->month);
-        pieGridLayout->addWidget(pieChart, 0, 0, 1, 1);
-
-    }
-}
-
-void AppDialog::on_tabWidget_2_currentChanged(int index)
-{
-    ;
 }
 
 void AppDialog::on_tabWidget_currentChanged(int index)

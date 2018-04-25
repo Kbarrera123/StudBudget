@@ -15,7 +15,6 @@ class AppDialog : public QDialog
 
 public:
     void updateAll();
-    void setMonth(int month);
     void updateBudget();
     void updateBalance();
     explicit AppDialog(User* &user, QWidget *parent = 0);
@@ -23,7 +22,7 @@ public:
 
 private slots:
     void on_pushButton_signOut_clicked();
-    void on_comboBox_month_currentIndexChanged(int index);
+    void on_comboBox_month_activated(int index);
     void on_pushButton_depositFoodC_clicked();
     void on_pushButton_withdrawFoodC_clicked();
     void on_pushButton_depositRentC_clicked();
@@ -52,17 +51,14 @@ private slots:
     void on_pushButton_clearBudget_clicked();
     void on_pushButton_clearBalance_clicked();
     void on_pushButton_makeBalance_clicked();
-
-    void on_tabWidget_3_currentChanged(int index);
-
-    void on_tabWidget_2_currentChanged(int index);
-
     void on_tabWidget_currentChanged(int index);
 
 private:
     User* _user;
     QGridLayout *yearGridLayout;
     QGridLayout *gridLayout;
+    QGridLayout *monthGridLayout;
+    QGridLayout *pieGridLayout;
     int month;
     Ui::AppDialog *ui;
 };
