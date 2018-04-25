@@ -491,9 +491,10 @@ void AppDialog::on_pushButton_withdrawMiscB_clicked()
 void AppDialog::on_tabWidget_tabBarClicked(int index)
 {
     if (index == 1) {
-        //this->updateAll();
+
         this->updateBudget();
         this->updateBalance();
+
         Expenses *expenses = this->_user->getAccount()->getExpenseObj();
 
         QChartView *foodChart = expenses->getFoodGraph();
@@ -516,6 +517,8 @@ void AppDialog::on_tabWidget_tabBarClicked(int index)
         QGridLayout *yearGridLayout = new QGridLayout(ui->groupBox_yearlyGraphs);
         ui->groupBox_yearlyGraphs->setLayout(yearGridLayout);
         yearGridLayout->addWidget(stackedChart, 1, 1);
+
+        //foodChart->repaint();
     }
     else if (index == 2) {
         ui->label_yearAdvice->hide();
@@ -536,7 +539,7 @@ void AppDialog::on_tabWidget_tabBarClicked(int index)
         std::string finAdvice = this->_user->getAccount()->getFinancialAdvice(this->month);
         QString finAdviceQStr = QString::fromUtf8(finAdvice.c_str());
 
-        //ui->label_financialAdvice->clear();
+        ui->label_financialAdvice->clear();
         ui->label_financialAdvice->setText(finAdviceQStr);
         ui->label_financialAdvice->repaint();
         ui->label_financialAdvice->show();
