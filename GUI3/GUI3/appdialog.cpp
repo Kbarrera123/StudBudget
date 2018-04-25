@@ -38,7 +38,7 @@ AppDialog::AppDialog(User* &user, QWidget *parent) :
     user->getAccount()->setProjectedBudget();
 
     this->updateAll();
-    Expenses *expenses = this->_user->getAccount()->getExpenseObj();
+    Expenses *expenses = user->getAccount()->getExpenseObj();
 
     QChartView *foodChart = expenses->getFoodGraph();
     QChartView *rentChart = expenses->getRentGraph();
@@ -82,6 +82,9 @@ AppDialog::AppDialog(User* &user, QWidget *parent) :
     ui->label_financialAdvice->clear();
     ui->label_financialAdvice->setText(finAdviceQStr);
     ui->label_financialAdvice->show();
+
+    this->updateBalance();
+    this->updateBudget();
 }
 
 AppDialog::~AppDialog()
