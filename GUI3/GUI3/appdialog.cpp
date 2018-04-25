@@ -16,6 +16,19 @@ AppDialog::AppDialog(User* &user, QWidget *parent) :
 {
     ui->setupUi(this);
 
+    ui->comboBox_setAdviceMonth->addItem("January");
+    ui->comboBox_setAdviceMonth->addItem("February");
+    ui->comboBox_setAdviceMonth->addItem("March");
+    ui->comboBox_setAdviceMonth->addItem("April");
+    ui->comboBox_setAdviceMonth->addItem("May");
+    ui->comboBox_setAdviceMonth->addItem("June");
+    ui->comboBox_setAdviceMonth->addItem("July");
+    ui->comboBox_setAdviceMonth->addItem("August");
+    ui->comboBox_setAdviceMonth->addItem("September");
+    ui->comboBox_setAdviceMonth->addItem("October");
+    ui->comboBox_setAdviceMonth->addItem("November");
+    ui->comboBox_setAdviceMonth->addItem("December");
+
     ui->comboBox_month->addItem("January");
     ui->comboBox_month->addItem("February");
     ui->comboBox_month->addItem("March");
@@ -96,13 +109,6 @@ void AppDialog::updateBudget(){
     double miscBudget = this->_user->getAccount()->getExpense();
     ui->label_miscBudget_3->setText(QString::number(miscBudget));
     ui->label_miscBudget_3->repaint();
-
-    std::string finAdvice = this->_user->getAccount()->getFinancialAdvice(this->month);
-    QString finAdviceQStr = QString::fromUtf8(finAdvice.c_str());
-
-    ui->label_financialAdvice->clear();
-    ui->label_financialAdvice->setText(finAdviceQStr);
-    ui->label_financialAdvice->repaint();
 }
 
 void AppDialog::updateBalance(){
@@ -137,13 +143,6 @@ void AppDialog::updateBalance(){
     double miscCost = this->_user->getAccount()->getExpense();
     ui->label_miscCost->setText(QString::number(miscCost));
     ui->label_miscCost->repaint();
-
-    std::string finAdvice = this->_user->getAccount()->getFinancialAdvice(this->month);
-    QString finAdviceQStr = QString::fromUtf8(finAdvice.c_str());
-
-    ui->label_financialAdvice->clear();
-    ui->label_financialAdvice->setText(finAdviceQStr);
-    ui->label_financialAdvice->repaint();
 }
 
 void AppDialog::on_comboBox_month_currentIndexChanged(int index)
@@ -491,13 +490,8 @@ void AppDialog::on_pushButton_withdrawMiscB_clicked()
 
 void AppDialog::on_tabWidget_tabBarClicked(int index)
 {
-    if (index == 0) {
-        ui->label_financialAdvice->show();
-        ui->label_yearAdvice->hide();
-    }
-    else if (index == 1) {
-        this->updateBudget();
-        this->updateBalance();
+    if (index == 1) {
+        this->updateAll();
         Expenses *expenses = this->_user->getAccount()->getExpenseObj();
 
         QChartView *foodChart = expenses->getFoodGraph();
@@ -517,20 +511,32 @@ void AppDialog::on_tabWidget_tabBarClicked(int index)
         gridLayout->addWidget(tuitionChart, 0, 2, 1, 1);
         gridLayout->addWidget(miscChart, 1, 2, 1, 1);
 
-        //gridLayout->addWidget(stackedChart, 0, 3, 1, 1);
-        //this->resize(300, 300);
-
-        //gridLayout->addWidget(ui->pushButton, 2, 1, 1, 1);
-
+        QGridLayout *yearGridLayout = new QGridLayout(ui->groupBox_yearlyGraphs);
+        ui->groupBox_yearlyGraphs->setLayout(yearGridLayout);
+        yearGridLayout->addWidget(stackedChart, 1, 1);
+    }
+    else if (index == 2) {
+        ui->label_yearAdvice->hide();
         ui->label_financialAdvice->hide();
 
-        std::string finAdvice = this->_user->getAccount()->getFinancialAdvice(-1); // -1 is to make it do year cost instead of monthly
+        this->updateAll();
+
+        std::string yearlyFinAdvice = this->_user->getAccount()->getFinancialAdvice(-1); // -1 is to make it do year cost instead of monthly
+        QString yearlyFinAdviceQStr = QString::fromUtf8(yearlyFinAdvice.c_str());
+
+        ui->label_yearAdvice->setText(yearlyFinAdviceQStr);
+        ui->label_yearAdvice->repaint();
+        ui->label_yearAdvice->show();
+
+        this->setMonth(ui->comboBox_setAdviceMonth->currentIndex()); //set month to current dropdown index
+
+        std::string finAdvice = this->_user->getAccount()->getFinancialAdvice(this->month);
         QString finAdviceQStr = QString::fromUtf8(finAdvice.c_str());
 
-        ui->label_yearAdvice->setText(finAdviceQStr);
-        ui->label_yearAdvice->repaint();
-
-        ui->label_yearAdvice->show();
+        //ui->label_financialAdvice->clear();
+        ui->label_financialAdvice->setText(finAdviceQStr);
+        ui->label_financialAdvice->repaint();
+        ui->label_financialAdvice->show();
     }
 
 }
