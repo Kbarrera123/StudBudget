@@ -16,19 +16,6 @@ AppDialog::AppDialog(User* &user, QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ui->comboBox_setAdviceMonth->addItem("January");
-    ui->comboBox_setAdviceMonth->addItem("February");
-    ui->comboBox_setAdviceMonth->addItem("March");
-    ui->comboBox_setAdviceMonth->addItem("April");
-    ui->comboBox_setAdviceMonth->addItem("May");
-    ui->comboBox_setAdviceMonth->addItem("June");
-    ui->comboBox_setAdviceMonth->addItem("July");
-    ui->comboBox_setAdviceMonth->addItem("August");
-    ui->comboBox_setAdviceMonth->addItem("September");
-    ui->comboBox_setAdviceMonth->addItem("October");
-    ui->comboBox_setAdviceMonth->addItem("November");
-    ui->comboBox_setAdviceMonth->addItem("December");
-
     ui->comboBox_month->addItem("January");
     ui->comboBox_month->addItem("February");
     ui->comboBox_month->addItem("March");
@@ -187,6 +174,14 @@ void AppDialog::on_comboBox_month_currentIndexChanged(int index)
 
     this->updateBalance();
     this->updateBudget();
+
+    std::string finAdvice = this->_user->getAccount()->getFinancialAdvice(this->month);
+    QString finAdviceQStr = QString::fromUtf8(finAdvice.c_str());
+
+    ui->label_financialAdvice->clear();
+    ui->label_financialAdvice->setText(finAdviceQStr);
+    //ui->label_financialAdvice->repaint();
+    ui->label_financialAdvice->show();
 }
 
 void AppDialog::on_pushButton_depositFoodC_clicked()
@@ -512,18 +507,10 @@ void AppDialog::on_pushButton_withdrawMiscB_clicked()
 
 void AppDialog::on_tabWidget_tabBarClicked(int index)
 {
+
     if (index == 1) {
-
-        this->updateBudget();
-        this->updateBalance();
-
-
-
-        //foodChart->repaint();
-    }
-    else if (index == 2) {
-        ui->label_yearAdvice->hide();
-        ui->label_financialAdvice->hide();
+        //ui->label_yearAdvice->hide();
+        //ui->label_financialAdvice->hide();
 
         this->updateBalance();
         this->updateBudget();
@@ -532,18 +519,8 @@ void AppDialog::on_tabWidget_tabBarClicked(int index)
         QString yearlyFinAdviceQStr = QString::fromUtf8(yearlyFinAdvice.c_str());
 
         ui->label_yearAdvice->setText(yearlyFinAdviceQStr);
-        ui->label_yearAdvice->repaint();
+        //ui->label_yearAdvice->repaint();
         ui->label_yearAdvice->show();
-
-        this->setMonth(ui->comboBox_setAdviceMonth->currentIndex()); //set month to current dropdown index
-
-        std::string finAdvice = this->_user->getAccount()->getFinancialAdvice(this->month);
-        QString finAdviceQStr = QString::fromUtf8(finAdvice.c_str());
-
-        ui->label_financialAdvice->clear();
-        ui->label_financialAdvice->setText(finAdviceQStr);
-        ui->label_financialAdvice->repaint();
-        ui->label_financialAdvice->show();
     }
 
 }
@@ -681,4 +658,20 @@ void AppDialog::on_pushButton_makeBalance_clicked()
     }
     this->updateBalance();
     this->updateBudget();
+}
+
+void AppDialog::on_tabWidget_3_currentChanged(int index)
+{
+    if (index == 1) {
+        QChartView *monthStackedChart = this->_user->getAccount()->getExpenseObj()->getExtraDeficitGraphMonth(this->month);
+        QGridLayout *monthGridLayout = new QGridLayout(ui->groupBox_monthlyGraphs);
+
+        monthGridLayout->addWidget(monthStackedChart, 0, 0, 1, 1);
+
+        QGridLayout *pieGridLayout = new QGridLayout(ui->groupBox_monthlyGraphs_2);
+
+        QChartView *pieChart = this->_user->getAccount()->getExpenseObj()->getMonthCostChart(this->month);
+        pieGridLayout->addWidget(pieChart, 0, 0, 1, 1);
+
+    }
 }

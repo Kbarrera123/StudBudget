@@ -430,7 +430,7 @@ void Expenses::getAnnualCostChart() { // expenses pie chart by year
   window.show();
 }
 
-void Expenses::getMonthCostChart(int month) { // expenses pie chart by month
+QChartView* Expenses::getMonthCostChart(int month) { // expenses pie chart by month
   QPieSeries *series = new QPieSeries();
   series->append("Food", foodCost[month]);
   series->append("Rent", rentCost[month]);
@@ -472,10 +472,7 @@ void Expenses::getMonthCostChart(int month) { // expenses pie chart by month
   QChartView *chartView = new QChartView(chart);
   chartView->setRenderHint(QPainter::Antialiasing);
 
-  QMainWindow window;
-  window.setCentralWidget(chartView);
-  window.resize(400, 300);
-  window.show();
+  return chartView;
 }
 
 QChartView* Expenses::getExtraDeficitGraphYear() { // expenses bar chart by year
@@ -519,7 +516,7 @@ QChartView* Expenses::getExtraDeficitGraphYear() { // expenses bar chart by year
   return chartView;
 }
 
-void Expenses::getExtraDeficitGraphMonth(int month) { // expenses bar chart by month
+QChartView* Expenses::getExtraDeficitGraphMonth(int month) { // expenses bar chart by month
   setExtraDeficit();
 
   QBarSet *set0 = new QBarSet("Under budet spending");
@@ -557,10 +554,7 @@ void Expenses::getExtraDeficitGraphMonth(int month) { // expenses bar chart by m
   QChartView *chartView = new QChartView(chart);
   chartView->setRenderHint(QPainter::Antialiasing);
 
-  QMainWindow window;
-  window.setCentralWidget(chartView);
-  window.resize(420, 300);
-  window.show();
+  return chartView;
 }
 
 std::string Expenses::financialAdvice() {
