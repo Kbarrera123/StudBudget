@@ -491,7 +491,9 @@ void AppDialog::on_pushButton_withdrawMiscB_clicked()
 void AppDialog::on_tabWidget_tabBarClicked(int index)
 {
     if (index == 1) {
-        this->updateAll();
+        //this->updateAll();
+        this->updateBudget();
+        this->updateBalance();
         Expenses *expenses = this->_user->getAccount()->getExpenseObj();
 
         QChartView *foodChart = expenses->getFoodGraph();
@@ -519,7 +521,8 @@ void AppDialog::on_tabWidget_tabBarClicked(int index)
         ui->label_yearAdvice->hide();
         ui->label_financialAdvice->hide();
 
-        this->updateAll();
+        this->updateBalance();
+        this->updateBudget();
 
         std::string yearlyFinAdvice = this->_user->getAccount()->getFinancialAdvice(-1); // -1 is to make it do year cost instead of monthly
         QString yearlyFinAdviceQStr = QString::fromUtf8(yearlyFinAdvice.c_str());

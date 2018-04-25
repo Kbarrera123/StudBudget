@@ -1163,7 +1163,7 @@
    </widget>
    <widget class="QWidget" name="widget">
     <attribute name="title">
-     <string>My Data</string>
+     <string>My Year</string>
     </attribute>
     <widget class="QTabWidget" name="tabWidget_2">
      <property name="geometry">
@@ -1175,7 +1175,7 @@
       </rect>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="tab_3">
       <attribute name="title">
@@ -1197,7 +1197,7 @@
      </widget>
      <widget class="QWidget" name="tab_4">
       <attribute name="title">
-       <string>Yearly View</string>
+       <string>Summary</string>
       </attribute>
       <widget class="QGroupBox" name="groupBox_yearlyGraphs">
        <property name="geometry">
