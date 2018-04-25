@@ -53,6 +53,28 @@ AppDialog::AppDialog(User* &user, QWidget *parent) :
     user->getAccount()->setProjectedBudget();
 
     this->updateAll();
+    Expenses *expenses = this->_user->getAccount()->getExpenseObj();
+
+    QChartView *foodChart = expenses->getFoodGraph();
+    QChartView *rentChart = expenses->getRentGraph();
+    QChartView *entertainmentChart = expenses->getEntertainmentGraph();
+    QChartView *savingsChart = expenses->getSavingsGraph();
+    QChartView *tuitionChart = expenses->getTuitionGraph();
+    QChartView *miscChart = expenses->getMiscGraph();
+    QChartView *stackedChart = expenses->getExtraDeficitGraphYear();
+
+    QGridLayout *yearGridLayout = new QGridLayout(ui->groupBox_yearlyGraphs);
+    QGridLayout *gridLayout = new QGridLayout(ui->groupBox_graphs);
+    ui->groupBox_graphs->setLayout(gridLayout);
+    ui->groupBox_yearlyGraphs->setLayout(yearGridLayout);
+
+    gridLayout->addWidget(foodChart, 0, 0, 1, 1);
+    gridLayout->addWidget(rentChart, 0, 1, 1, 1);
+    gridLayout->addWidget(entertainmentChart, 1, 1, 1, 1);
+    gridLayout->addWidget(savingsChart, 1, 0, 1, 1);
+    gridLayout->addWidget(tuitionChart, 0, 2, 1, 1);
+    gridLayout->addWidget(miscChart, 1, 2, 1, 1);
+    yearGridLayout->addWidget(stackedChart, 1, 1);
 }
 
 AppDialog::~AppDialog()
@@ -495,28 +517,7 @@ void AppDialog::on_tabWidget_tabBarClicked(int index)
         this->updateBudget();
         this->updateBalance();
 
-        Expenses *expenses = this->_user->getAccount()->getExpenseObj();
 
-        QChartView *foodChart = expenses->getFoodGraph();
-        QChartView *rentChart = expenses->getRentGraph();
-        QChartView *entertainmentChart = expenses->getEntertainmentGraph();
-        QChartView *savingsChart = expenses->getSavingsGraph();
-        QChartView *tuitionChart = expenses->getTuitionGraph();
-        QChartView *miscChart = expenses->getMiscGraph();
-        QChartView *stackedChart = expenses->getExtraDeficitGraphYear();
-
-        QGridLayout *gridLayout = new QGridLayout(ui->groupBox_graphs);
-        ui->groupBox_graphs->setLayout(gridLayout);
-        gridLayout->addWidget(foodChart, 0, 0, 1, 1);
-        gridLayout->addWidget(rentChart, 0, 1, 1, 1);
-        gridLayout->addWidget(entertainmentChart, 1, 1, 1, 1);
-        gridLayout->addWidget(savingsChart, 1, 0, 1, 1);
-        gridLayout->addWidget(tuitionChart, 0, 2, 1, 1);
-        gridLayout->addWidget(miscChart, 1, 2, 1, 1);
-
-        QGridLayout *yearGridLayout = new QGridLayout(ui->groupBox_yearlyGraphs);
-        ui->groupBox_yearlyGraphs->setLayout(yearGridLayout);
-        yearGridLayout->addWidget(stackedChart, 1, 1);
 
         //foodChart->repaint();
     }
