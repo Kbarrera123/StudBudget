@@ -68,7 +68,7 @@ void Expenses::setRentCost(double rent, int month) {
 }
 
 double Expenses::getRentCost(int month) {
-  return foodCost[month];
+  return rentCost[month];
 }
 
 QChartView* Expenses::getRentGraph() { // annual rent spending line graph
@@ -97,7 +97,7 @@ void Expenses::setRentBudget(double rent, int month) {
 }
 
 double Expenses::getRentBudget(int month) {
-  return foodBudget[month];
+  return rentBudget[month];
 }
 
 void Expenses::setEntertainmentCost(double entertainment, int month) {
