@@ -47,10 +47,10 @@ AppDialog::AppDialog(User* &user, QWidget *parent) :
     QChartView *tuitionChart = expenses->getTuitionGraph();
     QChartView *miscChart = expenses->getMiscGraph();
     QChartView *stackedChart = expenses->getExtraDeficitGraphYear();
+    QChartView *yearPieChart = expenses->getAnnualCostChart();
 
     monthGridLayout = new QGridLayout(ui->groupBox_monthlyGraphs);
     pieGridLayout = new QGridLayout(ui->groupBox_monthlyGraphs_2);
-
 
     yearGridLayout = new QGridLayout(ui->groupBox_yearlyGraphs);
     gridLayout = new QGridLayout(ui->groupBox_graphs);
@@ -72,7 +72,8 @@ AppDialog::AppDialog(User* &user, QWidget *parent) :
     gridLayout->addWidget(savingsChart, 1, 0, 1, 1);
     gridLayout->addWidget(tuitionChart, 0, 2, 1, 1);
     gridLayout->addWidget(miscChart, 1, 2, 1, 1);
-    yearGridLayout->addWidget(stackedChart, 1, 1);
+    yearGridLayout->addWidget(stackedChart, 0, 0, 1, 1);
+    yearGridLayout->addWidget(yearPieChart, 0, 1, 1, 1);
 
 
     std::string finAdvice = this->_user->getAccount()->getFinancialAdvice(this->month);
@@ -682,6 +683,7 @@ void AppDialog::on_tabWidget_currentChanged(int index)
         QChartView *tuitionChart = expenses->getTuitionGraph();
         QChartView *miscChart = expenses->getMiscGraph();
         QChartView *stackedChart = expenses->getExtraDeficitGraphYear();
+        QChartView *yearPieChart = expenses->getAnnualCostChart();
 
         gridLayout->addWidget(foodChart, 0, 0, 1, 1);
         gridLayout->addWidget(rentChart, 0, 1, 1, 1);
@@ -689,7 +691,8 @@ void AppDialog::on_tabWidget_currentChanged(int index)
         gridLayout->addWidget(savingsChart, 1, 0, 1, 1);
         gridLayout->addWidget(tuitionChart, 0, 2, 1, 1);
         gridLayout->addWidget(miscChart, 1, 2, 1, 1);
-        yearGridLayout->addWidget(stackedChart, 1, 1);
+        yearGridLayout->addWidget(stackedChart, 0, 0, 1, 1);
+        yearGridLayout->addWidget(yearPieChart, 0, 1, 1, 1);
 
         std::string yearlyFinAdvice = this->_user->getAccount()->getFinancialAdvice(-1); // -1 is to make it do year cost instead of monthly
         QString yearlyFinAdviceQStr = QString::fromUtf8(yearlyFinAdvice.c_str());

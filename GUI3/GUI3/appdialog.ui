@@ -102,13 +102,16 @@
         <property name="geometry">
          <rect>
           <x>400</x>
-          <y>310</y>
+          <y>308</y>
           <width>121</width>
           <height>41</height>
          </rect>
         </property>
         <property name="text">
          <string>Create Balance</string>
+        </property>
+        <property name="autoRepeatInterval">
+         <number>163</number>
         </property>
        </widget>
        <widget class="QLabel" name="label_24">

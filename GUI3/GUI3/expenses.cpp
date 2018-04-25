@@ -382,7 +382,7 @@ void Expenses::setExtraDeficit() {
     totalAnnualExtra = totalFoodExtra + totalRentExtra + totalEntertainmentExtra + totalTuitionExtra + totalSavingsExtra + totalMiscExtra;
 }
 
-void Expenses::getAnnualCostChart() { // expenses pie chart by year
+QChartView* Expenses::getAnnualCostChart() { // expenses pie chart by year
   QPieSeries *series = new QPieSeries();
   series->append("Food", totalFoodCost);
   series->append("Rent", totalRentCost);
@@ -424,10 +424,7 @@ void Expenses::getAnnualCostChart() { // expenses pie chart by year
   QChartView *chartView = new QChartView(chart);
   chartView->setRenderHint(QPainter::Antialiasing);
 
-  QMainWindow window;
-  window.setCentralWidget(chartView);
-  window.resize(400, 300);
-  window.show();
+  return chartView;
 }
 
 QChartView* Expenses::getMonthCostChart(int month) { // expenses pie chart by month

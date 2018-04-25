@@ -44,7 +44,7 @@ public:
     double getMiscBudget(int month);
     void setExtraDeficit();
     void projectBudget();
-    void getAnnualCostChart();
+    QChartView* getAnnualCostChart();
     QChartView* getMonthCostChart(int month);
     QChartView* getExtraDeficitGraphYear();
     QChartView* getExtraDeficitGraphMonth(int month);
@@ -52,7 +52,6 @@ public:
     std::string financialAdvice(int month);
 
 private:
-    //Ui::Expenses *ui;
     double foodCost[12];
     double foodBudget[12];
     double foodExtra[12];
