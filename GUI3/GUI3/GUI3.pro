@@ -54,8 +54,7 @@ FORMS += \
         mainwindow.ui \
     appdialog.ui \
     logindialog.ui \
-    makeaccountdialog.ui \
-    newwindow.ui
+    makeaccountdialog.ui
 
 RESOURCES += \
     logo.qrc

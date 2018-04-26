@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>752</width>
-    <height>689</height>
+    <height>678</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -80,9 +80,9 @@
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>230</x>
+      <x>210</x>
       <y>580</y>
-      <width>301</width>
+      <width>341</width>
       <height>21</height>
      </rect>
     </property>
@@ -123,7 +123,6 @@
     </property>
    </widget>
   </widget>
-  <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
