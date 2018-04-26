@@ -17,14 +17,11 @@ private:
 public:
     Account();
     Expenses* getExpenseObj();
-    void setProjectedBudget();
-    void updateArrayExpenses(int month);
-    void fillArrayExpenses();
     std::string getFinancialAdvice(int month);
+    void setProjectedBudget();
     void setUsername(string username);
     void setMonth(int month);
     void setExpenseType(string expenseType);
-    void printData();
     void setCost(double amount);
     void changeExpenseField(double newAmount);
     bool dataExists();
@@ -32,7 +29,6 @@ public:
     void deposit(double depositAmount);
     void withdraw(double withdrawAmount);
     double getExpense();
-    //void transfer(User * x, double transferAmount, string month, string expenseType, string thisUsername);
 };
 
 

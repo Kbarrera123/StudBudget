@@ -1,7 +1,6 @@
 #include "appdialog.h"
 #include "ui_appdialog.h"
 #include <QMessageBox>
-#include "newwindow.h"
 #include <QtCharts>
 #include <QWidget>
 #include <QtWidgets/QApplication>
@@ -30,12 +29,11 @@ AppDialog::AppDialog(User* &user, QWidget *parent) :
     ui->comboBox_month->insertItem(11,"December");
 
     string username = user->getUsername();
-    QString userQStr = QString::fromUtf8((username + '!').c_str());
+    QString userQStr = QString::fromUtf8((username + '!').c_str()); // To make the system greet the user
     ui->label_getUsername->setText(userQStr);
 
     user->getAccount()->setUsername(username);
     user->getAccount()->writeData();
-    user->getAccount()->setProjectedBudget();
 
     this->updateAll();
     Expenses *expenses = user->getAccount()->getExpenseObj();
@@ -88,7 +86,6 @@ AppDialog::AppDialog(User* &user, QWidget *parent) :
     user->getAccount()->setProjectedBudget();
 
     this->updateMonthlyAdvice();
-    QMessageBox::warning(this, "Yeah", QString::number(expenses->totalBudget[month]));
 }
 
 AppDialog::~AppDialog()
@@ -100,6 +97,7 @@ void AppDialog::on_pushButton_signOut_clicked()
 {
     hide();
     this->parentWidget()->parentWidget()->show();
+    delete this;
 }
 
 void AppDialog::updateAll(){
@@ -239,8 +237,13 @@ void AppDialog::on_pushButton_withdrawFoodC_clicked()
     QString withdrawAmt = ui->lineEdit_foodCostChanged->text();
     double withdrawAmtDouble = withdrawAmt.toDouble();
     this->_user->getAccount()->setExpenseType("FOOD");
-    this->_user->getAccount()->withdraw(withdrawAmtDouble);
 
+    if (this->_user->getAccount()->getExpense() - withdrawAmtDouble < 0) {
+        QMessageBox::warning(this, "Below Zero", "Withdrawing this amount will result in negative spending.\n If you have obtained more money, add it to your budget. Please try again.");
+    }
+    else {
+        this->_user->getAccount()->withdraw(withdrawAmtDouble);
+    }
     this->updateBalance();
     this->updateMonthlyAdvice();
 }
@@ -265,8 +268,12 @@ void AppDialog::on_pushButton_withdrawRentC_clicked()
     QString withdrawAmt = ui->lineEdit_rentCostChanged->text();
     double withdrawAmtDouble = withdrawAmt.toDouble();
     this->_user->getAccount()->setExpenseType("RENT");
-    this->_user->getAccount()->withdraw(withdrawAmtDouble);
-
+    if (this->_user->getAccount()->getExpense() - withdrawAmtDouble < 0) {
+        QMessageBox::warning(this, "Below Zero", "Withdrawing this amount will result in negative spending.\n If you have obtained more money, add it to your budget. Please try again.");
+    }
+    else {
+        this->_user->getAccount()->withdraw(withdrawAmtDouble);
+    }
     this->updateBalance();
     this->updateMonthlyAdvice();
 }
@@ -291,8 +298,12 @@ void AppDialog::on_pushButton_withdrawEntertainmentC_clicked()
     QString withdrawAmt = ui->lineEdit_entertainmentCostChanged->text();
     double withdrawAmtDouble = withdrawAmt.toDouble();
     this->_user->getAccount()->setExpenseType("ENTERTAINMENT");
-    this->_user->getAccount()->withdraw(withdrawAmtDouble);
-
+    if (this->_user->getAccount()->getExpense() - withdrawAmtDouble < 0) {
+        QMessageBox::warning(this, "Below Zero", "Withdrawing this amount will result in negative spending.\n If you have obtained more money, add it to your budget. Please try again.");
+    }
+    else {
+        this->_user->getAccount()->withdraw(withdrawAmtDouble);
+    }
     this->updateBalance();
     this->updateMonthlyAdvice();
 }
@@ -317,8 +328,12 @@ void AppDialog::on_pushButton_withdrawTuitionC_clicked()
     QString withdrawAmt = ui->lineEdit_tuitionCostChanged->text();
     double withdrawAmtDouble = withdrawAmt.toDouble();
     this->_user->getAccount()->setExpenseType("TUITION");
-    this->_user->getAccount()->withdraw(withdrawAmtDouble);
-
+    if (this->_user->getAccount()->getExpense() - withdrawAmtDouble < 0) {
+        QMessageBox::warning(this, "Below Zero", "Withdrawing this amount will result in negative spending.\n If you have obtained more money, add it to your budget. Please try again.");
+    }
+    else {
+        this->_user->getAccount()->withdraw(withdrawAmtDouble);
+    }
     this->updateBalance();
     this->updateMonthlyAdvice();
 }
@@ -343,8 +358,12 @@ void AppDialog::on_pushButton_withdrawSavingsC_clicked()
     QString withdrawAmt = ui->lineEdit_savingsCostChanged->text();
     double withdrawAmtDouble = withdrawAmt.toDouble();
     this->_user->getAccount()->setExpenseType("SAVINGS");
-    this->_user->getAccount()->withdraw(withdrawAmtDouble);
-
+    if (this->_user->getAccount()->getExpense() - withdrawAmtDouble < 0) {
+        QMessageBox::warning(this, "Below Zero", "Withdrawing this amount will result in negative spending.\n If you have obtained more money, add it to your budget. Please try again.");
+    }
+    else {
+        this->_user->getAccount()->withdraw(withdrawAmtDouble);
+    }
     this->updateBalance();
     this->updateMonthlyAdvice();
 }
@@ -369,8 +388,12 @@ void AppDialog::on_pushButton_withdrawMiscC_clicked()
     QString withdrawAmt = ui->lineEdit_miscCostChanged->text();
     double withdrawAmtDouble = withdrawAmt.toDouble();
     this->_user->getAccount()->setExpenseType("MISC");
-    this->_user->getAccount()->withdraw(withdrawAmtDouble);
-
+    if (this->_user->getAccount()->getExpense() - withdrawAmtDouble < 0) {
+        QMessageBox::warning(this, "Below Zero", "Withdrawing this amount will result in negative spending.\n If you have obtained more money, add it to your budget. Please try again.");
+    }
+    else {
+        this->_user->getAccount()->withdraw(withdrawAmtDouble);
+    }
     this->updateBalance();
     this->updateMonthlyAdvice();
 }

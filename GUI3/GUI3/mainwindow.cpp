@@ -32,7 +32,7 @@ void MainWindow::on_pushButton_login_clicked()
     logInDialog->show();
 }
 
-void MainWindow::on_pushButton_clicked()
+void MainWindow::on_pushButton_clicked() // The delete all users button
 {
     Authenticator* authenticator = new Authenticator();
     authenticator->fillMapOfUsers();

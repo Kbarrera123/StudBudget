@@ -100,16 +100,6 @@ void Account::writeData(){
     }
 }
 
-void Account::printData(){
-    ifstream readData;
-    string tempLine;
-    readData.open("accountData.txt");
-    while(getline(readData, tempLine)){
-        cout << tempLine << endl;
-    }
-    readData.close();
-}
-
 /////////////////// For delimiting a string by spaces on one line ////////////////////////////
 template<typename Out>
 void split(const string &s, char delim, Out result) {

@@ -34,8 +34,7 @@ SOURCES += \
     account.cpp \
     expenses.cpp \
     authenticator.cpp \
-    sha256.cpp \
-    newwindow.cpp
+    sha256.cpp
 
 target.path = $$[QT_INSTALL_EXAMPLES]/charts/barchart
 INSTALLS += target
@@ -49,8 +48,7 @@ HEADERS += \
     account.h \
     expenses.h \
     authenticator.h \
-    sha256.h \
-    newwindow.h
+    sha256.h
 
 FORMS += \
         mainwindow.ui \

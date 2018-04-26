@@ -14,11 +14,11 @@ class AppDialog : public QDialog
     Q_OBJECT
 
 public:
+    explicit AppDialog(User* &user, QWidget *parent = 0);
     void updateMonthlyAdvice();
     void updateAll();
     void updateBudget();
     void updateBalance();
-    explicit AppDialog(User* &user, QWidget *parent = 0);
     ~AppDialog();
 
 private slots:
@@ -57,11 +57,11 @@ private slots:
 
 private:
     User* _user;
+    int month;
     QGridLayout *yearGridLayout;
     QGridLayout *gridLayout;
     QGridLayout *monthGridLayout;
     QGridLayout *pieGridLayout;
-    int month;
     Ui::AppDialog *ui;
 };
 

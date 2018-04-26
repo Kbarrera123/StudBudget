@@ -65,24 +65,6 @@ void Authenticator::clearUsers(){
     this->users.clear();
 }
 
-void Authenticator::printUserObjects(){
-    cout << "  Memory    |  User" << endl;
-    for(this->it = this->users.begin(); this->it != this->users.end(); this->it++){
-        cout << "["<< this->it->second << "] | [";
-        cout << this->it->second->getUsername() << "]"<< endl;
-    }
-    cout << "____________________________________________" << endl;
-}
-
-bool Authenticator::isUser(string username){
-    for(this->it = this->users.begin(); this->it != this->users.end(); this->it++){
-        if(this->it->second->getUsername() == username){
-            return true;
-        }
-    }
-    return false;
-}
-
 void Authenticator::logIn(string username, string password, bool & finished){
     bool login = false;
     string tempUser = "";
@@ -132,7 +114,6 @@ void Authenticator::signUp(string username, string password, bool &exists){
         }
     }
 
-
     if(!exists){
         string auth = "Username: " + username + "    Password: " + password;
         //			  Length 10	^			      Length 14 ^
@@ -143,19 +124,3 @@ void Authenticator::signUp(string username, string password, bool &exists){
     }
 }
 
-void Authenticator::printUsers(){
-    ifstream readData;
-    string tempUser;
-    int count = 0;
-
-    cout << "Users:" << endl;
-    readData.open("authData.txt");
-    while(getline(readData, tempUser)){
-        count++;
-        cout << count << ".) " << tempUser << endl;
-    }
-    if(count == 0){
-        cout << "No users found." << endl;
-    }
-    readData.close();
-}

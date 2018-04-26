@@ -20,9 +20,7 @@ public:
 
 private slots:
     void on_pushButton_makeAccount_clicked();
-
     void on_pushButton_login_clicked();
-
     void on_pushButton_clicked();
 
 private:
