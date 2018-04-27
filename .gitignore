@@ -11,6 +11,10 @@ moc_predefs.h
 expenses_copy.ui
 mainwindow.h.autosave
 build-GUI3-Desktop_Qt_5_10_1_clang_64bit2-Debug/
+GUI3.app/
+GUI3.dmg
+Makefile
+build-GUI3-Desktop_Qt_5_10_1_clang_64bit2-Release/
 
 
 # In repository we don't need to have:
