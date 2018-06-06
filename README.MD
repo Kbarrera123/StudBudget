@@ -1,8 +1,41 @@
 # StudBudget
 
-StudBudget is a student budgeting app that helps you track your expenses and save money. It features personalized financial advice and data visualization like pie charts and line graphs. It has specialized categories such as "Tuition" and "Rent" that are perfect for a college student. It is a standalone C++ application with an integrated GUI built in Qt.
+## What is StudBudget?
 
-StudBudget was created by a group of 7 UF Computer Science and Engineering students for a class project.
+StudBudget is a student budgeting app that helps keep track of expenses and save money. StudBudget is a standalone C++ application with an integrated GUI built in Qt.
+
+### Features
+
+**1. Personalized financial advice**
+
+* Based on our algorithms and your spending patterns!
+
+**2. Data visualization**
+
+* Pie charts and line graphs by month, year, and category!
+
+**3. Specialized expense categories for college students**
+
+* Includes:
+  * Tuition
+  * Food
+  * Rent
+  * Entertainment
+  * Savings
+  * Misc
+
+**4. Your own StudBudget account and user profile!**
+
+* Allows you to save your financial data
+* Receive financial help tailored to you!
+
+## Who created StudBudget?
+
+StudBudget was created by a group of 7 UF Computer Science and Engineering students for a class project. For more information, see the _Authors_ section below.
+
+#### Using StudBudget: A Note
+
+To run a full version of StudBudget with GUI display on your computer, please contact one of the authors listed below for all the necessary files. This is because Qt is required to visualize the GUI. (More on this in _Deployment_)
 
 ## Getting Started
 
@@ -32,13 +65,15 @@ You will need to clone this GitHub repository (or make your own if you're starti
 
 We used the commercial trial of Qt, which only lasts for a short period of time, but you may be able to extend it if you contact the company. The Qt installation may take some time.
 
+You can also use the open source version of Qt, which is free but does not include all the same features. Visit Qt's website for more details.
+
 ## Testing and Debugging
 
 With so much code and so many different calculations and expense types, we ran into several bugs while using the app that were difficult to find in the code.
 
 Be sure to use proper naming conventions and keep names consistent throughout the program!
 
-It is important to check that each of the months and different features are working properly by inputting different data and catching edge cases.
+It is important to check that each of the months and different features are working properly by inputing different data and catching edge cases.
 
 ## Deployment
 
@@ -47,6 +82,8 @@ Deployment was difficult using Qt. We were able to deploy the app for Windows by
 It may be easier to start off using Qt Open Source, as it allows you to deploy the app more easily, it is free, and your access to it will not suddenly end like the commercial trial.
 
 ## Authors
+
+For any questions or comments, please reach out to one of us!\*
 
 * **Kayla Barrera** - _Qt GUI, GitHub Repo, Integration_ - [GitHub](https://github.com/Kbarrera123)
 * **Luke Herczeg** - _Backend, Database, Integration, Deployment_ - [GitHub](https://github.com/lukeherczeg)
@@ -57,3 +94,5 @@ It may be easier to start off using Qt Open Source, as it allows you to deploy t
 * **Cat Euliano** - [GitHub](https://github.com/ceuliano)
 
 See also the list of [contributors](https://github.com/Kbarrera123/QtGUI2/graphs/contributors) who participated in this project.
+
+\*Note: README created by Kayla Barrera (kaylabarrera@ufl.edu)
